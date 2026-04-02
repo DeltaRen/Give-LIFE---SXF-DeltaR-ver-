@@ -1,0 +1,203 @@
+[gd_scene format=3 uid="uid://pvrp1i0n4eqx"]
+
+[ext_resource type="Script" uid="uid://s4tjqnmiuuu3" path="res://New New/Scripts/GL_Modifier.gd" id="1_2bvfm"]
+[ext_resource type="Script" uid="uid://123cosa0dlrp" path="res://New New/Scripts/GL_Master.gd" id="1_4kpso"]
+[ext_resource type="Script" uid="uid://cfp3tpowbcpot" path="res://New New/Scripts/GL_SaveLoad.gd" id="2_2bvfm"]
+[ext_resource type="Script" uid="uid://cphs62vbpa8ja" path="res://New New/Scripts/GL_Timeline.gd" id="2_c0c77"]
+
+[node name="GlEditor" type="Control" unique_id=270496900]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=113343057]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Editor" type="HBoxContainer" parent="VBoxContainer" unique_id=907840281]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Modifier" type="Control" parent="VBoxContainer/Editor" unique_id=1671722633]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_2bvfm")
+
+[node name="Start New" type="PanelContainer" parent="VBoxContainer/Editor/Modifier" unique_id=657194110]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/Editor/Modifier/Start New" unique_id=2069479999]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Create Showtape"
+
+[node name="Settings" type="TabContainer" parent="VBoxContainer/Editor/Modifier" unique_id=120351013]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="General" type="PanelContainer" parent="VBoxContainer/Editor/Modifier/Settings" unique_id=1426267622]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Editor/Modifier/Settings/General" unique_id=473937999]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Editor/Modifier/Settings/General/MarginContainer" unique_id=220569561]
+layout_mode = 2
+
+[node name="Title" type="HBoxContainer" parent="VBoxContainer/Editor/Modifier/Settings/General/MarginContainer/VBoxContainer" unique_id=1702252599]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Editor/Modifier/Settings/General/MarginContainer/VBoxContainer/Title" unique_id=1220462098]
+layout_mode = 2
+text = "Title: "
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Editor/Modifier/Settings/General/MarginContainer/VBoxContainer/Title" unique_id=1788731704]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Author" type="HBoxContainer" parent="VBoxContainer/Editor/Modifier/Settings/General/MarginContainer/VBoxContainer" unique_id=437137876]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Editor/Modifier/Settings/General/MarginContainer/VBoxContainer/Author" unique_id=1092015495]
+layout_mode = 2
+text = "Author: "
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Editor/Modifier/Settings/General/MarginContainer/VBoxContainer/Author" unique_id=495236870]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Created" type="HBoxContainer" parent="VBoxContainer/Editor/Modifier/Settings/General/MarginContainer/VBoxContainer" unique_id=657312415]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Editor/Modifier/Settings/General/MarginContainer/VBoxContainer/Created" unique_id=1517247924]
+layout_mode = 2
+text = "Created: "
+
+[node name="Label2" type="Label" parent="VBoxContainer/Editor/Modifier/Settings/General/MarginContainer/VBoxContainer/Created" unique_id=1957219627]
+layout_mode = 2
+text = "???"
+
+[node name="Viewer" type="PanelContainer" parent="VBoxContainer/Editor" unique_id=1912449849]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TimeManager" type="PanelContainer" parent="VBoxContainer" unique_id=266066089]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TimeManager" unique_id=478080713]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 2
+
+[node name="StartTime" type="Label" parent="VBoxContainer/TimeManager/MarginContainer" unique_id=1772392818]
+layout_mode = 2
+text = "00:00:00"
+vertical_alignment = 1
+
+[node name="EndTime" type="Label" parent="VBoxContainer/TimeManager/MarginContainer" unique_id=1872305820]
+layout_mode = 2
+text = "00:00:00"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimeManager" unique_id=1161396168]
+layout_mode = 2
+alignment = 1
+
+[node name="Play Button" type="Button" parent="VBoxContainer/TimeManager/HBoxContainer" unique_id=1808816479]
+layout_mode = 2
+text = " ▶ "
+
+[node name="Data Timeline" type="PanelContainer" parent="VBoxContainer" unique_id=149432049]
+modulate = Color(2.055, 2.055, 2.055, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_c0c77")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Data Timeline" unique_id=1760910010]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TimelineBox" type="VBoxContainer" parent="VBoxContainer/Data Timeline/MarginContainer" unique_id=454508545]
+layout_mode = 2
+
+[node name="CreateChannel" type="OptionButton" parent="VBoxContainer/Data Timeline/MarginContainer/TimelineBox" unique_id=1319803717]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+selected = 0
+item_count = 4
+popup/item_0/text = "Create New Channel"
+popup/item_0/id = 0
+popup/item_1/text = "On / Off"
+popup/item_1/id = 1
+popup/item_2/text = "0.0 -> 0.1"
+popup/item_2/id = 2
+popup/item_3/text = "Color"
+popup/item_3/id = 3
+
+[node name="TimelineBar" type="ColorRect" parent="VBoxContainer/Data Timeline" unique_id=64446410]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(0, 0, 0, 1)
+
+[node name="currentTime" type="Label" parent="VBoxContainer/Data Timeline/TimelineBar" unique_id=846617625]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -23.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "00:00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master" type="Node" parent="." unique_id=1303165483]
+script = ExtResource("1_4kpso")
+
+[node name="SaveLoad" type="Node" parent="Master" unique_id=1672595791]
+script = ExtResource("2_2bvfm")
+
+[connection signal="pressed" from="VBoxContainer/Editor/Modifier/Start New/Button" to="VBoxContainer/Editor/Modifier" method="_create_new_show"]
+[connection signal="item_selected" from="VBoxContainer/Data Timeline/MarginContainer/TimelineBox/CreateChannel" to="VBoxContainer/Data Timeline" method="create_channel"]

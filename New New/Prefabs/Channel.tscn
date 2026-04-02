@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dcwid2ms4grak"]
+
+[ext_resource type="Script" uid="uid://ejomt33cgxyv" path="res://New New/Scripts/GL_Channel.gd" id="1_y15e8"]
+
+[node name="HBoxContainer" type="HBoxContainer" unique_id=573888745]
+custom_minimum_size = Vector2(0, 40)
+offset_right = 438.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_y15e8")
+
+[node name="Bind" type="PanelContainer" parent="." unique_id=624577050]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Bind Label" type="Label" parent="Bind" unique_id=1844535330]
+layout_mode = 2
+text = "[   ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bind2" type="PanelContainer" parent="." unique_id=1342965726]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ChannelTimeline" type="PanelContainer" parent="." unique_id=1042388189]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="title" type="LineEdit" parent="ChannelTimeline" unique_id=56768950]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "test"
+expand_to_text_length = true
+
+[node name="BitHolder" type="Control" parent="ChannelTimeline" unique_id=1733267290]
+layout_mode = 2
+mouse_filter = 2
+
+[connection signal="mouse_entered" from="Bind" to="." method="binder_entered"]
+[connection signal="mouse_exited" from="Bind" to="." method="binder_exited"]
+[connection signal="mouse_entered" from="ChannelTimeline" to="." method="timelineEntered"]
+[connection signal="mouse_exited" from="ChannelTimeline" to="." method="timelineExited"]
+[connection signal="focus_exited" from="ChannelTimeline/title" to="." method="_on_title_focus_exited"]
+[connection signal="text_submitted" from="ChannelTimeline/title" to="." method="_on_title_text_submitted"]
