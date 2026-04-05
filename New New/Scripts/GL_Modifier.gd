@@ -1,4 +1,5 @@
 extends Node
+class_name GL_Modifier
 @onready var master : GL_Master = $"../Master"
 @onready var saveLoad : GL_SaveLoad = $"../Master/SaveLoad"
 @onready var fullEditor : Control = $"../Full Editor"
@@ -14,7 +15,12 @@ func _ready() -> void:
 	fullEditor.visible = false
 
 func _create_new_show():
-	var path = saveLoad.generate_savefile(defaultShowName)
+	load_show(saveLoad.generate_savefile(defaultShowName))
+		
+func _import_rr(path : String):
+	load_show(saveLoad.generate_savefile(defaultShowName))
+			
+func load_show(path : String):
 	if path != "":
 		if master.load_show(path):
 			_load_settings_general()

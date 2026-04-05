@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Physics_Bones.gd" id="3_nfbpk"]
 [ext_resource type="Script" uid="uid://ekdr3r12ydct" path="res://Scripts/Animatables/GL_Paintable.gd" id="4_6yq8t"]
 
-[node name="FD" type="Node3D" unique_id=1621682742 groups=["AA_FD", "Animatables"]]
+[node name="FD" type="Node3D" unique_id=1621682742 groups=["AA_FD"]]
 script = ExtResource("1_nfbpk")
 animParametersFileName = "FD"
 
@@ -13,6 +13,6 @@ animParametersFileName = "FD"
 script = ExtResource("3_nfbpk")
 boneConfigFileName = "FD"
 
-[node name="Color Check" type="Node3D" parent="." unique_id=1873943061 groups=["AA_FD", "Animatables"]]
+[node name="Color Check" type="Node3D" parent="." unique_id=1873943061 groups=["AA_FD"]]
 script = ExtResource("4_6yq8t")
 check_siblings = true

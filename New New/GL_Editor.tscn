@@ -3,7 +3,10 @@
 [ext_resource type="Script" uid="uid://s4tjqnmiuuu3" path="res://New New/Scripts/GL_Modifier.gd" id="1_2bvfm"]
 [ext_resource type="Script" uid="uid://123cosa0dlrp" path="res://New New/Scripts/GL_Master.gd" id="1_4kpso"]
 [ext_resource type="Script" uid="uid://cfp3tpowbcpot" path="res://New New/Scripts/GL_SaveLoad.gd" id="2_2bvfm"]
+[ext_resource type="Script" uid="uid://cv0ko0w0oijq4" path="res://New New/Scripts/GL_LoadTapes.gd" id="2_7jq2w"]
 [ext_resource type="Script" uid="uid://cphs62vbpa8ja" path="res://New New/Scripts/GL_Timeline.gd" id="2_c0c77"]
+[ext_resource type="Script" uid="uid://dvdojljxguwdc" path="res://New New/Scripts/GL_ImportDropdown.gd" id="2_y4xxp"]
+[ext_resource type="Script" uid="uid://ckgpu8qo8u8vw" path="res://New New/Scripts/GL_Playback.gd" id="5_4tobp"]
 
 [node name="GlEditor" type="Control" unique_id=270496900]
 layout_mode = 3
@@ -24,24 +27,42 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_2bvfm")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="File Loader" unique_id=742762762]
+[node name="MarginContainer" type="MarginContainer" parent="File Loader" unique_id=639739632]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="File Loader/MarginContainer" unique_id=742762762]
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="File Loader/VBoxContainer" unique_id=2069479999]
+[node name="HBoxContainer" type="HBoxContainer" parent="File Loader/MarginContainer/VBoxContainer" unique_id=1327736958]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="File Loader/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2069479999]
 layout_mode = 2
 size_flags_vertical = 4
 text = "Create Showtape"
 
-[node name="Button2" type="Button" parent="File Loader/VBoxContainer" unique_id=2092375134]
+[node name="MenuButton" type="MenuButton" parent="File Loader/MarginContainer/VBoxContainer/HBoxContainer" unique_id=107956870]
 layout_mode = 2
-size_flags_vertical = 4
-text = "Load Showtape"
-
-[node name="Button3" type="Button" parent="File Loader/VBoxContainer" unique_id=1432001012]
-layout_mode = 2
-size_flags_vertical = 4
 text = "Import RR-Engine Showtape"
+script = ExtResource("2_y4xxp")
+
+[node name="LoadedFiles" type="ScrollContainer" parent="File Loader/MarginContainer/VBoxContainer" unique_id=979859428]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_7jq2w")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="File Loader/MarginContainer/VBoxContainer/LoadedFiles" unique_id=623890464]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+last_wrap_alignment = 2
 
 [node name="Full Editor" type="VBoxContainer" parent="." unique_id=113343057]
 visible = false
@@ -209,5 +230,8 @@ script = ExtResource("1_4kpso")
 [node name="SaveLoad" type="Node" parent="Master" unique_id=1672595791]
 script = ExtResource("2_2bvfm")
 
-[connection signal="pressed" from="File Loader/VBoxContainer/Button" to="File Loader" method="_create_new_show"]
+[node name="Playback" type="Node" parent="Master" unique_id=1240717136]
+script = ExtResource("5_4tobp")
+
+[connection signal="pressed" from="File Loader/MarginContainer/VBoxContainer/HBoxContainer/Button" to="File Loader" method="_create_new_show"]
 [connection signal="item_selected" from="Full Editor/Data Timeline/MarginContainer/TimelineBox/CreateChannel" to="Full Editor/Data Timeline" method="create_channel"]

@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Physics_Bones.gd" id="3_8pgn4"]
 [ext_resource type="Script" uid="uid://ekdr3r12ydct" path="res://Scripts/Animatables/GL_Paintable.gd" id="4_86lff"]
 
-[node name="CCa" type="Node3D" unique_id=2099849415 groups=["AA_CCA", "Animatables"]]
+[node name="CCa" type="Node3D" unique_id=2099849415 groups=["AA_CCA"]]
 script = ExtResource("1_kdyes")
 animParametersFileName = "CCa"
 
@@ -13,6 +13,6 @@ animParametersFileName = "CCa"
 script = ExtResource("3_8pgn4")
 boneConfigFileName = "CCa"
 
-[node name="Color Check" type="Node3D" parent="." unique_id=299466512 groups=["AA_CCA", "Animatables"]]
+[node name="Color Check" type="Node3D" parent="." unique_id=299466512 groups=["AA_CCA"]]
 script = ExtResource("4_86lff")
 check_siblings = true

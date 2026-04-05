@@ -1,6 +1,5 @@
 extends Node
 class_name GL_Timeline
-
 @onready var master = $"../../Master"
 @onready var createChannel : OptionButton = $MarginContainer/TimelineBox/CreateChannel
 @onready var timelineBox : VBoxContainer = $MarginContainer/TimelineBox
@@ -9,7 +8,6 @@ class_name GL_Timeline
 @onready var timeEndText : Label = $"../TimeManager/MarginContainer/EndTime"
 @onready var timelinePositionBar : ColorRect = $TimelineBar
 @onready var currentTimeText : Label = $TimelineBar/currentTime
-
 var channelPrefab = preload("res://New New/Prefabs/Channel.tscn")
 var scrolledIndex = 0
 var timeStart = 0.0
@@ -20,6 +18,7 @@ const zoomMultIn = 0.9
 const zoomMin = 0.1
 const zoomMax = 60
 const panAmount = 0.1
+const MAX_VISIBLE_CHANNELS = 10
 
 func format_time(seconds: float) -> String:
 	var h = int(seconds) / 3600
@@ -87,19 +86,60 @@ func pan(left: bool):
 	repaintTimeline()
 
 func scroll(down: bool):
+	if master.currentlyLoadedPath == "":
+		return
+	var total = master.currentlyLoadedFile["channels"].size()
 	if down:
-		if scrolledIndex < master.currentlyLoadedFile["channels"].size() - 1:
+		if scrolledIndex < total - 1:
 			scrolledIndex += 1
-			print("Scrolled Down")
+			print("Scrolled Down to index: ", scrolledIndex)
 	else:
 		if scrolledIndex > 0:
 			scrolledIndex -= 1
-			print("Scrolled Up")
-	repaintTimeline()
+			print("Scrolled Up to index: ", scrolledIndex)
+	_reassign_channel_slots()
 
-func repaintTimeline() -> void:
+# Gets the sorted channel keys from master, same order as before
+func _get_sorted_keys() -> Array:
+	var channels = master.currentlyLoadedFile["channels"]
+	var sorted_keys = channels.keys()
+	sorted_keys.sort_custom(func(a, b): return channels[a]["index"] < channels[b]["index"])
+	return sorted_keys
+
+# Returns only the currently visible channel nodes (excludes CreateChannel)
+func _get_channel_slots() -> Array:
+	var slots = []
 	for child in timelineBox.get_children():
 		if child.name != "CreateChannel":
+			slots.append(child)
+	return slots
+
+# Reconfigures existing channel node slots to display the correct channel data
+# based on scrolledIndex. No nodes are created or destroyed.
+func _reassign_channel_slots() -> void:
+	if master.currentlyLoadedPath == "":
+		return
+	var sorted_keys = _get_sorted_keys()
+	var slots = _get_channel_slots()
+	for i in range(slots.size()):
+		var data_index = scrolledIndex + i
+		var slot : GL_Channel = slots[i]
+		if data_index < sorted_keys.size():
+			var key = sorted_keys[data_index]
+			slot.id = key
+			slot.master = master
+			slot.timeline = self
+			slot.visible = true
+			slot.start()
+		else:
+			# No channel data for this slot, hide it
+			slot.visible = false
+	repaintTimeline()
+
+# Only repaints bits on visible channels, no structural changes
+func repaintTimeline() -> void:
+	for child in timelineBox.get_children():
+		if child.name != "CreateChannel" and child.visible:
 			(child as GL_Channel).renderBits()
 
 func _ready() -> void:
@@ -119,38 +159,42 @@ func create_channel(type: int) -> void:
 		3:
 			finished = master.create_channel("color")
 			print("Creating Color Channel")
-	if(finished):
+	if finished:
 		reload_timeline()
 		createChannel.selected = 0
 	else:
 		print("Creating Channel Failed")
 
+# Only called when a file is loaded/unloaded or a channel is added/removed.
+# Destroys and recreates exactly MAX_VISIBLE_CHANNELS slot nodes, then assigns data.
 func reload_timeline() -> void:
 	if master.currentlyLoadedPath == "":
 		createChannel.visible = false
 	else:
 		createChannel.visible = true
-	
-	if master.currentlyLoadedPath == "":
-		return
-	
-	if scrolledIndex >= master.currentlyLoadedFile["channels"].size():
-		scrolledIndex = 0
-	
+
+	# Free all existing channel slots
 	for child in timelineBox.get_children():
 		if child.name != "CreateChannel":
-			print(child.name)
 			child.queue_free()
-	
-	var channels = master.currentlyLoadedFile["channels"]
-	var sorted_keys = channels.keys()
-	sorted_keys.sort_custom(func(a, b): return channels[a]["index"] < channels[b]["index"])
-	for key in sorted_keys:
+
+	if master.currentlyLoadedPath == "":
+		return
+
+	var total = master.currentlyLoadedFile["channels"].size()
+
+	# Clamp scroll so it never goes out of range after a reload
+	if scrolledIndex >= total:
+		scrolledIndex = max(0, total - 1)
+
+	# Instantiate only as many slots as needed (up to MAX_VISIBLE_CHANNELS)
+	var slots_needed = min(MAX_VISIBLE_CHANNELS, total)
+	for i in range(slots_needed):
 		var channelBox : GL_Channel = channelPrefab.instantiate()
 		timelineBox.add_child(channelBox)
-		channelBox.id = key
-		channelBox.master = master
-		channelBox.timeline = self
-		channelBox.start()
-	
+
+	# Always keep CreateChannel at the bottom
 	timelineBox.move_child(timelineBox.get_node("CreateChannel"), timelineBox.get_child_count() - 1)
+
+	# Assign the correct data to each slot
+	_reassign_channel_slots()
