@@ -108,7 +108,7 @@ enable_shadows = true
 [node name="Map Mesh & Collision" type="Node" parent="Map" unique_id=807558692]
 
 [node name="Restaurant" type="MeshInstance3D" parent="Map/Map Mesh & Collision" unique_id=65110630]
-transform = Transform3D(-9.8350625e-08, 0, 2.25, 0, 2.25, 0, -2.25, 0, -9.8350625e-08, 0.2788005, 2.464421, 2.9852457)
+transform = Transform3D(0.005065648, 5.7450585e-08, 2.2499943, -2.6137335e-05, 2.25, 2.0551127e-09, -2.2499943, -2.6137275e-05, 0.005065648, 0.2788005, 2.464421, 2.9852457)
 mesh = ExtResource("4_cx6yn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Map/Map Mesh & Collision/Restaurant" unique_id=456951512]
@@ -922,6 +922,227 @@ spot_angle = 11.7
 spot_angle_attenuation = 0.329877
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Bonnie Light 1" unique_id=1637226403 groups=["FA_CLR_BONNIE"]]
+script = ExtResource("21_6uox6")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Spot Red 1" type="SpotLight3D" parent="Map/Animatables" unique_id=985991852]
+transform = Transform3D(-0.16817988, -0.8579586, -0.48540965, -7.435389e-08, -0.49242356, 0.87035567, -0.98575634, 0.14637634, 0.08281567, 41.6963, 5.282857, -53.257248)
+light_color = Color(1, 0.13335153, 0, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 31.57
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Spot Red 1" unique_id=712204814]
+script = ExtResource("21_6uox6")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Spot Yellow 1" type="SpotLight3D" parent="Map/Animatables" unique_id=139094741]
+transform = Transform3D(-0.57263243, -0.7135282, -0.4036949, -7.435389e-08, -0.4924236, 0.87035567, -0.81981224, 0.49839392, 0.28197765, 42.29746, 5.282857, -51.79207)
+light_color = Color(0.8784314, 0.6627451, 0, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 31.57
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Spot Yellow 1" unique_id=1987917234 groups=["FA_CLR_YELLOW"]]
+script = ExtResource("21_6uox6")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Spot Green 1" type="SpotLight3D" parent="Map/Animatables" unique_id=501166901]
+transform = Transform3D(-0.8771294, -0.41799188, -0.2364885, -7.435389e-08, -0.4924236, 0.87035567, -0.48025414, 0.76341456, 0.43191916, 43.527546, 5.282857, -50.68899)
+light_color = Color(0, 0.6117647, 0.24705882, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 31.57
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Spot Green 1" unique_id=888030404 groups=["FA_CLR_GREEN"]]
+script = ExtResource("21_6uox6")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Spot Blue 1" type="SpotLight3D" parent="Map/Animatables" unique_id=519720562]
+transform = Transform3D(-0.97889966, -0.15366833, 0.13469061, 0.19244276, -0.4716392, 0.86053604, -0.06871176, 0.86829865, 0.49125972, 45.01841, 5.282857, -50.252438)
+light_color = Color(0.50980395, 0.35686275, 1, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 31.57
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Spot Blue 1" unique_id=1592335129 groups=["FA_CLR_BLUE"]]
+script = ExtResource("21_6uox6")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Spot Red 2" type="SpotLight3D" parent="Map/Animatables" unique_id=355246370]
+transform = Transform3D(0.98099715, -0.16572918, 0.10088915, -0.16863671, -0.47115692, 0.8657788, -0.09595018, -0.8663401, -0.49015152, 44.919735, 5.282857, -57.472412)
+light_color = Color(1, 0.13333334, 0, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 31.57
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Spot Red 2" unique_id=1199254786]
+script = ExtResource("21_6uox6")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Spot Yellow 2" type="SpotLight3D" parent="Map/Animatables" unique_id=416640598]
+transform = Transform3D(0.9020963, -0.3755888, -0.21249786, -7.435389e-08, -0.49242353, 0.87035567, -0.43153483, -0.7851445, -0.44421348, 43.704037, 5.282857, -57.134457)
+light_color = Color(0.88030493, 0.6629296, 0, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 31.57
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Spot Yellow 2" unique_id=1834581195 groups=["FA_CLR_YELLOW"]]
+script = ExtResource("21_6uox6")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Spot Green 2" type="SpotLight3D" parent="Map/Animatables" unique_id=793174439]
+transform = Transform3D(0.66465676, -0.65028524, -0.36791366, -7.435389e-08, -0.49242356, 0.87035567, -0.7471488, -0.57848775, -0.3272927, 42.560688, 5.282857, -56.274303)
+light_color = Color(0, 0.6117647, 0.24705882, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 31.57
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Spot Green 2" unique_id=715510250 groups=["FA_CLR_GREEN"]]
+script = ExtResource("21_6uox6")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Spot Blue 2" type="SpotLight3D" parent="Map/Animatables" unique_id=2065092649]
+transform = Transform3D(0.3131473, -0.82658076, -0.46765688, -7.435389e-08, -0.49242356, 0.87035567, -0.9497046, -0.27254948, -0.15420116, 41.826904, 5.282857, -55.000916)
+light_color = Color(0.5106893, 0.3582754, 1, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 31.57
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Spot Blue 2" unique_id=1827084189 groups=["FA_CLR_BLUE"]]
+script = ExtResource("21_6uox6")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Spot Speaker Red 1" type="SpotLight3D" parent="Map/Animatables" unique_id=1527371527]
+transform = Transform3D(-0.27055007, 0.93790776, -0.21709841, 0.07884949, -0.20316254, -0.9759651, -0.95947146, -0.28116548, -0.018987902, 45.409782, 0.2474615, -51.072365)
+light_color = Color(0.94448614, 0, 0.185732, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 31.57
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Spot Speaker Red 1" unique_id=1611902821 groups=["FA_CLR_SPEAKER"]]
+script = ExtResource("21_6uox6")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Spot Curtain Blue 1" type="SpotLight3D" parent="Map/Animatables" unique_id=723970858]
+transform = Transform3D(-0.27055007, 0.93790776, -0.21709841, 0.07884949, -0.20316254, -0.9759651, -0.95947146, -0.28116548, -0.018987902, 45.409782, 0.2474615, -51.727036)
+light_color = Color(0, 0.5353926, 0.81155825, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 31.57
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Spot Curtain Blue 1" unique_id=698972325 groups=["FA_CLR_CURTAIN"]]
+script = ExtResource("21_6uox6")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Spot Speaker Red 2" type="SpotLight3D" parent="Map/Animatables" unique_id=1923921572]
+transform = Transform3D(-0.27055007, 0.93790776, -0.21709841, 0.07884949, -0.20316254, -0.9759651, -0.95947146, -0.28116548, -0.018987902, 45.409782, 0.2474615, -56.126583)
+light_color = Color(0.94448614, 0, 0.185732, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 31.57
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Spot Speaker Red 2" unique_id=1924729138 groups=["FA_CLR_SPEAKER"]]
+script = ExtResource("21_6uox6")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Spot Curtain Blue 2" type="SpotLight3D" parent="Map/Animatables" unique_id=152357043]
+transform = Transform3D(-0.27055007, 0.93790776, -0.21709841, 0.07884949, -0.20316254, -0.9759651, -0.95947146, -0.28116548, -0.018987902, 45.409782, 0.2474615, -55.477665)
+light_color = Color(0, 0.5353926, 0.81155825, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 31.57
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Spot Curtain Blue 2" unique_id=1421739645 groups=["FA_CLR_CURTAIN"]]
+script = ExtResource("21_6uox6")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Spot Sun" type="SpotLight3D" parent="Map/Animatables" unique_id=1202014103]
+transform = Transform3D(0.37832856, -0.19026265, -0.9059071, 0.29288018, -0.90376866, 0.31212735, -0.87811655, -0.3834089, -0.28619733, 41.49206, 5.3193064, -54.120983)
+light_color = Color(0.96, 0.71999997, 0.48, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 15.43
+spot_angle_attenuation = 0.044194303
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Spot Sun" unique_id=2042860207 groups=["FA_SPOT_SUN"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
