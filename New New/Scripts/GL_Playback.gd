@@ -34,6 +34,24 @@ func _process(_delta):
 
 		_process_audio(_delta)
 
+func clean_sweep() -> void:
+	if master.currentlyLoadedPath == "":
+		return
+
+	for key in master.currentlyLoadedFile["channels"]:
+		var data = master.currentlyLoadedFile["channels"][key]["data"]
+		if not data is Array or not data.is_empty():
+			continue
+		var pipe = key.find("|")
+		if pipe == -1:
+			continue
+
+		var group = key.left(pipe)
+		var signal_key = key.substr(pipe + 1)
+
+		for node in get_tree().get_nodes_in_group(group):
+			node._sent_signals(signal_key, 0.0)
+
 func _process_audio(delta: float) -> void:
 	if not audioPlayer.stream:
 		return

@@ -46,7 +46,6 @@ func _gui_input(event: InputEvent) -> void:
 			else:
 				if _drag_mode != DragMode.NONE:
 					_drag_mode = DragMode.NONE
-					channel.master.save()
 
 	if event is InputEventMouseMotion and _drag_mode != DragMode.NONE:
 		var dx = get_global_mouse_position().x - _drag_start_mouse_x
@@ -64,8 +63,8 @@ func _delete_segment() -> void:
 	var stamps = _get_stamps()
 	stamps.remove_at(seg_index * 2 + 1)
 	stamps.remove_at(seg_index * 2)
-	channel.master.save()
 	channel.renderBits()
+	channel.master.playback.clean_sweep()
 
 func _apply_drag() -> void:
 	var stamps = _get_stamps()
@@ -105,7 +104,6 @@ func _apply_drag() -> void:
 				seg_index -= 1
 				stamps[seg_index * 2] = merged_start
 				_drag_mode = DragMode.NONE
-				channel.master.save()
 				channel.renderBits()
 				return
 			stamps[open_idx] = new_start
@@ -118,7 +116,6 @@ func _apply_drag() -> void:
 				stamps.remove_at(close_idx)
 				stamps[seg_index * 2 + 1] = merged_end
 				_drag_mode = DragMode.NONE
-				channel.master.save()
 				channel.renderBits()
 				return
 			stamps[close_idx] = new_end
