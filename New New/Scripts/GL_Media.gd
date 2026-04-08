@@ -72,6 +72,8 @@ func _on_file_selected(source_path: String) -> void:
 			
 	_save_cover_if_missing(folder, dest_path)
 	reload_media()
+	if playback:
+		playback.reload_audio()
 
 func reload_media() -> void:
 	for child in get_children():
