@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cuyaul4h7tsd6"]
+
+[ext_resource type="Texture2D" uid="uid://bl3e2uiqcdl7e" path="res://Mods/Faz Anim 1/Custom Assets/Textures/BonnieFur.png" id="1_vpxcb"]
+[ext_resource type="Texture2D" uid="uid://cgqpxtx35jcus" path="res://Mods/Faz Anim 1/Custom Assets/Textures/BonnieFur_Normal.png" id="2_abexk"]
+[ext_resource type="Texture2D" uid="uid://2wi6rw7ju2d6" path="res://Mods/Faz Anim 1/Custom Assets/Textures/BonnieFur_Mask.png" id="3_7n3fm"]
+
+[resource]
+albedo_texture = ExtResource("1_vpxcb")
+roughness_texture = ExtResource("3_7n3fm")
+normal_enabled = true
+normal_texture = ExtResource("2_abexk")
+rim = 0.25
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.14
+subsurf_scatter_texture = ExtResource("3_7n3fm")
+subsurf_scatter_transmittance_enabled = true
+subsurf_scatter_transmittance_depth = 3.889
+backlight = Color(1, 1, 1, 1)

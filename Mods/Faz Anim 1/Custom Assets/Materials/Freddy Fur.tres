@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://t8a2qf5pvs7d"]
+
+[ext_resource type="Texture2D" uid="uid://cmcyaba74qyg2" path="res://Mods/Faz Anim 1/Custom Assets/Textures/FreddyFur.png" id="1_hw6vu"]
+[ext_resource type="Texture2D" uid="uid://b2ltcbpcqjbtl" path="res://Mods/Faz Anim 1/Custom Assets/Textures/FreddyFur_Normal.png" id="2_fqww6"]
+[ext_resource type="Texture2D" uid="uid://b3ar7pbfw7fry" path="res://Mods/Faz Anim 1/Custom Assets/Textures/Freddyfur_Roughness.jpg" id="3_tafc8"]
+
+[resource]
+albedo_texture = ExtResource("1_hw6vu")
+roughness_texture = ExtResource("3_tafc8")
+normal_enabled = true
+normal_texture = ExtResource("2_fqww6")
+rim = 0.25
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.14
+subsurf_scatter_texture = ExtResource("3_tafc8")
+subsurf_scatter_transmittance_enabled = true
+subsurf_scatter_transmittance_depth = 3.889
+backlight = Color(1, 1, 1, 1)

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dkly4d68vjcyh"]
+
+[ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_irsr8"]
+[ext_resource type="PackedScene" uid="uid://c0ixrwx4kp4tk" path="res://Mods/Faz Anim 1/Custom Assets/Models/Animatronics/Bonnie FNaF.fbx" id="2_irsr8"]
+[ext_resource type="Script" uid="uid://ekdr3r12ydct" path="res://Scripts/Animatables/GL_Paintable.gd" id="3_d1yn3"]
+
+[node name="Bonnie" type="Node3D" unique_id=233530727 groups=["FA_BONNIE"]]
+script = ExtResource("1_irsr8")
+animParametersFileName = "Bonnie"
+
+[node name="Bonnie FNaF" parent="." unique_id=760411560 instance=ExtResource("2_irsr8")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="Color Check" type="Node3D" parent="." unique_id=268845291 groups=["FA_BONNIE"]]
+script = ExtResource("3_d1yn3")
+check_siblings = true

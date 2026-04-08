@@ -11,6 +11,6 @@ animParametersFileName = "Chica"
 [node name="Chica FNaF1" parent="." unique_id=288875953 instance=ExtResource("2_5oist")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 
-[node name="Color Check" type="Node3D" parent="." unique_id=268845291 groups=["AA_CCA"]]
+[node name="Color Check" type="Node3D" parent="." unique_id=268845291 groups=["FA_CHICA"]]
 script = ExtResource("3_53281")
 check_siblings = true

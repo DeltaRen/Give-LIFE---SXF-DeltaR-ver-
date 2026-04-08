@@ -37,7 +37,57 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"Alluminum": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Aluminum.tres",
+"use_external/path": "uid://cqmifmmuddlrb"
+},
+"BlackWood": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Black and Wood.tres",
+"use_external/path": "uid://b5lii7slbqa1f"
+},
+"Cyber Eye": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/FNaF Eyes.tres",
+"use_external/path": "uid://djcithm8n6w47"
+},
+"Fiberglass Tubes": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Tubes.tres",
+"use_external/path": "uid://gqg1vhd1jc6g"
+},
+"FoxyFur": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Foxy Fur.tres",
+"use_external/path": "uid://0lslopxvfmik"
+},
+"Other Metals": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/OtherMetals.tres",
+"use_external/path": "uid://uf460btwh83m"
+}
+},
+"nodes": {
+"PATH:Armature/Skeleton3D/Blacklight": {
+"import/skip_import": true
+},
+"PATH:Armature/Skeleton3D/Cosmeticless": {
+"import/skip_import": true
+},
+"PATH:Armature/Skeleton3D/Found": {
+"import/skip_import": true
+},
+"PATH:Armature/Skeleton3D/Mech": {
+"import/skip_import": true
+},
+"PATH:Armature/Skeleton3D/Sliced": {
+"import/skip_import": true
+}
+}
+}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

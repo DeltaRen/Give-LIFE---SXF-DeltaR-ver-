@@ -72,27 +72,35 @@ _subresources={
 },
 "nodes": {
 "PATH:Armature/Skeleton3D/Beta": {
+"import/skip_import": true,
 "mesh_instance/layers": 0
 },
 "PATH:Armature/Skeleton3D/Blacklight": {
+"import/skip_import": true,
 "mesh_instance/layers": 0
 },
 "PATH:Armature/Skeleton3D/Cosmeticless": {
+"import/skip_import": true,
 "mesh_instance/layers": 0
 },
 "PATH:Armature/Skeleton3D/Found": {
+"import/skip_import": true,
 "mesh_instance/layers": 0
 },
 "PATH:Armature/Skeleton3D/Headless Chica": {
+"import/skip_import": true,
 "mesh_instance/layers": 0
 },
 "PATH:Armature/Skeleton3D/Mech": {
+"import/skip_import": true,
 "mesh_instance/layers": 0
 },
 "PATH:Armature/Skeleton3D/Sliced": {
+"import/skip_import": true,
 "mesh_instance/layers": 0
 },
 "PATH:Armature/Skeleton3D/The Bite": {
+"import/skip_import": true,
 "mesh_instance/layers": 0
 }
 }

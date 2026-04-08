@@ -5,7 +5,10 @@
 [ext_resource type="LightmapGIData" uid="uid://dsoqqhju5wanj" path="res://Mods/Faz Anim 1/Mod Directory/Maps/Restaurant/Restaurant.lmbake" id="2_4tduh"]
 [ext_resource type="ArrayMesh" uid="uid://ddy8ravp5nxjx" path="res://Mods/Faz Anim 1/Custom Assets/Models/Maps/Restaurant.res" id="4_cx6yn"]
 [ext_resource type="ArrayMesh" uid="uid://2fad3e7e6xfi" path="res://Mods/Faz Anim 1/Custom Assets/Models/Maps/Props.res" id="5_dsuk6"]
+[ext_resource type="PackedScene" uid="uid://bmhcm3nggtnr6" path="res://Mods/Faz Anim 1/Mod Directory/Animatables/Freddy.tscn" id="7_dsuk6"]
 [ext_resource type="PackedScene" uid="uid://clgjgcycemmrk" path="res://Mods/Faz Anim 1/Mod Directory/Animatables/Chica.tscn" id="8_4tduh"]
+[ext_resource type="PackedScene" uid="uid://dkly4d68vjcyh" path="res://Mods/Faz Anim 1/Mod Directory/Animatables/Bonnie.tscn" id="10_4tduh"]
+[ext_resource type="PackedScene" uid="uid://c0rwi10ama3i0" path="res://Mods/Faz Anim 1/Mod Directory/Animatables/Foxy.tscn" id="11_0w123"]
 [ext_resource type="Texture2D" uid="uid://ktqnj6yjrsbn" path="res://UI/Flashlight.png" id="12_1oshl"]
 [ext_resource type="Script" uid="uid://c5uawj66escut" path="res://Scripts/Animatables/GL_Spotlight.gd" id="21_6uox6"]
 
@@ -819,6 +822,9 @@ spot_angle_attenuation = 0.366022
 
 [node name="Animatables" type="Node" parent="Map" unique_id=1193136051]
 
+[node name="Freddy" parent="Map/Animatables" unique_id=233530727 instance=ExtResource("7_dsuk6")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 42.85597, 0.061566234, -53.97764)
+
 [node name="Chica" parent="Map/Animatables" unique_id=1451729414 instance=ExtResource("8_4tduh")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 43.9716, 0.07575935, -52.062572)
 
@@ -904,6 +910,24 @@ spot_angle = 5.59
 spot_angle_attenuation = 0.329877
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Bonnie Spot" unique_id=1186031013 groups=["FA_SPOT_BONNIE"]]
+script = ExtResource("21_6uox6")
+canChangeColor = true
+canChangeSize = true
+energyMultiplier = 250.0
+lerp_speed = 15.0
+
+[node name="Foxy Spot" type="SpotLight3D" parent="Map/Animatables" unique_id=1312089822]
+transform = Transform3D(0.9997237, 0.023147557, -0.0040945024, -0.020469503, 0.94287735, 0.3325101, 0.011557416, -0.33233446, 0.94309074, 35.296993, 5.282877, -56.77211)
+light_color = Color(0.944285, 0.839984, 0.7003, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 5.59
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Foxy Spot" unique_id=111226061 groups=["FA_SPOT_FOXY"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
@@ -1160,3 +1184,9 @@ canChangeColor = true
 canChangeSize = true
 energyMultiplier = 100.0
 lerp_speed = 15.0
+
+[node name="Bonnie" parent="Map/Animatables" unique_id=1706571886 instance=ExtResource("10_4tduh")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 44.078407, 0.051469415, -55.81732)
+
+[node name="Foxy" parent="Map/Animatables" unique_id=532968379 instance=ExtResource("11_0w123")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 35.32727, 0.07705361, -63.2168)

@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://0lslopxvfmik"]
+
+[ext_resource type="Texture2D" uid="uid://b4r72qrwixeyk" path="res://Mods/Faz Anim 1/Custom Assets/Textures/FoxyFur.png" id="1_sf6nd"]
+[ext_resource type="Texture2D" uid="uid://dxct1eqrft7nr" path="res://Mods/Faz Anim 1/Custom Assets/Textures/FoxyFur_Normal.png" id="2_ail65"]
+[ext_resource type="Texture2D" uid="uid://hr6y1abcfn1t" path="res://Mods/Faz Anim 1/Custom Assets/Textures/FoxyFur_Mask.png" id="3_qyuv8"]
+
+[resource]
+albedo_texture = ExtResource("1_sf6nd")
+roughness_texture = ExtResource("3_qyuv8")
+normal_enabled = true
+normal_texture = ExtResource("2_ail65")
+rim = 0.25
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.14
+subsurf_scatter_texture = ExtResource("3_qyuv8")
+subsurf_scatter_transmittance_enabled = true
+subsurf_scatter_transmittance_depth = 3.889
+backlight = Color(1, 1, 1, 1)
