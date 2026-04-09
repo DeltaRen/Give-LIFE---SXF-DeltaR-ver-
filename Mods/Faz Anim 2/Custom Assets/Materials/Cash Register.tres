@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dhhrhvwgubi2p"]
+
+[ext_resource type="Texture2D" uid="uid://ctavlcy3df5hh" path="res://Mods/Faz Anim 2/Custom Assets/Textures/CashRegister_01_diff_4k.jpg" id="1_hw6lf"]
+[ext_resource type="Texture2D" uid="uid://bjuncxuadcsei" path="res://Mods/Faz Anim 2/Custom Assets/Textures/CashRegister_01_arm_4k.jpg" id="2_ku4k7"]
+[ext_resource type="Texture2D" uid="uid://b48wl1k88c46y" path="res://Mods/Faz Anim 2/Custom Assets/Textures/CashRegister_01_nor_gl_4k.jpg" id="3_3uylm"]
+
+[resource]
+albedo_texture = ExtResource("1_hw6lf")
+metallic = 1.0
+metallic_texture = ExtResource("2_ku4k7")
+metallic_texture_channel = 2
+roughness = 0.46
+roughness_texture = ExtResource("2_ku4k7")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_3uylm")

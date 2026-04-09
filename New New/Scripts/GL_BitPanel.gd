@@ -7,10 +7,10 @@ const TIME_UNITS = 1.0 / 120.0
 enum DragMode { NONE, MOVE, LEFT_EDGE, RIGHT_EDGE }
 
 var channel: GL_Channel
-var seg_index: int
 
 var _drag_mode: DragMode = DragMode.NONE
 var _drag_start_mouse_x: float = 0.0
+var _drag_open_idx: int = -1
 var _drag_start_seg_start_int: int = 0
 var _drag_start_seg_end_int: int = 0
 var _drag_accum: float = 0.0
@@ -29,20 +29,34 @@ func _pixels_to_int(px: float) -> float:
 	var width = channel.channelTimeline.size.x
 	return (px / width) * (timeline.timeEnd - timeline.timeStart) / TIME_UNITS
 
+func _get_actual_open_idx() -> int:
+	var stamps = _get_stamps()
+	var timeline = channel.timeline
+	var width = channel.channelTimeline.size.x
+	# Convert this panel's left edge position to a timestamp
+	var t = timeline.timeStart + (position.x / width) * (timeline.timeEnd - timeline.timeStart)
+	var t_int = _time_to_int(t)
+	for i in range(0, stamps.size() - 1, 2):
+		if stamps[i] == t_int:
+			return i
+	return -1
+
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			_delete_segment()
 			return
-
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
+				_drag_open_idx = _get_actual_open_idx()
+				if _drag_open_idx == -1:
+					return
+				var stamps = _get_stamps()
 				_drag_mode = _get_drag_mode(event.position.x)
 				_drag_start_mouse_x = get_global_mouse_position().x
 				_drag_accum = 0.0
-				var stamps = _get_stamps()
-				_drag_start_seg_start_int = stamps[seg_index * 2]
-				_drag_start_seg_end_int = stamps[seg_index * 2 + 1]
+				_drag_start_seg_start_int = stamps[_drag_open_idx]
+				_drag_start_seg_end_int = stamps[_drag_open_idx + 1]
 			else:
 				if _drag_mode != DragMode.NONE:
 					_drag_mode = DragMode.NONE
@@ -60,19 +74,23 @@ func _get_drag_mode(local_x: float) -> DragMode:
 	return DragMode.MOVE
 
 func _delete_segment() -> void:
+	var open_idx = _get_actual_open_idx()
+	if open_idx == -1:
+		return
 	var stamps = _get_stamps()
-	stamps.remove_at(seg_index * 2 + 1)
-	stamps.remove_at(seg_index * 2)
+	stamps.remove_at(open_idx + 1)
+	stamps.remove_at(open_idx)
 	channel.renderBits()
 	channel.master.playback.clean_sweep()
 
 func _apply_drag() -> void:
+	if _drag_open_idx == -1:
+		return
 	var stamps = _get_stamps()
 	var delta_int = int(_drag_accum)
 	if delta_int == 0:
 		return
-
-	var open_idx = seg_index * 2
+	var open_idx = _drag_open_idx
 	var close_idx = open_idx + 1
 	var seg_len = _drag_start_seg_end_int - _drag_start_seg_start_int
 
@@ -80,7 +98,6 @@ func _apply_drag() -> void:
 		DragMode.MOVE:
 			var new_start = max(0, _drag_start_seg_start_int + delta_int)
 			var new_end = new_start + seg_len
-			# Clamp against neighbours without merging
 			if open_idx - 1 >= 0:
 				if new_start <= stamps[open_idx - 1]:
 					new_start = stamps[open_idx - 1] + 1
@@ -101,8 +118,8 @@ func _apply_drag() -> void:
 				var merged_start = stamps[open_idx - 2] if open_idx >= 2 else 0
 				stamps.remove_at(open_idx)
 				stamps.remove_at(open_idx - 1)
-				seg_index -= 1
-				stamps[seg_index * 2] = merged_start
+				_drag_open_idx -= 2
+				stamps[_drag_open_idx] = merged_start
 				_drag_mode = DragMode.NONE
 				channel.renderBits()
 				return
@@ -114,7 +131,7 @@ func _apply_drag() -> void:
 				var merged_end = stamps[close_idx + 2] if close_idx + 2 < stamps.size() else new_end
 				stamps.remove_at(close_idx + 1)
 				stamps.remove_at(close_idx)
-				stamps[seg_index * 2 + 1] = merged_end
+				stamps[_drag_open_idx + 1] = merged_end
 				_drag_mode = DragMode.NONE
 				channel.renderBits()
 				return

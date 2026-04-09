@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b06bp1jixar7t"]
+
+[ext_resource type="PackedScene" uid="uid://cbuxp5a6wb034" path="res://Mods/Faz Anim 2/Custom Assets/Models/Props/Cash Register.glb" id="1_mvurq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lw830"]
+size = Vector3(1.2091371, 0.3518226, 1.1267776)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mvurq"]
+size = Vector3(0.98876953, 1.2216797, 0.89172363)
+
+[node name="Cash Register" type="Node3D" unique_id=1776841204]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1333178638]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1430388740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052231047, 0.17572641, 0.12312697)
+shape = SubResource("BoxShape3D_lw830")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=765797539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.043701176, 0.9467774, 0.043518066)
+shape = SubResource("BoxShape3D_mvurq")
+
+[node name="Cash Register" parent="." unique_id=168401154 instance=ExtResource("1_mvurq")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)

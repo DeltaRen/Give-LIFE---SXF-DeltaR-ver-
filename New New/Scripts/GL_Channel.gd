@@ -14,7 +14,7 @@ var insideTimeline = false
 var _bit_panels: Array = []
 
 const timeUnits = 1.0 / 120.0
-const bitColor = Color(0.4, 0.8, 1.0)
+const bitColor = Color(1.0, 0.973, 0.2, 1.0)
 
 func start() -> void:
 	title.text = id
@@ -100,7 +100,6 @@ func renderBits() -> void:
 		var w = ((clamped_end - clamped_start) / t_range) * width
 		_bit_panels[i].position = Vector2(x, 0)
 		_bit_panels[i].size = Vector2(max(w, 1.0), bitHolder.size.y)
-		_bit_panels[i].seg_index = i
 		
 	while _bit_panels.size() > needed:
 		var panel = _bit_panels.pop_back()

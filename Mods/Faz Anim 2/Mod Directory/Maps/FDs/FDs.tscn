@@ -14,7 +14,9 @@
 [ext_resource type="ArrayMesh" uid="uid://did0a8ibpw52y" path="res://Mods/Faz Anim 2/Custom Assets/Models/Maps/Walls.res" id="9_frh36"]
 [ext_resource type="Script" uid="uid://c5uawj66escut" path="res://Scripts/Animatables/GL_Spotlight.gd" id="9_qjcwm"]
 [ext_resource type="ArrayMesh" uid="uid://51jf62g1up5l" path="res://Mods/Faz Anim 2/Custom Assets/Models/Maps/outerstore.res" id="10_mnjuw"]
+[ext_resource type="PackedScene" uid="uid://b06bp1jixar7t" path="res://Mods/Faz Anim 2/Custom Assets/Props/Cash Register.tscn" id="19_sw7jn"]
 [ext_resource type="Script" uid="uid://cyoki6p7gu41e" path="res://Scripts/Animatables/GL_Light_Projector.gd" id="20_0fewr"]
+[ext_resource type="PackedScene" uid="uid://dpx14yei4vvo2" path="res://Mods/Faz Anim 2/Custom Assets/Props/Burger Chair.tscn" id="22_63s5f"]
 [ext_resource type="PackedScene" uid="uid://dq1h06s0snrud" path="res://Mods/Faz Anim 2/Custom Assets/Props/Cigarette Machine.tscn" id="25_krma8"]
 [ext_resource type="PackedScene" uid="uid://dcvouknjqqb8l" path="res://Mods/Faz Anim 2/Mod Directory/Animatables/FD.tscn" id="26_sceim"]
 [ext_resource type="PackedScene" uid="uid://cm6xii444sjb2" path="res://Mods/Faz Anim 2/Custom Assets/Models/Arcade/Fight.fbx" id="26_twv3y"]
@@ -2775,6 +2777,57 @@ transform = Transform3D(0.34202, 0, -0.939692, 0, 1, 0, 0.939692, 0, 0.34202, -4
 
 [node name="StickOutLightbulb18" parent="Map/Map Props" unique_id=1474368320 instance=ExtResource("28_se7vh")]
 transform = Transform3D(0.173648, 0, -0.984807, 0, 1, 0, 0.984807, 0, 0.173648, -4.60035, 1.99904, -4.07236)
+
+[node name="Burger Chair" parent="Map/Map Props" unique_id=1776841204 instance=ExtResource("22_63s5f")]
+transform = Transform3D(-0.9527251, 1.41967105e-08, -0.3038336, 1.4901161e-08, 1, 0, 0.3038336, -4.5274735e-09, -0.9527251, -15.33709, -1.9073486e-06, -13.45751)
+
+[node name="Burger Chair2" parent="Map/Map Props" unique_id=996405789 instance=ExtResource("22_63s5f")]
+transform = Transform3D(-1, 1.4901161e-08, -8.742278e-08, 1.4901161e-08, 1, 0, 8.742278e-08, -1.3027009e-15, -1, -15.33709, -1.9073486e-06, -14.438542)
+
+[node name="Burger Chair3" parent="Map/Map Props" unique_id=812654255 instance=ExtResource("22_63s5f")]
+transform = Transform3D(1, -2.9802322e-08, 5.9604645e-08, 1.4901161e-08, 1, 1.1920929e-07, 0, 0, 1, -12.824441, -1.9073486e-06, -13.45751)
+
+[node name="Burger Chair4" parent="Map/Map Props" unique_id=1680475712 instance=ExtResource("22_63s5f")]
+transform = Transform3D(0.9823363, -2.9275903e-08, -0.18712409, 1.4901161e-08, 1, 1.1920929e-07, 0.18712415, -5.576734e-09, 0.9823363, -12.824441, -1.9073486e-06, -14.438542)
+
+[node name="Burger Chair5" parent="Map/Map Props" unique_id=1251962924 instance=ExtResource("22_63s5f")]
+transform = Transform3D(-0.9574052, 1.4266449e-08, -0.28874785, 1.4901161e-08, 1, 0, 0.28874785, -4.302678e-09, -0.9574052, -11.508324, -1.9073486e-06, -13.45751)
+
+[node name="Burger Chair6" parent="Map/Map Props" unique_id=434569766 instance=ExtResource("22_63s5f")]
+transform = Transform3D(-1, 1.4901161e-08, -8.742278e-08, 1.4901161e-08, 1, 0, 8.742278e-08, -1.3027009e-15, -1, -11.508324, -1.9073486e-06, -14.438542)
+
+[node name="Burger Chair7" parent="Map/Map Props" unique_id=1814590883 instance=ExtResource("22_63s5f")]
+transform = Transform3D(0.9732952, -2.9006458e-08, 0.2295572, 1.4901161e-08, 1, 1.1920929e-07, -0.22955714, 6.841336e-09, 0.9732952, -8.875783, -1.9073486e-06, -13.45751)
+
+[node name="Burger Chair8" parent="Map/Map Props" unique_id=721086756 instance=ExtResource("22_63s5f")]
+transform = Transform3D(1, -2.9802322e-08, 5.9604645e-08, 1.4901161e-08, 1, 1.1920929e-07, 0, 0, 1, -8.875783, -1.9073486e-06, -14.438542)
+
+[node name="Burger Chair9" parent="Map/Map Props" unique_id=192834976 instance=ExtResource("22_63s5f")]
+transform = Transform3D(0.98745793, -2.942854e-08, -0.15788226, 1.4901161e-08, 1, 1.1920929e-07, 0.15788232, -4.7052597e-09, 0.98745793, -4.8885756, -1.9073486e-06, -13.45751)
+
+[node name="Burger Chair13" parent="Map/Map Props" unique_id=129563401 instance=ExtResource("22_63s5f")]
+transform = Transform3D(-0.9993284, 0, -0.036643792, 0, 1, 0, 0.036643796, 0, -0.9993283, -28.266401, -2.026558e-06, 3.8730383)
+
+[node name="Burger Chair14" parent="Map/Map Props" unique_id=2047084138 instance=ExtResource("22_63s5f")]
+transform = Transform3D(-0.9781476, 1.45755354e-08, -0.2079116, 1.4901161e-08, 1, 0, 0.20791161, -3.0981244e-09, -0.97814757, -28.266401, -2.026558e-06, 4.9113054)
+
+[node name="Burger Chair15" parent="Map/Map Props" unique_id=1140872937 instance=ExtResource("22_63s5f")]
+transform = Transform3D(-0.99432683, 1.4816624e-08, -0.1063681, 1.4901161e-08, 1, 0, 0.10636812, -1.5850085e-09, -0.9943268, -28.266401, -2.026558e-06, 5.9888687)
+
+[node name="Burger Chair10" parent="Map/Map Props" unique_id=14680991 instance=ExtResource("22_63s5f")]
+transform = Transform3D(0.8133547, -2.4239858e-08, 0.58176816, 1.4901161e-08, 1, 1.1920929e-07, -0.5817681, 1.733804e-08, 0.8133546, -4.8885756, -1.9073486e-06, -14.438542)
+
+[node name="Burger Chair11" parent="Map/Map Props" unique_id=1181843251 instance=ExtResource("22_63s5f")]
+transform = Transform3D(-1, 1.4901161e-08, -8.742278e-08, 1.4901161e-08, 1, 0, 8.742278e-08, -1.3027009e-15, -1, -7.5388503, -1.9073486e-06, -13.45751)
+
+[node name="Burger Chair12" parent="Map/Map Props" unique_id=697967615 instance=ExtResource("22_63s5f")]
+transform = Transform3D(-0.99449813, 1.4819177e-08, -0.1047542, 1.4901161e-08, 1, 0, 0.1047542, -1.5609593e-09, -0.99449813, -7.5388503, -1.9073486e-06, -14.438542)
+
+[node name="Burger Chair16" parent="Map/Map Props" unique_id=1190123547 instance=ExtResource("19_sw7jn")]
+transform = Transform3D(0.2081848, 0, -0.9780895, 0, 1, 0, 0.9780895, 0, 0.2081848, -21.018585, 2.2499979, -6.7907186)
+
+[node name="Burger Chair17" parent="Map/Map Props" unique_id=484206148 instance=ExtResource("19_sw7jn")]
+transform = Transform3D(0.03868425, 0, -0.9992515, 0, 1, 0, 0.9992515, 0, 0.03868425, -20.95921, 2.2499979, -3.9564173)
 
 [node name="Animatables" type="Node" parent="Map" unique_id=1785364853]
 
