@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dkly4d68vjcyh" path="res://Mods/Faz Anim 1/Mod Directory/Animatables/Bonnie.tscn" id="10_4tduh"]
 [ext_resource type="PackedScene" uid="uid://c0rwi10ama3i0" path="res://Mods/Faz Anim 1/Mod Directory/Animatables/Foxy.tscn" id="11_0w123"]
 [ext_resource type="Texture2D" uid="uid://ktqnj6yjrsbn" path="res://UI/Flashlight.png" id="12_1oshl"]
+[ext_resource type="PackedScene" uid="uid://ca7w51cggdf47" path="res://Mods/Faz Anim 1/Custom Assets/Models/Maps/Classic Stage.glb" id="12_pgwgw"]
 [ext_resource type="Script" uid="uid://c5uawj66escut" path="res://Scripts/Animatables/GL_Spotlight.gd" id="21_6uox6"]
 
 [sub_resource type="Environment" id="Environment_dsuk6"]
@@ -88,16 +89,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7632997, 0.09136844, -2.827
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7632997, 7.1403112, -2.827416)
 
 [node name="LightmapProbe5" type="LightmapProbe" parent="Map/LightmapGI/Light Probes" unique_id=2006181254]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6285152, 0.09136844, 4.983583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86384, 0.09136844, 4.983583)
 
 [node name="LightmapProbe6" type="LightmapProbe" parent="Map/LightmapGI/Light Probes" unique_id=1747946914]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6285152, 7.1403112, 4.983583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86384, 7.1403112, 4.983583)
 
 [node name="LightmapProbe7" type="LightmapProbe" parent="Map/LightmapGI/Light Probes" unique_id=1385632190]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6285152, 0.09136844, -2.827416)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86384, 0.09136844, -2.827416)
 
 [node name="LightmapProbe8" type="LightmapProbe" parent="Map/LightmapGI/Light Probes" unique_id=2017442690]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6285152, 7.1403112, -2.827416)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86384, 7.1403112, -2.827416)
 
 [node name="Reflection Probes" type="Node" parent="Map/LightmapGI" unique_id=2069055127]
 
@@ -106,6 +107,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9613552, 3.5863838, 0.8970
 max_distance = 1000.0
 size = Vector3(9.766096, 9.480839, 10.70623)
 box_projection = true
+interior = true
+enable_shadows = true
+
+[node name="ReflectionProbe2" type="ReflectionProbe" parent="Map/LightmapGI/Reflection Probes" unique_id=1504159142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.632004, 2.7733808, -51.53966)
+max_distance = 1000.0
+size = Vector3(23.668974, 7.5917673, 21.218895)
+box_projection = true
+interior = true
 enable_shadows = true
 
 [node name="Map Mesh & Collision" type="Node" parent="Map" unique_id=807558692]
@@ -135,7 +145,7 @@ shape = SubResource("ConcavePolygonShape3D_0w123")
 [node name="Map Lights" type="Node" parent="Map" unique_id=687457580]
 
 [node name="SpotLight3D6" type="SpotLight3D" parent="Map/Map Lights" unique_id=203256218]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.263792, 7.166045, 2.9504633)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.879783, 7.166045, 2.9504633)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -146,20 +156,8 @@ spot_range = 30.0
 spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
-[node name="SpotLight3D7" type="SpotLight3D" parent="Map/Map Lights" unique_id=630967711]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.263792, 7.166045, -1.2432933)
-light_color = Color(1, 0.916667, 0.75, 1)
-light_energy = 16.0
-light_projector = ExtResource("12_1oshl")
-light_size = 0.1
-light_bake_mode = 1
-shadow_enabled = true
-spot_range = 30.0
-spot_attenuation = 2.0
-spot_angle_attenuation = 0.366022
-
-[node name="SpotLight3D8" type="SpotLight3D" parent="Map/Map Lights" unique_id=1457711669]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.41642, 7.166045, -17.026968)
+[node name="SpotLight3D7" type="SpotLight3D" parent="Map/Map Lights" unique_id=1093165093]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.879783, 7.166045, -7.558093)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -171,7 +169,7 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
 [node name="SpotLight3D54" type="SpotLight3D" parent="Map/Map Lights" unique_id=1702085793]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -17.662067, 7.166045, -19.51147)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.676375, 7.166045, -19.51147)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -182,8 +180,8 @@ spot_range = 30.0
 spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
-[node name="SpotLight3D55" type="SpotLight3D" parent="Map/Map Lights" unique_id=1836671929]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.282562, 7.166045, -19.51147)
+[node name="SpotLight3D55" type="SpotLight3D" parent="Map/Map Lights" unique_id=545011416]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.181633, 7.166045, -19.51147)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -243,7 +241,7 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
 [node name="SpotLight3D35" type="SpotLight3D" parent="Map/Map Lights" unique_id=478682781]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 65.874954, 5.368744, -4.6834736)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 58.763298, 5.368744, -4.6834736)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -255,7 +253,7 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
 [node name="SpotLight3D36" type="SpotLight3D" parent="Map/Map Lights" unique_id=1448034249]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 65.874954, 5.368744, -38.965042)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 58.763298, 5.368744, -38.965042)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -267,7 +265,7 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
 [node name="SpotLight3D37" type="SpotLight3D" parent="Map/Map Lights" unique_id=1664173225]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 65.874954, 5.368744, -31.057287)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 58.763298, 5.368744, -31.057287)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -279,7 +277,7 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
 [node name="SpotLight3D38" type="SpotLight3D" parent="Map/Map Lights" unique_id=836830598]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 65.874954, 5.368744, -21.799412)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 58.763298, 5.368744, -21.799412)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -291,7 +289,7 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
 [node name="SpotLight3D39" type="SpotLight3D" parent="Map/Map Lights" unique_id=982209409]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 65.874954, 5.368744, -13.089941)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 58.763298, 5.368744, -13.089941)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -470,54 +468,6 @@ spot_range = 30.0
 spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
-[node name="SpotLight3D26" type="SpotLight3D" parent="Map/Map Lights" unique_id=829098840]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 57.66035, 5.441205, -12.576423)
-light_color = Color(1, 0.916667, 0.75, 1)
-light_energy = 16.0
-light_projector = ExtResource("12_1oshl")
-light_size = 0.1
-light_bake_mode = 1
-shadow_enabled = true
-spot_range = 30.0
-spot_attenuation = 2.0
-spot_angle_attenuation = 0.366022
-
-[node name="SpotLight3D27" type="SpotLight3D" parent="Map/Map Lights" unique_id=1717888619]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 57.66035, 5.441205, -36.106567)
-light_color = Color(1, 0.916667, 0.75, 1)
-light_energy = 16.0
-light_projector = ExtResource("12_1oshl")
-light_size = 0.1
-light_bake_mode = 1
-shadow_enabled = true
-spot_range = 30.0
-spot_attenuation = 2.0
-spot_angle_attenuation = 0.366022
-
-[node name="SpotLight3D28" type="SpotLight3D" parent="Map/Map Lights" unique_id=663843155]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 57.66035, 5.441205, -20.78377)
-light_color = Color(1, 0.916667, 0.75, 1)
-light_energy = 16.0
-light_projector = ExtResource("12_1oshl")
-light_size = 0.1
-light_bake_mode = 1
-shadow_enabled = true
-spot_range = 30.0
-spot_attenuation = 2.0
-spot_angle_attenuation = 0.366022
-
-[node name="SpotLight3D29" type="SpotLight3D" parent="Map/Map Lights" unique_id=1369848808]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 57.66035, 5.441205, -28.984825)
-light_color = Color(1, 0.916667, 0.75, 1)
-light_energy = 16.0
-light_projector = ExtResource("12_1oshl")
-light_size = 0.1
-light_bake_mode = 1
-shadow_enabled = true
-spot_range = 30.0
-spot_attenuation = 2.0
-spot_angle_attenuation = 0.366022
-
 [node name="SpotLight3D30" type="SpotLight3D" parent="Map/Map Lights" unique_id=117315518]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 48.99259, 5.441205, -12.576423)
 light_color = Color(1, 0.916667, 0.75, 1)
@@ -626,30 +576,6 @@ spot_range = 30.0
 spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
-[node name="SpotLight3D61" type="SpotLight3D" parent="Map/Map Lights" unique_id=763830950]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -7.270153, 7.166045, -13.842369)
-light_color = Color(1, 0.916667, 0.75, 1)
-light_energy = 16.0
-light_projector = ExtResource("12_1oshl")
-light_size = 0.1
-light_bake_mode = 1
-shadow_enabled = true
-spot_range = 30.0
-spot_attenuation = 2.0
-spot_angle_attenuation = 0.366022
-
-[node name="SpotLight3D62" type="SpotLight3D" parent="Map/Map Lights" unique_id=1290147188]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -7.270153, 7.166045, -5.8179584)
-light_color = Color(1, 0.916667, 0.75, 1)
-light_energy = 16.0
-light_projector = ExtResource("12_1oshl")
-light_size = 0.1
-light_bake_mode = 1
-shadow_enabled = true
-spot_range = 30.0
-spot_attenuation = 2.0
-spot_angle_attenuation = 0.366022
-
 [node name="SpotLight3D40" type="SpotLight3D" parent="Map/Map Lights" unique_id=1022331995]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 12.411851, 5.6362057, -49.70262)
 light_color = Color(1, 0.916667, 0.75, 1)
@@ -674,32 +600,8 @@ spot_range = 30.0
 spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
-[node name="SpotLight3D42" type="SpotLight3D" parent="Map/Map Lights" unique_id=1963265139]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 12.411851, 5.6362057, -58.674427)
-light_color = Color(1, 0.916667, 0.75, 1)
-light_energy = 16.0
-light_projector = ExtResource("12_1oshl")
-light_size = 0.1
-light_bake_mode = 1
-shadow_enabled = true
-spot_range = 30.0
-spot_attenuation = 2.0
-spot_angle_attenuation = 0.366022
-
 [node name="SpotLight3D43" type="SpotLight3D" parent="Map/Map Lights" unique_id=1162949192]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 12.411851, 5.6362057, -64.52057)
-light_color = Color(1, 0.916667, 0.75, 1)
-light_energy = 16.0
-light_projector = ExtResource("12_1oshl")
-light_size = 0.1
-light_bake_mode = 1
-shadow_enabled = true
-spot_range = 30.0
-spot_attenuation = 2.0
-spot_angle_attenuation = 0.366022
-
-[node name="SpotLight3D52" type="SpotLight3D" parent="Map/Map Lights" unique_id=1553092003]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.911433, 4.062089, -57.182064)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 12.411851, 5.6362057, -60.667183)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -711,7 +613,7 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
 [node name="SpotLight3D53" type="SpotLight3D" parent="Map/Map Lights" unique_id=1586174074]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.911433, 4.062089, -45.523933)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.911433, 4.062089, -50.937576)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -723,7 +625,7 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
 [node name="SpotLight3D44" type="SpotLight3D" parent="Map/Map Lights" unique_id=1838529435]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 17.261093, 5.6362057, -64.52057)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 17.261093, 5.6362057, -60.667183)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -735,7 +637,7 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
 [node name="SpotLight3D45" type="SpotLight3D" parent="Map/Map Lights" unique_id=2129310160]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.0163136, 5.6362057, -64.52057)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.0163136, 5.6362057, -60.667183)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -747,7 +649,7 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
 [node name="SpotLight3D46" type="SpotLight3D" parent="Map/Map Lights" unique_id=844999127]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.0163136, 7.3695383, -51.878292)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.325757, 7.3695383, -46.942593)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -759,7 +661,7 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
 [node name="SpotLight3D47" type="SpotLight3D" parent="Map/Map Lights" unique_id=2111805225]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.0163136, 7.3695383, -47.01622)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.325757, 7.3695383, -42.08052)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -771,7 +673,7 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
 [node name="SpotLight3D48" type="SpotLight3D" parent="Map/Map Lights" unique_id=1340940872]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.7712097, 7.3695383, -51.878292)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.4617662, 7.3695383, -46.942593)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -783,7 +685,7 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
 [node name="SpotLight3D49" type="SpotLight3D" parent="Map/Map Lights" unique_id=1930712200]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.7712097, 7.3695383, -47.01622)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.4617662, 7.3695383, -42.08052)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -795,7 +697,7 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
 [node name="SpotLight3D50" type="SpotLight3D" parent="Map/Map Lights" unique_id=459258011]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.0445127, 7.3695383, -51.878292)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.2649307, 7.3695383, -46.942593)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -807,7 +709,7 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 0.366022
 
 [node name="SpotLight3D51" type="SpotLight3D" parent="Map/Map Lights" unique_id=768912316]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.0445127, 7.3695383, -47.01622)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.2649307, 7.3695383, -42.08052)
 light_color = Color(1, 0.916667, 0.75, 1)
 light_energy = 16.0
 light_projector = ExtResource("12_1oshl")
@@ -823,13 +725,13 @@ spot_angle_attenuation = 0.366022
 [node name="Animatables" type="Node" parent="Map" unique_id=1193136051]
 
 [node name="Freddy" parent="Map/Animatables" unique_id=233530727 instance=ExtResource("7_dsuk6")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 42.85597, 0.061566234, -53.97764)
+transform = Transform3D(-3.715468e-09, 0, -0.085, 0, 0.085, 0, 0.085, 0, -3.715468e-09, 40.847054, 0.88836884, -48.426994)
 
 [node name="Chica" parent="Map/Animatables" unique_id=1451729414 instance=ExtResource("8_4tduh")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 43.9716, 0.07575935, -52.062572)
+transform = Transform3D(-0.014760097, 0, -0.08370866, 0, 0.085, 0, 0.08370866, 0, -0.014760097, 41.49795, 0.90256196, -46.821564)
 
 [node name="Chica Spot" type="SpotLight3D" parent="Map/Animatables" unique_id=154852962]
-transform = Transform3D(-0.10634748, 0.27134392, -0.95658916, 0.0007334403, 0.962066, 0.27281594, 0.9943288, 0.028311685, -0.10251231, 35.29725, 5.2828364, -52.7928)
+transform = Transform3D(-0.042070467, 0.25457424, -0.96613765, -5.2928528e-05, 0.9669933, 0.25480196, 0.9991147, 0.010770771, -0.040668376, 35.77719, 4.7256746, -47.013863)
 light_color = Color(0.944285, 0.839984, 0.7003, 1)
 light_energy = 0.0
 light_size = 0.124
@@ -843,11 +745,11 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 250.0
+energyMultiplier = 125.0
 lerp_speed = 15.0
 
 [node name="Chica Light 1" type="SpotLight3D" parent="Map/Animatables" unique_id=274073957]
-transform = Transform3D(-0.038725894, 0.34319836, -0.9384643, -0.08246228, 0.93486786, 0.34528595, 0.9958415, 0.09075942, -0.007902665, 35.29686, 5.282857, -52.011086)
+transform = Transform3D(-0.012033883, 0.33574253, -0.9418769, -0.08259124, 0.9383928, 0.3355558, 0.9965109, 0.08182883, 0.016436888, 35.776802, 4.725695, -46.43148)
 light_color = Color(0.56078434, 0.8, 0, 1)
 light_energy = 0.0
 light_size = 0.124
@@ -861,10 +763,11 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 250.0
 lerp_speed = 15.0
 
 [node name="Freddy Spot" type="SpotLight3D" parent="Map/Animatables" unique_id=21909970]
-transform = Transform3D(-0.054730702, 0.30782774, -0.9498666, -0.010942088, 0.95105046, 0.30884185, 0.9984412, 0.027296657, -0.048683383, 35.29712, 5.282857, -54.36983)
+transform = Transform3D(0.009166081, 0.29237965, -0.9562584, -0.010784545, 0.9562718, 0.29228038, 0.9998999, 0.0076337475, 0.011918446, 35.77706, 4.725695, -48.40314)
 light_color = Color(0.944285, 0.839984, 0.7003, 1)
 light_energy = 0.0
 light_size = 0.124
@@ -878,11 +781,11 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 250.0
+energyMultiplier = 125.0
 lerp_speed = 15.0
 
 [node name="Freddy Light 1" type="SpotLight3D" parent="Map/Animatables" unique_id=1260758631]
-transform = Transform3D(-0.0036499063, 0.32825854, -0.9445809, -0.020898908, 0.9443559, 0.32826114, 0.999775, 0.020938834, 0.003413436, 35.296703, 5.282857, -53.6132)
+transform = Transform3D(0.079793975, 0.32894304, -0.9409727, -0.020898586, 0.94432724, 0.32834354, 0.9965924, -0.006534837, 0.08222606, 35.776646, 4.725695, -47.746586)
 light_color = Color(1, 0.53333336, 0, 1)
 light_energy = 0.0
 light_size = 0.124
@@ -896,10 +799,11 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 250.0
 lerp_speed = 15.0
 
 [node name="Bonnie Spot" type="SpotLight3D" parent="Map/Animatables" unique_id=8002537]
-transform = Transform3D(-0.020624757, 0.26461756, -0.96413285, -0.020285506, 0.9640287, 0.26502296, 0.9995816, 0.025023958, -0.014514953, 35.296993, 5.282877, -56.02205)
+transform = Transform3D(-0.101665355, 0.22831675, -0.9682642, -0.023801593, 0.97247034, 0.2318077, 0.99453384, 0.046613038, -0.09343225, 35.776936, 4.725715, -50.37656)
 light_color = Color(0.944285, 0.839984, 0.7003, 1)
 light_energy = 0.0
 light_size = 0.124
@@ -913,11 +817,11 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 250.0
+energyMultiplier = 125.0
 lerp_speed = 15.0
 
 [node name="Foxy Spot" type="SpotLight3D" parent="Map/Animatables" unique_id=1312089822]
-transform = Transform3D(0.9997237, 0.02314756, -0.004094506, -0.020361312, 0.9397512, 0.3412525, 0.011746978, -0.34107482, 0.93996286, 35.296993, 5.282877, -56.77211)
+transform = Transform3D(0.9950432, 0.05197513, -0.08477878, -0.030972902, 0.9721162, 0.232446, 0.09449621, -0.22866797, 0.9689073, 32.467052, 4.8880806, -51.945313)
 light_color = Color(0.944285, 0.839984, 0.7003, 1)
 light_energy = 0.0
 light_size = 0.124
@@ -931,11 +835,29 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 250.0
+energyMultiplier = 125.0
+lerp_speed = 15.0
+
+[node name="Parrot Spot" type="SpotLight3D" parent="Map/Animatables" unique_id=283909355]
+transform = Transform3D(0.99904495, 0.037280057, -0.022789005, -0.03097291, 0.9721162, 0.23244597, 0.030819148, -0.23151815, 0.9723423, 34.41875, 4.8000774, -51.945313)
+light_color = Color(0.944285, 0.839984, 0.7003, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 6.702373
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Parrot Spot" unique_id=1684431157 groups=["FA_SPOT_BIRD"]]
+script = ExtResource("21_6uox6")
+canChangeColor = true
+canChangeSize = true
+energyMultiplier = 125.0
 lerp_speed = 15.0
 
 [node name="Bonnie Light 1" type="SpotLight3D" parent="Map/Animatables" unique_id=194052567]
-transform = Transform3D(0.0587681, 0.32946968, -0.9423355, -0.032150567, 0.94410205, 0.32808226, 0.997754, 0.011015853, 0.06607572, 35.296528, 5.282857, -55.29446)
+transform = Transform3D(-0.011201609, 0.32789087, -0.9446493, -0.032150563, 0.9441019, 0.32808217, 0.99942046, 0.034046054, -3.3587217e-05, 35.77647, 4.725695, -49.79496)
 light_color = Color(0.73333335, 0, 1, 1)
 light_energy = 0.0
 light_size = 0.124
@@ -949,233 +871,202 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 250.0
 lerp_speed = 15.0
 
-[node name="Spot Red 1" type="SpotLight3D" parent="Map/Animatables" unique_id=985991852]
-transform = Transform3D(-0.16817988, -0.8579586, -0.48540965, -7.435389e-08, -0.49242356, 0.87035567, -0.98575634, 0.14637634, 0.08281567, 41.6963, 5.282857, -53.257248)
+[node name="Spot Red 1" type="OmniLight3D" parent="Map/Animatables" unique_id=1688608551]
+transform = Transform3D(-0.16817988, -0.8431807, -0.5106484, -7.8219905e-08, -0.518027, 0.85536426, -0.98575634, 0.1438551, 0.08712165, 40.442223, 4.8553305, -48.084583)
 light_color = Color(1, 0.13335153, 0, 1)
 light_energy = 0.0
-light_size = 0.124
+light_size = 0.079
 shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 31.57
-spot_angle_attenuation = 0.329877
+omni_range = 6.0
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Spot Red 1" unique_id=712204814]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 50.0
+energyMultiplier = 1.0
 lerp_speed = 15.0
 
-[node name="Spot Yellow 1" type="SpotLight3D" parent="Map/Animatables" unique_id=139094741]
-transform = Transform3D(-0.57263243, -0.7135282, -0.4036949, -7.435389e-08, -0.4924236, 0.87035567, -0.81981224, 0.49839392, 0.28197765, 42.29746, 5.282857, -51.79207)
+[node name="Spot Yellow 1" type="OmniLight3D" parent="Map/Animatables" unique_id=1791354737]
+transform = Transform3D(-0.57263243, -0.7012381, -0.4246849, -7.8219905e-08, -0.518027, 0.85536426, -0.81981224, 0.48980933, 0.296639, 40.59143, 4.8553305, -47.37232)
 light_color = Color(0.8784314, 0.6627451, 0, 1)
 light_energy = 0.0
-light_size = 0.124
+light_size = 0.079
 shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 31.57
-spot_angle_attenuation = 0.329877
+omni_range = 6.0
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Spot Yellow 1" unique_id=1987917234 groups=["FA_CLR_YELLOW"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 50.0
+energyMultiplier = 1.0
 lerp_speed = 15.0
 
-[node name="Spot Green 1" type="SpotLight3D" parent="Map/Animatables" unique_id=501166901]
-transform = Transform3D(-0.8771294, -0.41799188, -0.2364885, -7.435389e-08, -0.4924236, 0.87035567, -0.48025414, 0.76341456, 0.43191916, 43.527546, 5.282857, -50.68899)
+[node name="Spot Green 1" type="OmniLight3D" parent="Map/Animatables" unique_id=1165663771]
+transform = Transform3D(-0.8771294, -0.4107922, -0.24878468, -7.8219905e-08, -0.518027, 0.85536426, -0.48025414, 0.7502651, 0.45437667, 40.98274, 4.8553305, -46.737385)
 light_color = Color(0, 0.6117647, 0.24705882, 1)
 light_energy = 0.0
-light_size = 0.124
+light_size = 0.079
 shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 31.57
-spot_angle_attenuation = 0.329877
+omni_range = 6.0
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Spot Green 1" unique_id=888030404 groups=["FA_CLR_GREEN"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 50.0
+energyMultiplier = 1.0
 lerp_speed = 15.0
 
-[node name="Spot Blue 1" type="SpotLight3D" parent="Map/Animatables" unique_id=519720562]
-transform = Transform3D(-0.97889966, -0.15366833, 0.13469061, 0.19244276, -0.4716392, 0.86053604, -0.06871176, 0.86829865, 0.49125972, 45.01841, 5.282857, -50.252438)
+[node name="Spot Blue 1" type="OmniLight3D" parent="Map/Animatables" unique_id=241076198]
+transform = Transform3D(-0.97838295, -0.15493469, 0.13697447, 0.19570597, -0.47963646, 0.85536426, -0.066827655, 0.86368054, 0.4995898, 41.56567, 4.8553305, -46.218506)
 light_color = Color(0.50980395, 0.35686275, 1, 1)
 light_energy = 0.0
-light_size = 0.124
+light_size = 0.079
 shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 31.57
-spot_angle_attenuation = 0.329877
+omni_range = 6.0
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Spot Blue 1" unique_id=1592335129 groups=["FA_CLR_BLUE"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 50.0
+energyMultiplier = 1.0
 lerp_speed = 15.0
 
-[node name="Spot Red 2" type="SpotLight3D" parent="Map/Animatables" unique_id=355246370]
-transform = Transform3D(0.98099715, -0.16572918, 0.10088915, -0.16863671, -0.47115692, 0.8657788, -0.09595018, -0.8663401, -0.49015152, 44.919735, 5.282857, -57.472412)
+[node name="Spot Red 2" type="OmniLight3D" parent="Map/Animatables" unique_id=971962086]
+transform = Transform3D(0.98028946, -0.16770603, 0.10443738, -0.17456767, -0.4877275, 0.85536426, -0.09251277, -0.856736, -0.5073902, 41.5861, 4.8553305, -50.586956)
 light_color = Color(1, 0.13333334, 0, 1)
 light_energy = 0.0
-light_size = 0.124
+light_size = 0.079
 shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 31.57
-spot_angle_attenuation = 0.329877
+omni_range = 6.0
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Spot Red 2" unique_id=1199254786]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 50.0
+energyMultiplier = 1.0
 lerp_speed = 15.0
 
-[node name="Spot Yellow 2" type="SpotLight3D" parent="Map/Animatables" unique_id=416640598]
-transform = Transform3D(0.9020963, -0.3755888, -0.21249786, -7.435389e-08, -0.49242353, 0.87035567, -0.43153483, -0.7851445, -0.44421348, 43.704037, 5.282857, -57.134457)
+[node name="Spot Yellow 2" type="OmniLight3D" parent="Map/Animatables" unique_id=1767243062]
+transform = Transform3D(0.9020963, -0.36911952, -0.22354664, -7.8219905e-08, -0.518027, 0.85536426, -0.43153483, -0.7716209, -0.46731025, 40.97777, 4.8553305, -50.112804)
 light_color = Color(0.88030493, 0.6629296, 0, 1)
 light_energy = 0.0
-light_size = 0.124
+light_size = 0.079
 shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 31.57
-spot_angle_attenuation = 0.329877
+omni_range = 6.0
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Spot Yellow 2" unique_id=1834581195 groups=["FA_CLR_YELLOW"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 50.0
+energyMultiplier = 1.0
 lerp_speed = 15.0
 
-[node name="Spot Green 2" type="SpotLight3D" parent="Map/Animatables" unique_id=793174439]
-transform = Transform3D(0.66465676, -0.65028524, -0.36791366, -7.435389e-08, -0.49242356, 0.87035567, -0.7471488, -0.57848775, -0.3272927, 42.560688, 5.282857, -56.274303)
+[node name="Spot Green 2" type="OmniLight3D" parent="Map/Animatables" unique_id=484276350]
+transform = Transform3D(0.66465676, -0.63908446, -0.38704324, -7.8219905e-08, -0.518027, 0.85536426, -0.7471488, -0.56852365, -0.34431022, 40.602283, 4.8553305, -49.443176)
 light_color = Color(0, 0.6117647, 0.24705882, 1)
 light_energy = 0.0
-light_size = 0.124
+light_size = 0.079
 shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 31.57
-spot_angle_attenuation = 0.329877
+omni_range = 6.0
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Spot Green 2" unique_id=715510250 groups=["FA_CLR_GREEN"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 50.0
+energyMultiplier = 1.0
 lerp_speed = 15.0
 
-[node name="Spot Blue 2" type="SpotLight3D" parent="Map/Animatables" unique_id=2065092649]
-transform = Transform3D(0.3131473, -0.82658076, -0.46765688, -7.435389e-08, -0.49242356, 0.87035567, -0.9497046, -0.27254948, -0.15420116, 41.826904, 5.282857, -55.000916)
+[node name="Spot Blue 2" type="OmniLight3D" parent="Map/Animatables" unique_id=34613149]
+transform = Transform3D(0.3131473, -0.81234336, -0.4919726, -7.8219905e-08, -0.518027, 0.85536426, -0.9497046, -0.26785496, -0.16221882, 40.409355, 4.8553305, -48.75413)
 light_color = Color(0.5106893, 0.3582754, 1, 1)
 light_energy = 0.0
-light_size = 0.124
+light_size = 0.079
 shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 31.57
-spot_angle_attenuation = 0.329877
+omni_range = 6.0
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Spot Blue 2" unique_id=1827084189 groups=["FA_CLR_BLUE"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 50.0
+energyMultiplier = 1.0
 lerp_speed = 15.0
 
-[node name="Spot Speaker Red 1" type="SpotLight3D" parent="Map/Animatables" unique_id=1527371527]
-transform = Transform3D(-0.27055007, 0.93790776, -0.21709841, 0.07884949, -0.20316254, -0.9759651, -0.95947146, -0.28116548, -0.018987902, 45.409782, 0.2474615, -51.072365)
+[node name="Spot Speaker Red 1" type="OmniLight3D" parent="Map/Animatables" unique_id=957307995]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 42.624195, 1.2351339, -46.135742)
 light_color = Color(0.94448614, 0, 0.185732, 1)
 light_energy = 0.0
 light_size = 0.124
+light_specular = 0.0
 shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 31.57
-spot_angle_attenuation = 0.329877
+omni_range = 6.0
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Spot Speaker Red 1" unique_id=1611902821 groups=["FA_CLR_SPEAKER"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 50.0
+energyMultiplier = 1.0
 lerp_speed = 15.0
 
-[node name="Spot Curtain Blue 1" type="SpotLight3D" parent="Map/Animatables" unique_id=723970858]
-transform = Transform3D(-0.27055007, 0.93790776, -0.21709841, 0.07884949, -0.20316254, -0.9759651, -0.95947146, -0.28116548, -0.018987902, 45.409782, 0.2474615, -51.727036)
+[node name="Spot Curtain Blue 1" type="OmniLight3D" parent="Map/Animatables" unique_id=2041428442]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 42.53761, 1.2351339, -45.757137)
 light_color = Color(0, 0.5353926, 0.81155825, 1)
 light_energy = 0.0
 light_size = 0.124
+light_specular = 0.0
 shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 31.57
-spot_angle_attenuation = 0.329877
+omni_range = 6.0
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Spot Curtain Blue 1" unique_id=698972325 groups=["FA_CLR_CURTAIN"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 50.0
+energyMultiplier = 1.0
 lerp_speed = 15.0
 
-[node name="Spot Speaker Red 2" type="SpotLight3D" parent="Map/Animatables" unique_id=1923921572]
-transform = Transform3D(-0.27055007, 0.93790776, -0.21709841, 0.07884949, -0.20316254, -0.9759651, -0.95947146, -0.28116548, -0.018987902, 45.409782, 0.2474615, -56.126583)
+[node name="Spot Speaker Red 2" type="OmniLight3D" parent="Map/Animatables" unique_id=1543303054]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 42.555473, 1.235134, -50.535656)
 light_color = Color(0.94448614, 0, 0.185732, 1)
 light_energy = 0.0
 light_size = 0.124
+light_specular = 0.0
 shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 31.57
-spot_angle_attenuation = 0.329877
+omni_range = 6.0
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Spot Speaker Red 2" unique_id=1924729138 groups=["FA_CLR_SPEAKER"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 50.0
+energyMultiplier = 1.0
 lerp_speed = 15.0
 
-[node name="Spot Curtain Blue 2" type="SpotLight3D" parent="Map/Animatables" unique_id=152357043]
-transform = Transform3D(-0.27055007, 0.93790776, -0.21709841, 0.07884949, -0.20316254, -0.9759651, -0.95947146, -0.28116548, -0.018987902, 45.409782, 0.2474615, -55.477665)
+[node name="Spot Curtain Blue 2" type="OmniLight3D" parent="Map/Animatables" unique_id=1887861546]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 42.50943, 1.235134, -50.911263)
 light_color = Color(0, 0.5353926, 0.81155825, 1)
 light_energy = 0.0
 light_size = 0.124
+light_specular = 0.0
 shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 31.57
-spot_angle_attenuation = 0.329877
+omni_range = 6.0
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Spot Curtain Blue 2" unique_id=1421739645 groups=["FA_CLR_CURTAIN"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 50.0
+energyMultiplier = 1.0
 lerp_speed = 15.0
 
 [node name="Spot Sun" type="SpotLight3D" parent="Map/Animatables" unique_id=1202014103]
-transform = Transform3D(0.37832856, -0.19026265, -0.9059071, 0.29288018, -0.90376866, 0.31212735, -0.87811655, -0.3834089, -0.28619733, 41.49206, 5.3193064, -54.120983)
+transform = Transform3D(0.240972, -0.09505441, -0.965866, 0.3398661, -0.92391235, 0.17571817, -0.90907854, -0.37060833, -0.19033127, 40.343876, 4.8190846, -48.298515)
 light_color = Color(0.96, 0.71999997, 0.48, 1)
 light_energy = 0.0
 light_size = 0.124
 shadow_enabled = true
 spot_range = 25.0
 spot_attenuation = 2.0
-spot_angle = 15.43
+spot_angle = 21.36586
 spot_angle_attenuation = 0.044194303
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Spot Sun" unique_id=2042860207 groups=["FA_SPOT_SUN"]]
@@ -1186,7 +1077,10 @@ energyMultiplier = 100.0
 lerp_speed = 15.0
 
 [node name="Bonnie" parent="Map/Animatables" unique_id=1706571886 instance=ExtResource("10_4tduh")]
-transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 44.078407, 0.051469415, -55.81732)
+transform = Transform3D(0.014760099, 0, -0.08370866, 0, 0.085, 0, 0.08370866, 0, 0.014760099, 41.62821, 0.87827206, -49.82713)
 
 [node name="Foxy" parent="Map/Animatables" unique_id=532968379 instance=ExtResource("11_0w123")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 35.32727, 0.07705361, -63.2168)
+transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, 33.12982, 0.88593847, -58.478157)
+
+[node name="Classic Stage" parent="." unique_id=24098949 instance=ExtResource("12_pgwgw")]
+transform = Transform3D(-1.0053619e-07, 0, -2.3, 0, 2.3, 0, 2.3, 0, -1.0053619e-07, 41.204815, 1.0590421, -48.418205)

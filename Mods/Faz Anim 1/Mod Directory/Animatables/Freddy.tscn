@@ -1,15 +1,18 @@
 [gd_scene format=3 uid="uid://bmhcm3nggtnr6"]
 
 [ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_v24xh"]
-[ext_resource type="PackedScene" uid="uid://dyik7x1khqh75" path="res://Mods/Faz Anim 1/Custom Assets/Models/Animatronics/Real Freddy.fbx" id="2_v24xh"]
 [ext_resource type="Script" uid="uid://ekdr3r12ydct" path="res://Scripts/Animatables/GL_Paintable.gd" id="3_baeyu"]
+[ext_resource type="PackedScene" uid="uid://cljlv47hkqh44" path="res://Mods/Faz Anim 1/Custom Assets/Models/Animatronics/Freddy.glb" id="3_v24xh"]
+[ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Physics_Bones.gd" id="4_ih3pj"]
 
 [node name="Freddy" type="Node3D" unique_id=233530727 groups=["FA_FREDDY"]]
 script = ExtResource("1_v24xh")
 animParametersFileName = "Freddy"
 
-[node name="Real Freddy" parent="." unique_id=201469917 instance=ExtResource("2_v24xh")]
+[node name="Freddy" parent="." unique_id=333598121 instance=ExtResource("3_v24xh")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+script = ExtResource("4_ih3pj")
+boneConfigFileName = "Freddy"
 
 [node name="Color Check" type="Node3D" parent="." unique_id=268845291 groups=["FA_FREDDY"]]
 script = ExtResource("3_baeyu")

@@ -17,10 +17,11 @@ func _ready():
 	initialScale = scale
 	
 	var anim_player := get_child(0).get_node("AnimationPlayer") as AnimationPlayer
+	#If you get an error here make your model the first child in the list
 	
 	anim_tree = AnimationTree.new()
-	anim_tree.anim_player = anim_player.get_path()
 	add_child(anim_tree)
+	anim_tree.anim_player = anim_player.get_path()
 
 	anim_tree.tree_root = AnimationNodeBlendTree.new()
 	anim_tree.active = true

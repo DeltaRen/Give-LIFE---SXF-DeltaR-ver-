@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cyyvr3bmi6x5d"]
+
+[ext_resource type="PackedScene" uid="uid://sf82y7cipa8x" path="res://Mods/Faz Anim 2/Custom Assets/Models/Props/Outside Table.glb" id="1_8xx5y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lw830"]
+size = Vector3(0.8434601, 3.6101234, 0.8107643)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8xx5y"]
+size = Vector3(8.549316, 0.25372314, 5.4592285)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vjhqm"]
+size = Vector3(0.8491821, 3.7216797, 0.84906006)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_24ocd"]
+size = Vector3(0.84887695, 3.7216797, 0.8392334)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xdr4y"]
+size = Vector3(0.8388672, 3.7021484, 0.79956055)
+
+[node name="Burger Chair" type="Node3D" unique_id=1776841204]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1333178638]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1430388740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1827009, 1.8048768, -1.2658368)
+shape = SubResource("BoxShape3D_lw830")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1201452492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0026855173, 3.7792664, -0.006225556)
+shape = SubResource("BoxShape3D_8xx5y")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=289883386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17807, 1.862793, 1.2816467)
+shape = SubResource("BoxShape3D_vjhqm")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=1416935616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1854248, 1.862793, 1.2766725)
+shape = SubResource("BoxShape3D_24ocd")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" unique_id=1181055285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1733398, 1.8530273, -1.2803955)
+shape = SubResource("BoxShape3D_xdr4y")
+
+[node name="Outside Table" parent="." unique_id=1699497383 instance=ExtResource("1_8xx5y")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.4996092, 0)

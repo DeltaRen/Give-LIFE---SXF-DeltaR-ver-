@@ -17,9 +17,13 @@
 [ext_resource type="PackedScene" uid="uid://b06bp1jixar7t" path="res://Mods/Faz Anim 2/Custom Assets/Props/Cash Register.tscn" id="19_sw7jn"]
 [ext_resource type="Script" uid="uid://cyoki6p7gu41e" path="res://Scripts/Animatables/GL_Light_Projector.gd" id="20_0fewr"]
 [ext_resource type="PackedScene" uid="uid://dpx14yei4vvo2" path="res://Mods/Faz Anim 2/Custom Assets/Props/Burger Chair.tscn" id="22_63s5f"]
+[ext_resource type="PackedScene" uid="uid://cyyvr3bmi6x5d" path="res://Mods/Faz Anim 2/Custom Assets/Props/Outside Table.tscn" id="25_frh36"]
 [ext_resource type="PackedScene" uid="uid://dq1h06s0snrud" path="res://Mods/Faz Anim 2/Custom Assets/Props/Cigarette Machine.tscn" id="25_krma8"]
+[ext_resource type="PackedScene" uid="uid://bmpy247wq63fx" path="res://Mods/Faz Anim 2/Custom Assets/Models/Props/Cig Pack Goongalar Cigars.fbx" id="26_adudo"]
 [ext_resource type="PackedScene" uid="uid://dcvouknjqqb8l" path="res://Mods/Faz Anim 2/Mod Directory/Animatables/FD.tscn" id="26_sceim"]
 [ext_resource type="PackedScene" uid="uid://cm6xii444sjb2" path="res://Mods/Faz Anim 2/Custom Assets/Models/Arcade/Fight.fbx" id="26_twv3y"]
+[ext_resource type="PackedScene" uid="uid://sygmf36qkuxp" path="res://Mods/Faz Anim 2/Custom Assets/Models/Props/Cigarette Single Half Smoked.fbx" id="27_0ms5e"]
+[ext_resource type="PackedScene" uid="uid://cdw2knk7uhepm" path="res://Mods/Faz Anim 2/Custom Assets/Models/Props/Cigarette Single.fbx" id="28_0htmt"]
 [ext_resource type="PackedScene" uid="uid://cmf4j4udmopq1" path="res://Mods/Faz Anim 2/Custom Assets/Models/Props/Cigarette Single Full Smoked.fbx" id="28_3yc2r"]
 [ext_resource type="PackedScene" uid="uid://cje1m664ngbr0" path="res://Mods/Faz Anim 2/Custom Assets/Props/Stick Out Lightbulb.tscn" id="28_se7vh"]
 [ext_resource type="PackedScene" uid="uid://clrd0pn1h5j4b" path="res://Mods/Faz Anim 2/Custom Assets/Props/Mr Hugs 2.tscn" id="29_27etk"]
@@ -2240,7 +2244,7 @@ shape = SubResource("ConcavePolygonShape3D_twv3y")
 debug_color = Color(0, 0.544, 0.64, 0)
 
 [node name="Walls" type="MeshInstance3D" parent="Map/Map Mesh & Collision" unique_id=250024522]
-transform = Transform3D(25, 0, 0, 0, -1.09278e-06, 25, 0, -25, -1.09278e-06, 0, 0, 0.111668)
+transform = Transform3D(25, 0, 0, 0, -1.09278e-06, 25, 0, -25, -1.09278e-06, 0.03754711, 9.536743e-07, 0.09701193)
 mesh = ExtResource("9_frh36")
 skeleton = NodePath("../../..")
 
@@ -2719,7 +2723,7 @@ spot_angle_attenuation = 0.366022
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3808, -2.14577e-06, -21.2872)
 
 [node name="CigaretteMachine" parent="Map/Map Props" unique_id=1159078414 instance=ExtResource("25_krma8")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.8198, 1.76922, -22.8858)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.8198, 1.7490377, -22.801846)
 
 [node name="Cigarette Single Full Smoked" parent="Map/Map Props" unique_id=1911085957 instance=ExtResource("28_3yc2r")]
 transform = Transform3D(0.918827, 0.1835, -0.349406, -0.195843, 0.980635, 0, 0.34264, 0.0684289, 0.936971, -13.4458, 1.76279, -22.8222)
@@ -2814,6 +2818,33 @@ transform = Transform3D(-0.9781476, 1.45755354e-08, -0.2079116, 1.4901161e-08, 1
 [node name="Burger Chair15" parent="Map/Map Props" unique_id=1140872937 instance=ExtResource("22_63s5f")]
 transform = Transform3D(-0.99432683, 1.4816624e-08, -0.1063681, 1.4901161e-08, 1, 0, 0.10636812, -1.5850085e-09, -0.9943268, -28.266401, -2.026558e-06, 5.9888687)
 
+[node name="Burger Chair18" parent="Map/Map Props" unique_id=1778757814 instance=ExtResource("22_63s5f")]
+transform = Transform3D(-0.9993284, 0, -0.036643792, 0, 1, 0, 0.036643796, 0, -0.9993283, -20.939613, -2.026558e-06, 3.8730383)
+
+[node name="Burger Chair19" parent="Map/Map Props" unique_id=1547670548 instance=ExtResource("22_63s5f")]
+transform = Transform3D(-0.9781476, 1.45755354e-08, -0.2079116, 1.4901161e-08, 1, 0, 0.20791161, -3.0981244e-09, -0.97814757, -20.939613, -2.026558e-06, 4.9113054)
+
+[node name="Burger Chair20" parent="Map/Map Props" unique_id=1562853448 instance=ExtResource("22_63s5f")]
+transform = Transform3D(-0.99432683, 1.4816624e-08, -0.1063681, 1.4901161e-08, 1, 0, 0.10636812, -1.5850085e-09, -0.9943268, -20.939613, -2.026558e-06, 5.9888687)
+
+[node name="Burger Chair21" parent="Map/Map Props" unique_id=880484150 instance=ExtResource("22_63s5f")]
+transform = Transform3D(0.9822872, 0, 0.1873813, 0, 1, 0, -0.18738131, 0, 0.98228717, -24.576866, -2.026558e-06, 3.8730383)
+
+[node name="Burger Chair22" parent="Map/Map Props" unique_id=2080832999 instance=ExtResource("22_63s5f")]
+transform = Transform3D(0.9822872, -1.463722e-08, 0.1873813, 1.4901161e-08, 1, 0, -0.18738131, 2.7921991e-09, 0.98228717, -24.576866, -2.026558e-06, 4.9113054)
+
+[node name="Burger Chair23" parent="Map/Map Props" unique_id=1305364338 instance=ExtResource("22_63s5f")]
+transform = Transform3D(0.9822872, -1.463722e-08, 0.1873813, 1.4901161e-08, 1, 0, -0.18738131, 2.7921991e-09, 0.98228717, -24.576866, -2.026558e-06, 5.9888687)
+
+[node name="Burger Chair24" parent="Map/Map Props" unique_id=1464579122 instance=ExtResource("22_63s5f")]
+transform = Transform3D(0.9822872, 0, 0.1873813, 0, 1, 0, -0.18738131, 0, 0.98228717, -17.562088, -2.026558e-06, 3.8730383)
+
+[node name="Burger Chair25" parent="Map/Map Props" unique_id=2077217703 instance=ExtResource("22_63s5f")]
+transform = Transform3D(0.9822872, -1.463722e-08, 0.1873813, 1.4901161e-08, 1, 0, -0.18738131, 2.7921991e-09, 0.98228717, -17.562088, -2.026558e-06, 4.9113054)
+
+[node name="Burger Chair26" parent="Map/Map Props" unique_id=1739221581 instance=ExtResource("22_63s5f")]
+transform = Transform3D(0.9822872, -1.463722e-08, 0.1873813, 1.4901161e-08, 1, 0, -0.18738131, 2.7921991e-09, 0.98228717, -17.562088, -2.026558e-06, 5.9888687)
+
 [node name="Burger Chair10" parent="Map/Map Props" unique_id=14680991 instance=ExtResource("22_63s5f")]
 transform = Transform3D(0.8133547, -2.4239858e-08, 0.58176816, 1.4901161e-08, 1, 1.1920929e-07, -0.5817681, 1.733804e-08, 0.8133546, -4.8885756, -1.9073486e-06, -14.438542)
 
@@ -2823,10 +2854,10 @@ transform = Transform3D(-1, 1.4901161e-08, -8.742278e-08, 1.4901161e-08, 1, 0, 8
 [node name="Burger Chair12" parent="Map/Map Props" unique_id=697967615 instance=ExtResource("22_63s5f")]
 transform = Transform3D(-0.99449813, 1.4819177e-08, -0.1047542, 1.4901161e-08, 1, 0, 0.1047542, -1.5609593e-09, -0.99449813, -7.5388503, -1.9073486e-06, -14.438542)
 
-[node name="Burger Chair16" parent="Map/Map Props" unique_id=1190123547 instance=ExtResource("19_sw7jn")]
+[node name="Burger Chair16" parent="Map/Map Props" unique_id=1750182853 instance=ExtResource("19_sw7jn")]
 transform = Transform3D(0.2081848, 0, -0.9780895, 0, 1, 0, 0.9780895, 0, 0.2081848, -21.018585, 2.2499979, -6.7907186)
 
-[node name="Burger Chair17" parent="Map/Map Props" unique_id=484206148 instance=ExtResource("19_sw7jn")]
+[node name="Burger Chair17" parent="Map/Map Props" unique_id=658612478 instance=ExtResource("19_sw7jn")]
 transform = Transform3D(0.03868425, 0, -0.9992515, 0, 1, 0, 0.9992515, 0, 0.03868425, -20.95921, 2.2499979, -3.9564173)
 
 [node name="Animatables" type="Node" parent="Map" unique_id=1785364853]
@@ -3379,3 +3410,24 @@ omni_attenuation = 2.0
 script = ExtResource("31_vjihw")
 total = 17
 energyMultiplier = 0.31
+
+[node name="Burger Chair" parent="." unique_id=1994947736 instance=ExtResource("25_frh36")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -26.45183, 1.66893e-06, 4.846519)
+
+[node name="Burger Chair2" parent="." unique_id=2144980165 instance=ExtResource("25_frh36")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -19.35501, 1.66893e-06, 4.846519)
+
+[node name="Cig Pack Goongalar Cigars" parent="." unique_id=1641611642 instance=ExtResource("26_adudo")]
+transform = Transform3D(0.008143573, 0.91846555, -0.39541727, -0.9999607, 0.00886615, 0, 0.0035058288, 0.39540175, 0.9185016, -21.332516, 2.3022904, -6.3064046)
+
+[node name="Cigarette Single Full Smoked" parent="." unique_id=2130511777 instance=ExtResource("28_3yc2r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.341461, 2.2627933, -6.1637955)
+
+[node name="Cigarette Single Half Smoked" parent="." unique_id=503060522 instance=ExtResource("27_0ms5e")]
+transform = Transform3D(0.8754561, 0, 0.48329765, 0, 1, 0, -0.48329765, 0, 0.8754561, -21.262934, 2.2556171, -6.263853)
+
+[node name="Cigarette Single" parent="." unique_id=556170829 instance=ExtResource("28_0htmt")]
+transform = Transform3D(0.9906052, 0, 0.13675301, 0, 1, 0, -0.13675301, 0, 0.9906052, -21.409538, 2.2559934, -6.5144486)
+
+[node name="Cigarette Single Half Smoked2" parent="." unique_id=197230607 instance=ExtResource("27_0ms5e")]
+transform = Transform3D(0.7838886, 0, -0.6209015, 0, 1, 0, 0.6209015, 0, 0.7838886, -19.152857, 1.5680708, 4.8896766)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_78mci"]
 [ext_resource type="PackedScene" uid="uid://d2xod3kgkd2pc" path="res://Mods/Faz Anim 1/Custom Assets/Models/Animatronics/Foxy FNaF1.fbx" id="2_78mci"]
+[ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Physics_Bones.gd" id="3_l6iry"]
 [ext_resource type="Script" uid="uid://ekdr3r12ydct" path="res://Scripts/Animatables/GL_Paintable.gd" id="3_yturc"]
 
 [node name="Foxy" type="Node3D" unique_id=233530727 groups=["FA_FOXY"]]
@@ -10,6 +11,7 @@ animParametersFileName = "Bonnie"
 
 [node name="Foxy FNaF1" parent="." unique_id=1159389777 instance=ExtResource("2_78mci")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+script = ExtResource("3_l6iry")
 
 [node name="Color Check" type="Node3D" parent="." unique_id=268845291 groups=["FA_FOXY"]]
 script = ExtResource("3_yturc")
