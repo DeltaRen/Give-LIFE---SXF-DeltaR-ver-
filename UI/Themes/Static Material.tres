@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://csvd0ihwnb3ov"]
+
+[ext_resource type="Shader" uid="uid://qbdqxi2mqiwq" path="res://Shaders/GUI.gdshader" id="1_f5e05"]
+
+[resource]
+shader = ExtResource("1_f5e05")
+shader_parameter/SCANLINE_COUNT = 56.4710022073725
+shader_parameter/BAR_MIN = 0.1430000067925
+shader_parameter/BAR_MAX = 2.0650000980875
+shader_parameter/NOISE_SCALE_X = 3.50000016299012
+shader_parameter/NOISE_SCALE_Y = 6.37500029955262
+shader_parameter/SCROLL_SPEED = 0.0450000021375
+shader_parameter/DRIFT_SPEED = 0.0230000010925
+shader_parameter/NOISE_CONTRAST = 1.482000046645
+shader_parameter/NOISE_DENSITY = 0.0
+shader_parameter/COLOR_FG = Color(0.98333335, 1, 0, 1)
+shader_parameter/COLOR_BG = Color(0.05882353, 0, 0.14117648, 1)

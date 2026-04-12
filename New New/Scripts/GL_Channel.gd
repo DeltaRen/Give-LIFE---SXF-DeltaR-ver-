@@ -15,14 +15,13 @@ var insideTimeline = false
 var _bit_panels: Array = []
 
 const timeUnits = 1.0 / 120.0
-const colorModify = 0.5
 
 func start() -> void:
 	title.text = id
 	var style = StyleBoxFlat.new()
 	style.bg_color = Color.WHITE
 	channelTimeline.add_theme_stylebox_override("panel", style)
-	channelTimeline.self_modulate = color * colorModify
+	channelTimeline.self_modulate = color
 	updateBindLabel()
 
 func _process(delta: float) -> void:
@@ -93,7 +92,7 @@ func renderBits() -> void:
 		var style = StyleBoxFlat.new()
 		style.bg_color = Color.WHITE
 		panel.add_theme_stylebox_override("panel", style)
-		panel.self_modulate = color * colorModify
+		panel.self_modulate = color
 		bitHolder.add_child(panel)
 		_bit_panels.append(panel)
 
@@ -106,7 +105,7 @@ func renderBits() -> void:
 		_bit_panels[i].position = Vector2(x, 0)
 		_bit_panels[i].size = Vector2(max(w, 1.0), bitHolder.size.y)
 		_bit_panels[i]._open_stamp = stamps[seg[2]]
-		_bit_panels[i].self_modulate = color * colorModify
+		_bit_panels[i].self_modulate = color
 		_bit_panels[i].self_modulate.a = 1
 		
 	while _bit_panels.size() > needed:

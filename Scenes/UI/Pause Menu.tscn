@@ -3,9 +3,13 @@
 [ext_resource type="Theme" uid="uid://b3wjoiiv6sq22" path="res://UI/Themes/Theme Node.tres" id="1_ory21"]
 [ext_resource type="Script" uid="uid://d0xp5idbh7y7v" path="res://Scripts/Pause_Menu.gd" id="2_q5xte"]
 [ext_resource type="Texture2D" uid="uid://cggqhltds7t7" path="res://Mods/Faz Anim 2/Custom Assets/UI/NewLogo 1k.png" id="3_mq5vs"]
-[ext_resource type="Shader" uid="uid://qbdqxi2mqiwq" path="res://Shaders/GUI.gdshader" id="3_xrto2"]
+[ext_resource type="Material" uid="uid://csvd0ihwnb3ov" path="res://UI/Themes/Static Material.tres" id="3_xrto2"]
+[ext_resource type="Material" uid="uid://c73bvh8cgx0tn" path="res://UI/Themes/Static Image Material.tres" id="4_l5do0"]
+[ext_resource type="Script" uid="uid://47ngh2got7do" path="res://New New/Scripts/GL_Random_Static_Image.gd" id="5_6gw5s"]
 [ext_resource type="Script" uid="uid://b4aa4vacbh1ln" path="res://Scripts/Sound UI/SoundUI.gd" id="5_8r7np"]
 [ext_resource type="AudioStream" uid="uid://cron3phbvrasi" path="res://Sounds/Tick2.wav" id="6_571ku"]
+[ext_resource type="Texture2D" uid="uid://bmjq7l2qx5jnw" path="res://UI/Backgrounds/BNIE.png" id="6_obwv7"]
+[ext_resource type="Texture2D" uid="uid://byjm8p138c7au" path="res://UI/Backgrounds/CCA 2.png" id="7_4btaj"]
 [ext_resource type="AudioStream" uid="uid://cnu056nqhchk1" path="res://Sounds/Thack.wav" id="7_mu3iq"]
 [ext_resource type="Texture2D" uid="uid://cmt4jve3igkmj" path="res://UI/GJ Thumbnail.png" id="7_s4v1y"]
 [ext_resource type="AudioStream" uid="uid://c3238o6m5b4we" path="res://Sounds/Clic.wav" id="8_lcruc"]
@@ -14,28 +18,21 @@
 [ext_resource type="AudioStream" uid="uid://c2x6femivhjud" path="res://Sounds/Cloc2.wav" id="8_mu3iq"]
 [ext_resource type="AudioStream" uid="uid://bevbh0ckbw0o4" path="res://Sounds/Tick.wav" id="8_o2xf1"]
 [ext_resource type="AudioStream" uid="uid://dt1hdqwuf4r8" path="res://Sounds/Thock.wav" id="8_vao20"]
+[ext_resource type="Texture2D" uid="uid://bypdnxuavo0qy" path="res://UI/Backgrounds/CCA.png" id="8_ywq15"]
+[ext_resource type="Texture2D" uid="uid://c43ipp8k0wh61" path="res://UI/Backgrounds/FD.png" id="9_m8e0j"]
 [ext_resource type="Script" uid="uid://bpw7qskt1i8s2" path="res://Scripts/Sound UI/SoundSlider.gd" id="9_swo4q"]
+[ext_resource type="Texture2D" uid="uid://8fp4ghmc2630" path="res://UI/Backgrounds/Normal1.png" id="10_4btaj"]
 [ext_resource type="Texture2D" uid="uid://cd1h05xckgmga" path="res://UI/Icons/share-from-square-solid-full.svg" id="10_ld2c0"]
 [ext_resource type="AudioStream" uid="uid://bq5a3xyfofaaa" path="res://Sounds/Tip.wav" id="10_oqrga"]
+[ext_resource type="Texture2D" uid="uid://5tl74bibkvuv" path="res://UI/Backgrounds/Normal2.png" id="11_3txel"]
 [ext_resource type="AudioStream" uid="uid://bbnbaxncick0a" path="res://Sounds/Tck.wav" id="11_oqrga"]
+[ext_resource type="Texture2D" uid="uid://bifkchfo3huew" path="res://UI/Backgrounds/Normal3.png" id="12_lijsr"]
+[ext_resource type="Texture2D" uid="uid://vo6e7e1iu4dn" path="res://UI/Backgrounds/Normal4.png" id="13_8dgrc"]
 [ext_resource type="Texture2D" uid="uid://dyiswdb1owyty" path="res://UI/Icons/trash-can-solid-full.svg" id="13_mu3iq"]
+[ext_resource type="Texture2D" uid="uid://djgeiohbwcre7" path="res://UI/Backgrounds/Normal5.png" id="14_lrdyb"]
 [ext_resource type="StyleBox" uid="uid://crsm0yvhb6rv1" path="res://UI/Themes/Main.tres" id="15_o2xf1"]
 [ext_resource type="StyleBox" uid="uid://8vn4doi14jgv" path="res://UI/Themes/Button.tres" id="16_xrto2"]
 [ext_resource type="FontFile" uid="uid://5wbjikluy4eo" path="res://UI/Fonts/3270-Regular.otf" id="17_l5do0"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5do0"]
-shader = ExtResource("3_xrto2")
-shader_parameter/SCANLINE_COUNT = 56.4710022073725
-shader_parameter/BAR_MIN = 0.1430000067925
-shader_parameter/BAR_MAX = 2.0650000980875
-shader_parameter/NOISE_SCALE_X = 3.0460001414251203
-shader_parameter/NOISE_SCALE_Y = 10.97600051810012
-shader_parameter/SCROLL_SPEED = 0.0450000021375
-shader_parameter/DRIFT_SPEED = 0.0230000010925
-shader_parameter/NOISE_CONTRAST = 1.9480000687799999
-shader_parameter/NOISE_DENSITY = 0.0
-shader_parameter/COLOR_FG = Color(0.93, 0.95, 0, 1)
-shader_parameter/COLOR_BG = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_6gw5s"]
 default_font = ExtResource("17_l5do0")
@@ -80,6 +77,7 @@ script = ExtResource("2_q5xte")
 fpsButton = NodePath("MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/FPS/CheckButton")
 
 [node name="Background" type="ColorRect" parent="." unique_id=674996388]
+material = ExtResource("3_xrto2")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,6 +85,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Control" type="ColorRect" parent="Background" unique_id=1642698299]
+material = ExtResource("4_l5do0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_6gw5s")
+images = Array[Texture2D]([ExtResource("6_obwv7"), ExtResource("7_4btaj"), ExtResource("8_ywq15"), ExtResource("9_m8e0j"), ExtResource("10_4btaj"), ExtResource("11_3txel"), ExtResource("12_lijsr"), ExtResource("13_8dgrc"), ExtResource("14_lrdyb")])
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1828179665]
 layout_mode = 1
@@ -101,13 +110,12 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1827697843]
-material = SubResource("ShaderMaterial_l5do0")
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
 [node name="Version Number" type="Label" parent="MarginContainer/PanelContainer" unique_id=627527707]
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(1, 1, 1, 0.129412)
 text = "v.test"
 horizontal_alignment = 2
 vertical_alignment = 2
