@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://1yefe1qpi5jb"]
+
+[ext_resource type="Texture2D" uid="uid://dwy7cs146ymi1" path="res://Mods/Faz Anim 1/Custom Assets/Textures/Parrot.png" id="1_a438u"]
+[ext_resource type="Texture2D" uid="uid://cpl4b6gm8vfm4" path="res://Mods/Faz Anim 1/Custom Assets/Textures/Parrot_Mask.png" id="2_ybs3v"]
+[ext_resource type="Texture2D" uid="uid://c3cp5mxvgdcgi" path="res://Mods/Faz Anim 1/Custom Assets/Textures/ChicaFur_Roughness.png" id="3_ikxql"]
+
+[resource]
+albedo_texture = ExtResource("1_a438u")
+metallic = 1.0
+metallic_texture = ExtResource("2_ybs3v")
+roughness_texture = ExtResource("2_ybs3v")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_scale = 0.5
+rim = 0.25
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.14
+subsurf_scatter_texture = ExtResource("3_ikxql")
+subsurf_scatter_transmittance_enabled = true
+subsurf_scatter_transmittance_depth = 3.889
+backlight = Color(1, 1, 1, 1)

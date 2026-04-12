@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://hh71gi8ab5mg"]
+
+[ext_resource type="Texture2D" uid="uid://salifje3t5pn" path="res://Mods/Faz Anim 1/Custom Assets/Textures/PirateWood.png" id="1_h4hoc"]
+[ext_resource type="Texture2D" uid="uid://nd7hij113u4i" path="res://Mods/Faz Anim 1/Custom Assets/Textures/PirateWood_Normal.png" id="2_7qwi7"]
+
+[resource]
+albedo_texture = ExtResource("1_h4hoc")
+normal_enabled = true
+normal_texture = ExtResource("2_7qwi7")
+subsurf_scatter_strength = 0.36
+subsurf_scatter_transmittance_depth = 3.889

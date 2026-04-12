@@ -1,9 +1,11 @@
 {
-"Ear R": 3,
-"Ear L": 3,
+"Ear R": 0,
+"Ear L": 0,
 "tuft1": 0,
 "tuft2": 0,
 "tuft3": 0,
 "Jaw": 4,
+"Shoulder Up R": 4,
+"Shoulder Up L": 4,
 "Body Lean": 4,
 }

@@ -7,8 +7,8 @@
   },
   "FA_PARROT|Cage": {
 	"animation": "Armature|Cage",
-	"in_speed": 2.0,
-	"out_speed": 2.0,
+	"in_speed": 0.5,
+	"out_speed": 0.5,
 	"type": "standard"
   },
   "FA_PARROT|Body Lean Forward": {

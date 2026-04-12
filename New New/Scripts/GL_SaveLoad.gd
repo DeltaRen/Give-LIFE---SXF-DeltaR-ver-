@@ -115,6 +115,26 @@ func _pack_folder_to_zip(source_dir: String, dest_zip: String) -> void:
 		writer.close()
 		print("Export successful: " + dest_zip)
 
+func _xshw_load_template(chart_name: String) -> Dictionary:
+	var mods_dir = DirAccess.open("res://Mods")
+	if mods_dir == null:
+		return {}
+	mods_dir.list_dir_begin()
+	var mod_folder = mods_dir.get_next()
+	while mod_folder != "":
+		if mods_dir.current_is_dir() and mod_folder != "." and mod_folder != "..":
+			var template_path = "res://Mods/" + mod_folder + "/Mod Directory/Save Templates/" + chart_name + ".json"
+			if FileAccess.file_exists(template_path):
+				var file = FileAccess.open(template_path, FileAccess.READ)
+				if file:
+					var json = JSON.new()
+					var parsed = json.parse_string(file.get_as_text())
+					file.close()
+					if typeof(parsed) == TYPE_DICTIONARY:
+						return parsed
+		mod_folder = mods_dir.get_next()
+	return {}
+
 func import_and_load_zip(zip_path: String) -> Dictionary:
 	var reader = ZIPReader.new()
 	var err = reader.open(zip_path)
@@ -246,6 +266,12 @@ func xshw_convert_file(in_path: String, chart_name: String) -> String:
 		push_error("Chart not loaded: " + chart_name)
 		return ""
 
+	# Load matching save template
+	var template_data: Dictionary = _xshw_load_template(chart_name)
+	if template_data.is_empty():
+		push_error("No save template found for chart: " + chart_name)
+		return ""
+
 	var id_to_name: Dictionary = _xshw_bit_charts[chart_name]
 	_xshw_unknown_id_cache.clear()
 	_xshw_audio_data = null
@@ -259,6 +285,7 @@ func xshw_convert_file(in_path: String, chart_name: String) -> String:
 		push_error("No audio or signal data found.")
 		return ""
 
+	# Build stamps (same as before)
 	var channel_stamps: Dictionary = {}
 	for id_key in id_to_name:
 		channel_stamps[id_to_name[id_key]] = []
@@ -283,7 +310,7 @@ func xshw_convert_file(in_path: String, chart_name: String) -> String:
 						_xshw_unknown_id_cache[seen_id] = true
 						push_warning("Unknown ID %d in frame %d, chart '%s' — skipping." % [seen_id, frame_index, chart_name])
 
-			var stamp_int := frame_index * 2  # 60fps -> 120fps
+			var stamp_int := frame_index * 2
 			for name_key in new_state:
 				if prev_state.get(name_key, false) != new_state[name_key]:
 					channel_stamps[name_key].append(stamp_int)
@@ -295,7 +322,6 @@ func xshw_convert_file(in_path: String, chart_name: String) -> String:
 			if not current_frame_ids.has(v):
 				current_frame_ids.append(v)
 
-	# leftover frame
 	if current_frame_ids.size() > 0:
 		var new_state: Dictionary = {}
 		for id_key in id_to_name:
@@ -309,48 +335,35 @@ func xshw_convert_file(in_path: String, chart_name: String) -> String:
 				channel_stamps[name_key].append(stamp_int)
 		frame_index += 1
 
-	# close any odd-length stamp arrays at EOF
 	var eof_stamp := frame_index * 2
 	for channel_key in channel_stamps:
 		if channel_stamps[channel_key].size() % 2 != 0:
 			channel_stamps[channel_key].append(eof_stamp)
 
-	var channels: Dictionary = {}
-	var index := 0
-	for channel_key in channel_stamps:
-		channels[channel_key] = {
-			"type": "bool",
-			"data": channel_stamps[channel_key],
-			"index": index
-		}
-		index += 1
+	# Apply stamps into template channels
+	var channels: Dictionary = template_data.get("channels", {})
+	for channel_key in channels:
+		channels[channel_key]["data"] = channel_stamps.get(channel_key, [])
+
+	# Build save using template as base, override key fields
+	template_data["title"] = in_path.get_file().get_basename()
+	template_data["author"] = "Converted"
+	template_data["timeCreated"] = Time.get_datetime_string_from_system(true)
+	template_data["lastUpdated"] = Time.get_datetime_string_from_system(true)
+	template_data["saveFileVersion"] = str(saveFileVersion)
+	template_data["channels"] = channels
 
 	var rng = RandomNumberGenerator.new()
 	rng.seed = Time.get_ticks_msec()
-	var save_data: Dictionary = {
-		"title":           in_path.get_file().get_basename(),
-		"author":          "Converted",
-		"timeCreated":     Time.get_datetime_string_from_system(true),
-		"lastUpdated":     Time.get_datetime_string_from_system(true),
-		"saveFileVersion": str(saveFileVersion),
-		"projectVersion":  ProjectSettings.get_setting("application/config/version"),
-		"projectName":     ProjectSettings.get_setting("application/config/name"),
-		"channels":        channels,
-		"media":           {},
-	}
-
 	var save_root = "user://My Precious Save Files/" + str(rng.randi())
 	DirAccess.make_dir_recursive_absolute(save_root)
-	save_to_folder(save_data, save_root)
+	save_to_folder(template_data, save_root)
 
-	# write audio
 	var af = FileAccess.open(save_root + "/audio.wav", FileAccess.WRITE)
 	if af:
 		af.store_buffer(_xshw_audio_data)
 		af.close()
-		print("Saved audio: " + save_root + "/audio.wav")
 
-	# copy video if present alongside the .shw
 	_xshw_copy_video(in_path, save_root)
 
 	print("Conversion complete: " + save_root)

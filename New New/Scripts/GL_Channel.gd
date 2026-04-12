@@ -6,6 +6,7 @@ class_name GL_Channel
 @onready var bitHolder = $ChannelTimeline/BitHolder
 
 var id = ""
+var color : Color = Color.YELLOW
 var master : GL_Master
 var timeline : GL_Timeline
 var changingBind = false
@@ -14,10 +15,14 @@ var insideTimeline = false
 var _bit_panels: Array = []
 
 const timeUnits = 1.0 / 120.0
-const bitColor = Color(1.0, 0.973, 0.2, 1.0)
+const colorModify = 0.5
 
 func start() -> void:
 	title.text = id
+	var style = StyleBoxFlat.new()
+	style.bg_color = Color.WHITE
+	channelTimeline.add_theme_stylebox_override("panel", style)
+	channelTimeline.self_modulate = color * colorModify
 	updateBindLabel()
 
 func _process(delta: float) -> void:
@@ -74,11 +79,10 @@ func renderBits() -> void:
 		else:
 			var seg_end_time = t
 			if seg_end_time > t_start and seg_start_time < t_end:
-				segments.append([seg_start_time, seg_end_time])
+				segments.append([seg_start_time, seg_end_time, i - 1])
 			state = false
-
 	if state and seg_start_time < t_end:
-		segments.append([seg_start_time, t_end])
+		segments.append([seg_start_time, t_end, stamps.size() - 1])
 
 	var needed = segments.size()
 	while _bit_panels.size() < needed:
@@ -87,8 +91,9 @@ func renderBits() -> void:
 		panel.channel = self
 		panel.mouse_filter = Control.MOUSE_FILTER_PASS
 		var style = StyleBoxFlat.new()
-		style.bg_color = bitColor
+		style.bg_color = Color.WHITE
 		panel.add_theme_stylebox_override("panel", style)
+		panel.self_modulate = color * colorModify
 		bitHolder.add_child(panel)
 		_bit_panels.append(panel)
 
@@ -100,6 +105,9 @@ func renderBits() -> void:
 		var w = ((clamped_end - clamped_start) / t_range) * width
 		_bit_panels[i].position = Vector2(x, 0)
 		_bit_panels[i].size = Vector2(max(w, 1.0), bitHolder.size.y)
+		_bit_panels[i]._open_stamp = stamps[seg[2]]
+		_bit_panels[i].self_modulate = color * colorModify
+		_bit_panels[i].self_modulate.a = 1
 		
 	while _bit_panels.size() > needed:
 		var panel = _bit_panels.pop_back()

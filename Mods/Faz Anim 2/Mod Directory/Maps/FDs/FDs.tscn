@@ -2231,7 +2231,7 @@ shape = SubResource("ConcavePolygonShape3D_krma8")
 debug_color = Color(0, 0.595, 0.7, 0)
 
 [node name="Ceiling" type="MeshInstance3D" parent="Map/Map Mesh & Collision" unique_id=570030460]
-transform = Transform3D(25, 0, 0, 0, -1.09278e-06, 25, 0, -25, -1.09278e-06, 0, 0, 0.111668)
+transform = Transform3D(25, 0, 0, 0, -1.09278e-06, 25, 0, -25, -1.09278e-06, 0.03754711, 9.536743e-07, 0.09701193)
 gi_lightmap_texel_scale = 0.5
 mesh = ExtResource("8_sw7jn")
 skeleton = NodePath("../../..")

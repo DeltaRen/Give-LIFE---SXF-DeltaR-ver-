@@ -7,11 +7,12 @@
 
 [node name="Foxy" type="Node3D" unique_id=233530727 groups=["FA_FOXY"]]
 script = ExtResource("1_78mci")
-animParametersFileName = "Bonnie"
+animParametersFileName = "Foxy"
 
 [node name="Foxy FNaF1" parent="." unique_id=1159389777 instance=ExtResource("2_78mci")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 script = ExtResource("3_l6iry")
+boneConfigFileName = "Foxy"
 
 [node name="Color Check" type="Node3D" parent="." unique_id=268845291 groups=["FA_FOXY"]]
 script = ExtResource("3_yturc")

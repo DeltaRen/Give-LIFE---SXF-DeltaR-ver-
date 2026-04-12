@@ -7,6 +7,7 @@ const TIME_UNITS = 1.0 / 120.0
 enum DragMode { NONE, MOVE, LEFT_EDGE, RIGHT_EDGE }
 
 var channel: GL_Channel
+var _open_stamp: int = -1
 
 var _drag_mode: DragMode = DragMode.NONE
 var _drag_start_mouse_x: float = 0.0
@@ -29,17 +30,12 @@ func _pixels_to_int(px: float) -> float:
 	var width = channel.channelTimeline.size.x
 	return (px / width) * (timeline.timeEnd - timeline.timeStart) / TIME_UNITS
 
+
 func _get_actual_open_idx() -> int:
+	if _open_stamp == -1:
+		return -1
 	var stamps = _get_stamps()
-	var timeline = channel.timeline
-	var width = channel.channelTimeline.size.x
-	# Convert this panel's left edge position to a timestamp
-	var t = timeline.timeStart + (position.x / width) * (timeline.timeEnd - timeline.timeStart)
-	var t_int = _time_to_int(t)
-	for i in range(0, stamps.size() - 1, 2):
-		if stamps[i] == t_int:
-			return i
-	return -1
+	return stamps.find(_open_stamp)
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

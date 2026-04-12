@@ -1,6 +1,6 @@
 extends Control
 class_name GL_Timeline
-@onready var master = $"../../Master"
+@onready var master : GL_Master= $"../../Master"
 @onready var createChannel : OptionButton = $MarginContainer/TimelineBox/CreateChannel
 @onready var timelineBox : VBoxContainer = $MarginContainer/TimelineBox
 @onready var playButton : Button = $"../TimeManager/HBoxContainer/Play Button"
@@ -229,6 +229,12 @@ func _reassign_channel_slots() -> void:
 		if data_index < sorted_keys.size():
 			var key = sorted_keys[data_index]
 			slot.id = key
+			var color = master.currentlyLoadedFile["channels"][key].get("color", null)
+			if color != null:
+				var r = ("0x" + color.substr(0, 2)).hex_to_int() / 255.0
+				var g = ("0x" + color.substr(2, 2)).hex_to_int() / 255.0
+				var b = ("0x" + color.substr(4, 2)).hex_to_int() / 255.0
+				slot.color = Color(r, g, b)
 			slot.master = master
 			slot.timeline = self
 			slot.visible = true

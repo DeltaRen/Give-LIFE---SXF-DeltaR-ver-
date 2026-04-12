@@ -8,6 +8,7 @@
 albedo_texture = ExtResource("1_vpxcb")
 roughness_texture = ExtResource("3_7n3fm")
 normal_enabled = true
+normal_scale = 0.5
 normal_texture = ExtResource("2_abexk")
 rim = 0.25
 subsurf_scatter_enabled = true

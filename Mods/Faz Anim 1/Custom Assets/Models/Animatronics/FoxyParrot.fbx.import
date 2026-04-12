@@ -37,7 +37,46 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"Alluminum": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Aluminum.tres",
+"use_external/path": "uid://cqmifmmuddlrb"
+},
+"Fiberglass Tubes": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Tubes.tres",
+"use_external/path": "uid://gqg1vhd1jc6g"
+},
+"Other Metals": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/OtherMetals.tres",
+"use_external/path": "uid://uf460btwh83m"
+},
+"Parrot": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Bird.tres",
+"use_external/path": "uid://1yefe1qpi5jb"
+},
+"Pirate Wood": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Pirate Wood.tres",
+"use_external/path": "uid://hh71gi8ab5mg"
+}
+},
+"nodes": {
+"PATH:Armature/Skeleton3D/Blacklight": {
+"import/skip_import": true
+},
+"PATH:Armature/Skeleton3D/Mech": {
+"import/skip_import": true
+},
+"PATH:Armature/Skeleton3D/Popcorn": {
+"import/skip_import": true
+}
+}
+}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

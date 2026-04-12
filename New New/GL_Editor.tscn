@@ -88,9 +88,10 @@ size_flags_vertical = 3
 [node name="Modifiers" type="TabContainer" parent="Full Editor/Editor" unique_id=120351013]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 0
+current_tab = 1
 
 [node name="Settings" type="PanelContainer" parent="Full Editor/Editor/Modifiers" unique_id=1426267622]
+visible = false
 self_modulate = Color(1, 1, 1, 0.5019608)
 layout_mode = 2
 metadata/_tab_index = 0
@@ -139,7 +140,6 @@ layout_mode = 2
 text = "???"
 
 [node name="Save & Quit" type="PanelContainer" parent="Full Editor/Editor/Modifiers" unique_id=450722086]
-visible = false
 self_modulate = Color(1, 1, 1, 0.5019608)
 layout_mode = 2
 metadata/_tab_index = 1
@@ -165,6 +165,10 @@ text = "Save & Quit"
 [node name="Button3" type="Button" parent="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer" unique_id=143106228]
 layout_mode = 2
 text = "Export File to Share"
+
+[node name="Button4" type="Button" parent="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer" unique_id=1730162617]
+layout_mode = 2
+text = "Delete ( Hold )"
 
 [node name="Media" type="PanelContainer" parent="Full Editor/Editor/Modifiers" unique_id=284313337]
 visible = false
@@ -304,6 +308,7 @@ volume_db = 10.0
 [connection signal="pressed" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button" to="Master" method="save"]
 [connection signal="pressed" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button2" to="Master" method="save_and_quit"]
 [connection signal="pressed" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button3" to="Master" method="_export_show"]
+[connection signal="pressed" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button4" to="Master" method="_export_show"]
 [connection signal="pressed" from="Full Editor/Editor/Modifiers/Media/VBoxContainer/Button" to="Full Editor/Editor/Modifiers/Media/VBoxContainer/MediaContainer" method="import_file"]
 [connection signal="pressed" from="Full Editor/TimeManager/HBoxContainer/Play Button" to="Full Editor/Data Timeline" method="togglePlayback"]
 [connection signal="item_selected" from="Full Editor/Data Timeline/MarginContainer/TimelineBox/CreateChannel" to="Full Editor/Data Timeline" method="create_channel"]
