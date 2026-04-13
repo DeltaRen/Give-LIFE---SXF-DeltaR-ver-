@@ -2,19 +2,20 @@ extends SpotLight3D
 
 var size: float = 45
 var targetSize: float = 45
-const maxSize = 60
-const minSize = 5
-const minLight = 3
-const maxLight = 80
-
-const HOLD_THRESHOLD := 0.2
-
 var flashlight_held_time := 0.0
 var is_adjusting := false
 var was_flashlight_pressed := false
 
+@onready var player : Player = $"../.."
+
+const maxSize = 60
+const minSize = 5
+const minLight = 3
+const maxLight = 80
+const HOLD_THRESHOLD := 0.2
+
 func _process(delta):
-	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
+	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED || player.night_mode:
 		return
 
 	# Handle flashlight toggle / adjust mode

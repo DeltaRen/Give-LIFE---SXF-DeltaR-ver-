@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://o4fe7jj6qk7v" path="res://addons/Godot-4-Color-Correction-and-Screen-Effects-main/Materials and Shaders/Shade.tres" id="2_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://ktqnj6yjrsbn" path="res://UI/Flashlight.png" id="4_8erm5"]
 [ext_resource type="Script" uid="uid://r3akx4cd0pjd" path="res://Scripts/Player/Flashlight.gd" id="5_f1ek2"]
+[ext_resource type="Script" uid="uid://ca1u85mg47y1v" path="res://Scripts/Player/NightLight.gd" id="5_fkybt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_em00n"]
 radius = 0.25
@@ -45,6 +46,14 @@ script = ExtResource("5_f1ek2")
 target_position = Vector3(0, 0, -5)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Night Light" type="OmniLight3D" parent="CharacterBody3D/Camera3D" unique_id=1852714775]
+transform = Transform3D(1, -1.4843238e-10, 0, -3.2002845e-11, 1, 0, 0, 0, 1, 0.00047233654, -0.49488258, -0.38758487)
+light_energy = 0.2
+light_size = 1.0
+light_specular = 0.0
+omni_range = 30.0
+script = ExtResource("5_fkybt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1342189859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
