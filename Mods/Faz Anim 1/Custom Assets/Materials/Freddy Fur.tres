@@ -1,7 +1,7 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://t8a2qf5pvs7d"]
 
-[ext_resource type="Texture2D" uid="uid://cmcyaba74qyg2" path="res://Mods/Faz Anim 1/Custom Assets/Textures/FreddyFur.png" id="1_hw6vu"]
-[ext_resource type="Texture2D" uid="uid://b2ltcbpcqjbtl" path="res://Mods/Faz Anim 1/Custom Assets/Textures/FreddyFur_Normal.png" id="2_fqww6"]
+[ext_resource type="Texture2D" path="res://Mods/Faz Anim 1/Custom Assets/Textures/FreddyFur.webp" id="1_hw6vu"]
+[ext_resource type="Texture2D" path="res://Mods/Faz Anim 1/Custom Assets/Textures/FreddyFur_Normal.webp" id="2_fqww6"]
 [ext_resource type="Texture2D" uid="uid://b3ar7pbfw7fry" path="res://Mods/Faz Anim 1/Custom Assets/Textures/Freddyfur_Roughness.jpg" id="3_tafc8"]
 
 [resource]

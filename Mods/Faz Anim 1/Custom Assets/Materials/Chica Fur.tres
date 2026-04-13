@@ -1,8 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://c685nparahseq"]
 
-[ext_resource type="Texture2D" uid="uid://dhkp7fangwjvv" path="res://Mods/Faz Anim 1/Custom Assets/Textures/ChicaFur_Diffuse.png" id="1_aea1u"]
-[ext_resource type="Texture2D" uid="uid://dfim4jj1fmdn2" path="res://Mods/Faz Anim 1/Custom Assets/Textures/ChicaFur_Normal.png" id="2_0qjhf"]
-[ext_resource type="Texture2D" uid="uid://c3cp5mxvgdcgi" path="res://Mods/Faz Anim 1/Custom Assets/Textures/ChicaFur_Roughness.png" id="3_aea1u"]
+[ext_resource type="Texture2D" path="res://Mods/Faz Anim 1/Custom Assets/Textures/ChicaFur_Diffuse.webp" id="1_aea1u"]
+[ext_resource type="Texture2D" path="res://Mods/Faz Anim 1/Custom Assets/Textures/ChicaFur_Normal.webp" id="2_0qjhf"]
+[ext_resource type="Texture2D" path="res://Mods/Faz Anim 1/Custom Assets/Textures/ChicaFur_Roughness.webp" id="3_aea1u"]
 
 [resource]
 albedo_texture = ExtResource("1_aea1u")

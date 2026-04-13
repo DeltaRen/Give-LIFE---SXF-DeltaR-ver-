@@ -1,0 +1,60 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://eqca1sm2jv4c"
+path="res://.godot/imported/Arcade Shmups 2.glb-f5dd27074083ec6ed5b1332f192b6bce.scn"
+
+[deps]
+
+source_file="res://Mods/Faz Anim 1/Custom Assets/Models/Props/Arcade Shmups 2.glb"
+dest_files=["res://.godot/imported/Arcade Shmups 2.glb-f5dd27074083ec6ed5b1332f192b6bce.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=3
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Arcades.003": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Arcades.tres",
+"use_external/path": "uid://laghbmrbyc0k"
+},
+"Other Metals.008": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/OtherMetals.tres",
+"use_external/path": "uid://uf460btwh83m"
+},
+"TVGlass.003": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Glass.tres",
+"use_external/path": "uid://ddx50lgsgirmm"
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1

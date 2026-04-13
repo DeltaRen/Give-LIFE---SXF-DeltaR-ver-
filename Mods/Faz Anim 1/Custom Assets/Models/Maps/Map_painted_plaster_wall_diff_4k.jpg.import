@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxmod0dl82176"
-path="res://.godot/imported/Map_painted_plaster_wall_diff_4k.jpg-f7e0ee9b424666f6a167adf9ecc08e5e.ctex"
+path.s3tc="res://.godot/imported/Map_painted_plaster_wall_diff_4k.jpg-f7e0ee9b424666f6a167adf9ecc08e5e.s3tc.ctex"
+path.etc2="res://.godot/imported/Map_painted_plaster_wall_diff_4k.jpg-f7e0ee9b424666f6a167adf9ecc08e5e.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "4ab2a162ab3110fef72bd6861e602648"
@@ -14,11 +16,11 @@ generator_parameters={
 [deps]
 
 source_file="res://Mods/Faz Anim 1/Custom Assets/Models/Maps/Map_painted_plaster_wall_diff_4k.jpg"
-dest_files=["res://.godot/imported/Map_painted_plaster_wall_diff_4k.jpg-f7e0ee9b424666f6a167adf9ecc08e5e.ctex"]
+dest_files=["res://.godot/imported/Map_painted_plaster_wall_diff_4k.jpg-f7e0ee9b424666f6a167adf9ecc08e5e.s3tc.ctex", "res://.godot/imported/Map_painted_plaster_wall_diff_4k.jpg-f7e0ee9b424666f6a167adf9ecc08e5e.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +42,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

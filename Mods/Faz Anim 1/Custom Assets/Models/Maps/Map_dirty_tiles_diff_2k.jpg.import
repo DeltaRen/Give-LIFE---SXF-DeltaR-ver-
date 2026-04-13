@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dah30lkyrjn4c"
-path="res://.godot/imported/Map_dirty_tiles_diff_2k.jpg-49e7b16c470cd92f6ae60b69ec69ab1f.ctex"
+path.s3tc="res://.godot/imported/Map_dirty_tiles_diff_2k.jpg-49e7b16c470cd92f6ae60b69ec69ab1f.s3tc.ctex"
+path.etc2="res://.godot/imported/Map_dirty_tiles_diff_2k.jpg-49e7b16c470cd92f6ae60b69ec69ab1f.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "d55a01c052950e9684840957f6499b95"
@@ -14,11 +16,11 @@ generator_parameters={
 [deps]
 
 source_file="res://Mods/Faz Anim 1/Custom Assets/Models/Maps/Map_dirty_tiles_diff_2k.jpg"
-dest_files=["res://.godot/imported/Map_dirty_tiles_diff_2k.jpg-49e7b16c470cd92f6ae60b69ec69ab1f.ctex"]
+dest_files=["res://.godot/imported/Map_dirty_tiles_diff_2k.jpg-49e7b16c470cd92f6ae60b69ec69ab1f.s3tc.ctex", "res://.godot/imported/Map_dirty_tiles_diff_2k.jpg-49e7b16c470cd92f6ae60b69ec69ab1f.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +42,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

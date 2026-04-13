@@ -1,7 +1,7 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://hh71gi8ab5mg"]
 
-[ext_resource type="Texture2D" uid="uid://salifje3t5pn" path="res://Mods/Faz Anim 1/Custom Assets/Textures/PirateWood.png" id="1_h4hoc"]
-[ext_resource type="Texture2D" uid="uid://nd7hij113u4i" path="res://Mods/Faz Anim 1/Custom Assets/Textures/PirateWood_Normal.png" id="2_7qwi7"]
+[ext_resource type="Texture2D" path="res://Mods/Faz Anim 1/Custom Assets/Textures/PirateWood.webp" id="1_h4hoc"]
+[ext_resource type="Texture2D" path="res://Mods/Faz Anim 1/Custom Assets/Textures/PirateWood_Normal.webp" id="2_7qwi7"]
 
 [resource]
 albedo_texture = ExtResource("1_h4hoc")

@@ -25,13 +25,20 @@ const MIN_ACCEL_LERP := 0.01
 const MAX_ACCEL_LERP := 2.5
 const ACCEL_LERP_STEP := 0.05
 
+const STAND_HEIGHT: float = 3.0
+const CROUCH_HEIGHT: float = 1.2
+const CROUCH_LERP: float = 10.0
+const STAND_EYE_HEIGHT: float = 1.4
+const CROUCH_EYE_HEIGHT: float = 0.6
+
 @onready var camera = $Camera3D
 @onready var foot_probe: Node3D = $FootProbe
+@onready var collision_shape: CollisionShape3D = $CollisionShape3D
 
 var rotation_y: float = 0.0
 var rotation_x: float = 0.0
 var rotation_z: float = 0.0
-var target_tilt: float = 0.0 
+var target_tilt: float = 0.0
 var target_fov: float = 70.0
 var speed_mult_target: float = 1.0
 var speed_mult: float = 1.0
@@ -51,9 +58,20 @@ var was_move_pressed: bool = false
 var is_adjusting_move: bool = false
 
 var settings_autorun: bool = false
+var settings_always_crouch: bool = false
+
+# Tracked crouch state — only flips when we have clearance to stand
+var is_crouched: bool = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	camera.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
+	if collision_shape.shape is CapsuleShape3D:
+		collision_shape.shape.height = STAND_HEIGHT
+		collision_shape.position.y = 0.0
+	var t = (collision_shape.shape.height - CROUCH_HEIGHT) / (STAND_HEIGHT - CROUCH_HEIGHT)
+	var target_cam_y = lerp(CROUCH_EYE_HEIGHT, STAND_EYE_HEIGHT, t)
+	var cam_pos = camera.position
 
 func _input(event):
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -64,25 +82,22 @@ func _input(event):
 			_process_scroll(1)
 		if Input.is_action_just_pressed("Scroll Down (Mouse)"):
 			_process_scroll(-1)
-			
+
 func _process(delta: float) -> void:
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 		return
 
-	# --- Controller stick look ---
 	var look_x = Input.get_action_strength("Look Right") - Input.get_action_strength("Look Left")
 	var look_y = Input.get_action_strength("Look Down") - Input.get_action_strength("Look Up")
-	if abs(look_x) > 0.05 or abs(look_y) > 0.05: # Deadzone
-		rotation_y -= look_x * CSTICK_SENSITIVITY * 20.0 * delta  # multiplier for stick speed
+	if abs(look_x) > 0.05 or abs(look_y) > 0.05:
+		rotation_y -= look_x * CSTICK_SENSITIVITY * 20.0 * delta
 		rotation_x = clamp(rotation_x - look_y * CSTICK_SENSITIVITY * 20.0 * delta, deg_to_rad(-80), deg_to_rad(80))
 
-	# --- Controller scroll equivalents ---
 	if Input.is_action_pressed("Scroll Up"):
 		_process_scroll(1)
 	if Input.is_action_pressed("Scroll Down"):
 		_process_scroll(-1)
 
-	# Rest of your smooth cam / smooth movement logic...
 	if Input.is_action_pressed("Smooth Cam"):
 		smooth_held_time += delta
 		if smooth_held_time >= HOLD_THRESHOLD:
@@ -134,19 +149,50 @@ func _process(delta: float) -> void:
 	else:
 		camera.rotation = Vector3(rotation_x, rotation_y, rotation_z)
 
+	var t = (collision_shape.shape.height - CROUCH_HEIGHT) / (STAND_HEIGHT - CROUCH_HEIGHT)
+	var target_cam_y = lerp(CROUCH_EYE_HEIGHT, STAND_EYE_HEIGHT, t)
+	var cam_pos = camera.position
+	cam_pos.y = lerp(cam_pos.y, target_cam_y, delta * CROUCH_LERP)
+	camera.position = cam_pos
+
+
+func _wants_crouch() -> bool:
+	if fly_mode:
+		return false
+	if settings_always_crouch:
+		return not Input.is_action_pressed("Sprint")
+	return Input.is_action_pressed("Crouch")
+
+
+func _can_stand_up() -> bool:
+	var world = get_viewport().find_world_3d()
+	if world == null:
+		return false
+	var space_state = world.direct_space_state
+	if space_state == null:
+		return false
+
+	# Feet are at origin.y since position.y is always 0
+	var feet_y = global_transform.origin.y - (CROUCH_HEIGHT * 0.5)
+	var ray_start = Vector3(global_transform.origin.x, feet_y + 0.1, global_transform.origin.z)
+	var ray_end = Vector3(global_transform.origin.x, feet_y + STAND_HEIGHT, global_transform.origin.z)
+
+	var query = PhysicsRayQueryParameters3D.create(ray_start, ray_end, collision_mask)
+	query.exclude = [self]
+	var result = space_state.intersect_ray(query)
+	return result.is_empty()
+
 
 func _process_scroll(direction: int):
 	if Input.is_action_pressed("Cam Zoom Modifier"):
 		target_fov = clamp(target_fov - (direction * ZOOM_STEP_SPEED), MIN_ZOOM_FOV, MAX_ZOOM_FOV)
-
 	if Input.is_action_pressed("Cam Tilt Modifier"):
 		target_tilt = clamp(target_tilt + (direction * TILT_SPEED), MIN_TILT, MAX_TILT)
-
 	if is_adjusting_smooth:
 		smooth_cam_lerp = clamp(smooth_cam_lerp + (direction * SMOOTH_LERP_STEP), MIN_SMOOTH_LERP, MAX_SMOOTH_LERP)
-
 	if is_adjusting_move:
 		accel_lerp = clamp(accel_lerp + (direction * ACCEL_LERP_STEP), MIN_ACCEL_LERP, MAX_ACCEL_LERP)
+
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor() and not fly_mode:
@@ -156,34 +202,38 @@ func _physics_process(delta: float) -> void:
 	var currentSpeed = SPEED
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		input_dir = Vector2(
-				Input.get_action_strength("Move Right") - Input.get_action_strength("Move Left"),
-				Input.get_action_strength("Move Forward") - Input.get_action_strength("Move Backward")
-			).normalized()
-			
+			Input.get_action_strength("Move Right") - Input.get_action_strength("Move Left"),
+			Input.get_action_strength("Move Forward") - Input.get_action_strength("Move Backward")
+		).normalized()
+
 		if Input.is_action_just_pressed("Jump") and is_on_floor() and not fly_mode:
 			velocity.y = JUMP_VELOCITY
-			
-		if Input.is_action_pressed("Sprint") || settings_autorun:
+
+		if Input.is_action_pressed("Sprint") or settings_autorun:
 			currentSpeed = SPRINT_SPEED
-			
-		if Input.is_action_pressed("Crouch") and not fly_mode:
-			currentSpeed = CROUCH_SPEED
+
+		var crouch_button_held := Input.is_action_pressed("Crouch")
+		if is_crouched and not fly_mode:
+			if crouch_button_held or not settings_always_crouch:
+				currentSpeed = CROUCH_SPEED
 
 	var forward = -camera.global_basis.z
 	var right = camera.global_basis.x
+	forward.y = 0.0
+	right.y = 0.0
+	forward = forward.normalized()
+	right = right.normalized()
+
 	var direction = (right * input_dir.x + forward * input_dir.y).normalized()
-	var vertical_input := 0.0
-	
+
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if fly_mode:
-			vertical_input += Input.get_action_strength("Move Up")
-			vertical_input -= Input.get_action_strength("Move Down")
+			var vertical_input := Input.get_action_strength("Move Up") - Input.get_action_strength("Move Down")
 			var target_y = vertical_input * currentSpeed
 			if smooth_move:
 				velocity.y = lerp(velocity.y, target_y, delta * accel_lerp)
 			else:
 				velocity.y = target_y
-
 
 	speed_mult_target = get_collision_speed_multiplier()
 	speed_mult = lerp(speed_mult, speed_mult_target, delta * 0.5)
@@ -210,6 +260,33 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+	# --- Crouch state machine ---
+	var wants := _wants_crouch()
+
+	if wants and not is_crouched:
+		# Crouch immediately — no clearance check needed to go down
+		is_crouched = true
+	elif not wants and is_crouched:
+		# Only stand up if there's room, but always attempt it when crouch is released
+		if _can_stand_up():
+			is_crouched = false
+
+	var target_height := CROUCH_HEIGHT if is_crouched else STAND_HEIGHT
+
+	if collision_shape.shape is CapsuleShape3D:
+		var new_height = lerp(collision_shape.shape.height, target_height, delta * CROUCH_LERP)
+		collision_shape.shape.height = new_height
+		# Keep position.y at 0 — we compensate by lifting the body when standing
+		collision_shape.position.y = 0.0
+
+		# When growing taller, push the body upward so feet stay on the floor
+		# rather than letting the capsule expand downward into it
+		if not is_crouched and is_on_floor():
+			var height_diff = STAND_HEIGHT - new_height
+			if height_diff > 0.01:
+				global_transform.origin.y += (STAND_HEIGHT - new_height) * delta * CROUCH_LERP * 0.5
+
+
 func get_collision_speed_multiplier() -> float:
 	var shortest_dist := COLLISION_CHECK_MAX
 	for ray in foot_probe.get_children():
@@ -221,3 +298,4 @@ func get_collision_speed_multiplier() -> float:
 
 func on_settings_applied(settings: Dictionary) -> void:
 	settings_autorun = settings["auto_run"]
+	settings_always_crouch = settings.get("always_crouch", false)

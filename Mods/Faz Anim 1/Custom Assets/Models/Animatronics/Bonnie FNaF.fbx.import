@@ -44,6 +44,11 @@ _subresources={
 "use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Aluminum.tres",
 "use_external/path": "uid://cqmifmmuddlrb"
 },
+"BetaFur": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Bonnie Fur.tres",
+"use_external/path": "uid://cuyaul4h7tsd6"
+},
 "BlackWood": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Black and Wood.tres",

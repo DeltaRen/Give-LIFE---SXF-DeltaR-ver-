@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://laghbmrbyc0k"]
+
+[ext_resource type="Texture2D" uid="uid://cflloldvnq38i" path="res://Mods/Faz Anim 1/Custom Assets/Textures/ArcadeMachines.webp" id="1_menxu"]
+[ext_resource type="Texture2D" uid="uid://6ind3itsmu4g" path="res://Mods/Faz Anim 2/Custom Assets/Textures/painted_plaster_wall_rough_4k.jpg" id="2_xux2n"]
+
+[resource]
+albedo_texture = ExtResource("1_menxu")
+roughness = 0.5
+roughness_texture = ExtResource("2_xux2n")
+normal_enabled = true

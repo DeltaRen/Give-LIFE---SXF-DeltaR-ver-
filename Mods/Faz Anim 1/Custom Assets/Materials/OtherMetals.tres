@@ -1,8 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://uf460btwh83m"]
 
-[ext_resource type="Texture2D" uid="uid://d2drunpdl0dfu" path="res://Mods/Faz Anim 1/Custom Assets/Textures/OtherMetals_Diffuse.png" id="1_5po1s"]
-[ext_resource type="Texture2D" uid="uid://bd5rvp3lqmv4b" path="res://Mods/Faz Anim 1/Custom Assets/Textures/OtherMetals_Normal.png" id="2_ti5fy"]
-[ext_resource type="Texture2D" uid="uid://dqax0gpftgn3j" path="res://Mods/Faz Anim 1/Custom Assets/Textures/OtherMetals_Roughness.png" id="3_jdxr3"]
+[ext_resource type="Texture2D" uid="uid://b4ui1uf2gsjd4" path="res://Mods/Faz Anim 1/Custom Assets/Textures/OtherMetals_Diffuse.webp" id="1_5po1s"]
+[ext_resource type="Texture2D" uid="uid://lc7hmjrtfery" path="res://Mods/Faz Anim 1/Custom Assets/Textures/OtherMetals_Normal.webp" id="2_ti5fy"]
+[ext_resource type="Texture2D" uid="uid://rq4bns4ssnva" path="res://Mods/Faz Anim 1/Custom Assets/Textures/OtherMetals_Roughness.webp" id="3_jdxr3"]
 
 [resource]
 albedo_texture = ExtResource("1_5po1s")

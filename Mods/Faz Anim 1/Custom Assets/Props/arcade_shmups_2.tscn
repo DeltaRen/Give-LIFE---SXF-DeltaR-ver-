@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://uuwcjsls7d6h"]
+
+[ext_resource type="PackedScene" uid="uid://eqca1sm2jv4c" path="res://Mods/Faz Anim 1/Custom Assets/Models/Props/Arcade Shmups 2.glb" id="1_a5kpg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5h76n"]
+size = Vector3(1.4625244, 3.4752197, 1.9257813)
+
+[node name="Arcade Shmups 2" type="Node3D" unique_id=2050508822]
+
+[node name="Arcade Shmups 2" parent="." unique_id=1539526315 instance=ExtResource("1_a5kpg")]
+transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1606867892]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=633486841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4850464, -0.03289795, 0.032226563)
+shape = SubResource("BoxShape3D_5h76n")

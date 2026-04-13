@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://4rbpgcqwdqfu"
-path="res://.godot/imported/Map_wood_floor_worn_diff_4k.jpg-d7246ce566a143d015726c4c3a61dfca.ctex"
+path.s3tc="res://.godot/imported/Map_wood_floor_worn_diff_4k.jpg-d7246ce566a143d015726c4c3a61dfca.s3tc.ctex"
+path.etc2="res://.godot/imported/Map_wood_floor_worn_diff_4k.jpg-d7246ce566a143d015726c4c3a61dfca.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "1fbd702c416f8039d2c371ebc7b93de5"
@@ -14,11 +16,11 @@ generator_parameters={
 [deps]
 
 source_file="res://Mods/Faz Anim 1/Custom Assets/Models/Maps/Map_wood_floor_worn_diff_4k.jpg"
-dest_files=["res://.godot/imported/Map_wood_floor_worn_diff_4k.jpg-d7246ce566a143d015726c4c3a61dfca.ctex"]
+dest_files=["res://.godot/imported/Map_wood_floor_worn_diff_4k.jpg-d7246ce566a143d015726c4c3a61dfca.s3tc.ctex", "res://.godot/imported/Map_wood_floor_worn_diff_4k.jpg-d7246ce566a143d015726c4c3a61dfca.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +42,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

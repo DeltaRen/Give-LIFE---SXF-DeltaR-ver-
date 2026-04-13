@@ -1,8 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://0lslopxvfmik"]
 
-[ext_resource type="Texture2D" uid="uid://b4r72qrwixeyk" path="res://Mods/Faz Anim 1/Custom Assets/Textures/FoxyFur.png" id="1_sf6nd"]
-[ext_resource type="Texture2D" uid="uid://dxct1eqrft7nr" path="res://Mods/Faz Anim 1/Custom Assets/Textures/FoxyFur_Normal.png" id="2_ail65"]
-[ext_resource type="Texture2D" uid="uid://hr6y1abcfn1t" path="res://Mods/Faz Anim 1/Custom Assets/Textures/FoxyFur_Mask.png" id="3_qyuv8"]
+[ext_resource type="Texture2D" path="res://Mods/Faz Anim 1/Custom Assets/Textures/FoxyFur.webp" id="1_sf6nd"]
+[ext_resource type="Texture2D" path="res://Mods/Faz Anim 1/Custom Assets/Textures/FoxyFur_Normal.webp" id="2_ail65"]
+[ext_resource type="Texture2D" path="res://Mods/Faz Anim 1/Custom Assets/Textures/FoxyFur_Mask.webp" id="3_qyuv8"]
 
 [resource]
 albedo_texture = ExtResource("1_sf6nd")

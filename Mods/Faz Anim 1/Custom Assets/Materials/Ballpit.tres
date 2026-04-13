@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bl4tcj34beui1"]
+
+[ext_resource type="Texture2D" uid="uid://duwb3mg1nu4x" path="res://Mods/Faz Anim 1/Custom Assets/Textures/ballpit.webp" id="1_eyo7s"]
+[ext_resource type="Texture2D" uid="uid://bjy5epihbagj0" path="res://Mods/Faz Anim 1/Custom Assets/Textures/ballpitNorm.webp" id="2_s843a"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_eyo7s")
+roughness = 0.65
+normal_enabled = true
+normal_scale = 0.21
+normal_texture = ExtResource("2_s843a")

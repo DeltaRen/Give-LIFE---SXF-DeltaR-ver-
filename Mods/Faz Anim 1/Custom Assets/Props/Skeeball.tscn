@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bfnluxxq42wsd"]
+
+[ext_resource type="PackedScene" uid="uid://hba1hepsiti1" path="res://Mods/Faz Anim 1/Custom Assets/Models/Props/Skee Ball.glb" id="1_yl8jd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5h76n"]
+size = Vector3(2.2272034, 1.0331116, 7.777954)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oosfw"]
+size = Vector3(2.1676025, 2.7391357, 1.5359192)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0juli"]
+size = Vector3(2.2115479, 3.789917, 0.5698242)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nunjn"]
+size = Vector3(2.1952515, 2.2471924, 1.4094238)
+
+[node name="Skeeball" type="Node3D" unique_id=2050508822]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1606867892]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=633486841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0008392334, -0.46995544, 1.7835083)
+shape = SubResource("BoxShape3D_5h76n")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1087322986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023742676, 0.8695679, 4.8923187)
+shape = SubResource("BoxShape3D_oosfw")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=428908151]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0026245117, 1.3949585, 5.3811035)
+shape = SubResource("BoxShape3D_0juli")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=312424275]
+transform = Transform3D(1, 0, 0, 0, 0.8788171, -0.47715878, 0, 0.47715878, 0.8788171, 0.0057678223, 0.64054686, 3.8768942)
+shape = SubResource("BoxShape3D_nunjn")
+
+[node name="Skee Ball" parent="." unique_id=2113403741 instance=ExtResource("1_yl8jd")]
+transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0, 0, 0)

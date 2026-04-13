@@ -16,9 +16,15 @@ func _ready():
 	initialRot = rotation
 	initialScale = scale
 	
-	var anim_player := get_child(0).get_node("AnimationPlayer") as AnimationPlayer
-	#If you get an error here make your model the first child in the list
-	
+	var anim_player: AnimationPlayer
+	for child in get_children():
+		if child is AnimationPlayer:
+			anim_player = child
+			break
+		anim_player = child.get_node_or_null("AnimationPlayer")
+		if anim_player:
+			break
+			
 	anim_tree = AnimationTree.new()
 	add_child(anim_tree)
 	anim_tree.anim_player = anim_player.get_path()

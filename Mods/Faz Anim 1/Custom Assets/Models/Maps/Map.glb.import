@@ -21,7 +21,7 @@ nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
-meshes/ensure_tangents=true
+meshes/ensure_tangents=false
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
@@ -39,6 +39,11 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
+"Alluminum": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Aluminum.tres",
+"use_external/path": "uid://cqmifmmuddlrb"
+},
 "Brown Carpet": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Carpet Brown.tres",
@@ -118,6 +123,14 @@ _subresources={
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Models/Maps/Props.res",
 "save_to_file/path": "uid://2fad3e7e6xfi"
+}
+},
+"nodes": {
+"PATH:Main Restaurant": {
+"generate/physics": true
+},
+"PATH:Props": {
+"generate/physics": true
 }
 }
 }

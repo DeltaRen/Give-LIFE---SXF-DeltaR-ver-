@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://why5jbm8bm3"]
+
+[ext_resource type="Texture2D" uid="uid://gr7nqi834pfd" path="res://Mods/Faz Anim 1/Custom Assets/Textures/Skee Ball.webp" id="1_brhw6"]
+[ext_resource type="Texture2D" uid="uid://bfc8tmt8hejg5" path="res://Mods/Faz Anim 1/Custom Assets/Textures/Skee Ball NRM.webp" id="2_ygetj"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_brhw6")
+roughness = 0.65
+normal_enabled = true
+normal_scale = 1.79
+normal_texture = ExtResource("2_ygetj")
