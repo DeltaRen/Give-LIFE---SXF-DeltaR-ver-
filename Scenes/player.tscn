@@ -11,7 +11,7 @@ height = 3.0
 
 [node name="Player" type="Node3D" unique_id=318127762]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=964867140 groups=["SettingsReceivers"]]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=964867140 groups=["Player", "SettingsReceivers"]]
 collision_layer = 2
 script = ExtResource("1_fkybt")
 
@@ -40,6 +40,11 @@ spot_range = 20.0
 spot_attenuation = 2.0
 spot_angle_attenuation = 1.32065e-05
 script = ExtResource("5_f1ek2")
+
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Camera3D" unique_id=157651667]
+target_position = Vector3(0, 0, -5)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1342189859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

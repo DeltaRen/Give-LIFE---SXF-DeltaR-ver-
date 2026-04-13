@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 const SPEED: float = 5.0
 const SPRINT_SPEED: float = 9.0
@@ -71,6 +72,8 @@ var is_adjusting_move: bool = false
 
 var settings_autorun: bool = false
 @export var night_mode: bool = false
+@export var debug_mode: bool = false
+@onready var interact_ray: RayCast3D = $Camera3D/RayCast3D
 
 var is_crouched: bool = false
 
@@ -97,11 +100,16 @@ func _input(event):
 			_process_scroll(1)
 		if Input.is_action_just_pressed("Scroll Down (Mouse)"):
 			_process_scroll(-1)
+		if event.is_action_pressed("Interact"):
+			if interact_ray.is_colliding():
+				var collider = interact_ray.get_collider()
+				if collider.has_method("interact"):
+					collider.interact()
 
 func _process(delta: float) -> void:
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 		return
-
+	
 	var look_x = Input.get_action_strength("Look Right") - Input.get_action_strength("Look Left")
 	var look_y = Input.get_action_strength("Look Down") - Input.get_action_strength("Look Up")
 	if abs(look_x) > 0.05 or abs(look_y) > 0.05:
@@ -369,24 +377,24 @@ func _apply_air_strafe(wish_dir: Vector3, delta: float) -> void:
 	var max_step = deg_to_rad(AIR_ANGLE_TRACK_SPEED) * delta
 	air_move_angle += clamp(angle_to_target, -max_step, max_step)
 
-	# --- Visuals ---
-	var debug_origin = camera.global_position + (-camera.global_basis.z * 1.5) + (Vector3.DOWN * 0.3)
-	var lines_to_draw = []
+	if debug_mode:
+		var debug_origin = camera.global_position + (-camera.global_basis.z * 1.5) + (Vector3.DOWN * 0.3)
+		var lines_to_draw = []
 
-	var target_dir = Vector3(-sin(track_target), 0, -cos(track_target))
-	# Visual flare: Make the Blue line Cyan if it's in the "Boost Zone"
-	var blue_color = Color.CYAN if (steering_diff > 0.1 and steering_diff <= tolerance_rad) else Color.BLUE
-	lines_to_draw.append({"start": debug_origin, "end": debug_origin + target_dir * 0.5, "color": blue_color})
+		var target_dir = Vector3(-sin(track_target), 0, -cos(track_target))
+		# Visual flare: Make the Blue line Cyan if it's in the "Boost Zone"
+		var blue_color = Color.CYAN if (steering_diff > 0.1 and steering_diff <= tolerance_rad) else Color.BLUE
+		lines_to_draw.append({"start": debug_origin, "end": debug_origin + target_dir * 0.5, "color": blue_color})
 
-	var move_dir = Vector3(-sin(air_move_angle), 0, -cos(air_move_angle))
-	lines_to_draw.append({"start": debug_origin, "end": debug_origin + move_dir * 0.5, "color": Color.GREEN})
+		var move_dir = Vector3(-sin(air_move_angle), 0, -cos(air_move_angle))
+		lines_to_draw.append({"start": debug_origin, "end": debug_origin + move_dir * 0.5, "color": Color.GREEN})
 
-	var l_bound = Vector3(-sin(air_move_angle + tolerance_rad), 0, -cos(air_move_angle + tolerance_rad))
-	var r_bound = Vector3(-sin(air_move_angle - tolerance_rad), 0, -cos(air_move_angle - tolerance_rad))
-	lines_to_draw.append({"start": debug_origin, "end": debug_origin + l_bound * 0.4, "color": Color.RED})
-	lines_to_draw.append({"start": debug_origin, "end": debug_origin + r_bound * 0.4, "color": Color.RED})
+		var l_bound = Vector3(-sin(air_move_angle + tolerance_rad), 0, -cos(air_move_angle + tolerance_rad))
+		var r_bound = Vector3(-sin(air_move_angle - tolerance_rad), 0, -cos(air_move_angle - tolerance_rad))
+		lines_to_draw.append({"start": debug_origin, "end": debug_origin + l_bound * 0.4, "color": Color.RED})
+		lines_to_draw.append({"start": debug_origin, "end": debug_origin + r_bound * 0.4, "color": Color.RED})
 
-	_draw_debug_lines(lines_to_draw)
+		_draw_debug_lines(lines_to_draw)
 
 	velocity.x = -sin(air_move_angle) * air_horiz_speed
 	velocity.z = -cos(air_move_angle) * air_horiz_speed
