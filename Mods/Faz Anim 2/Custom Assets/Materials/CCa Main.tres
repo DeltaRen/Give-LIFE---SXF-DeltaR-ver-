@@ -1,11 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://b51m30fupimsx"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b51m30fupimsx"]
 
 [ext_resource type="Shader" uid="uid://des8a3glk3x31" path="res://Shaders/GL_Paintable.gdshader" id="1_ucacr"]
-[ext_resource type="Texture2D" uid="uid://bx6ndjo5idfl2" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Chica_BlacklightMap.png" id="2_2sgth"]
-[ext_resource type="Texture2D" uid="uid://fldji252qpey" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Chica_Main.png" id="3_smnaj"]
-[ext_resource type="Texture2D" uid="uid://cev65j6tjoli8" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Chica_MaskMap.png" id="4_cjnnf"]
-[ext_resource type="Texture2D" uid="uid://bnrc4uavbcu8f" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Chica_NormalMap.png" id="5_648ti"]
-[ext_resource type="Texture2D" uid="uid://c6rqou6artl3b" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Chica_PaintMap.png" id="6_y0k8b"]
+[ext_resource type="Texture2D" uid="uid://ddy6r4pbb8n0i" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Chica_BlacklightMap.webp" id="2_2sgth"]
+[ext_resource type="Texture2D" uid="uid://1wjjilqowlsc" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Chica_Main.webp" id="3_smnaj"]
+[ext_resource type="Texture2D" uid="uid://wtbdj4fbofi2" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Chica_MaskMap.webp" id="4_cjnnf"]
+[ext_resource type="Texture2D" uid="uid://bx6sucwqbehlt" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Chica_NormalMap.webp" id="5_648ti"]
+[ext_resource type="Texture2D" uid="uid://d00dfn73wunoq" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Chica_PaintMap.webp" id="6_y0k8b"]
 
 [resource]
 render_priority = 0

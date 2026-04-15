@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c7vyqnf1kyenw"]
+
+[ext_resource type="Texture2D" uid="uid://byychg108nsm1" path="res://Mods/Faz Anim 2/Custom Assets/Textures/lightbulb off credit Mārtiņš Akmanis.webp" id="1_odwte"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_odwte")
+emission_energy_multiplier = 0.0
+emission_texture = ExtResource("1_odwte")

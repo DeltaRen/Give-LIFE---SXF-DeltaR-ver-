@@ -1,11 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://ib27jt1hintu"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ib27jt1hintu"]
 
 [ext_resource type="Shader" uid="uid://des8a3glk3x31" path="res://Shaders/GL_Paintable.gdshader" id="1_iis6l"]
-[ext_resource type="Texture2D" uid="uid://heaosayfawt" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cupcake_BlacklightMap.png" id="2_60akh"]
-[ext_resource type="Texture2D" uid="uid://d2njms16g6vfl" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cupcake_Main.png" id="3_j8pus"]
-[ext_resource type="Texture2D" uid="uid://ds153o06s3h2o" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cupcake_MaskMap.png" id="4_rh7jn"]
-[ext_resource type="Texture2D" uid="uid://mib065wdrh1d" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cupcake_NormalMap.png" id="5_ls7ms"]
-[ext_resource type="Texture2D" uid="uid://ynfjrueskv6u" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cupcake_PaintMap.png" id="6_0ewx8"]
+[ext_resource type="Texture2D" uid="uid://dlvxeyc1efivi" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cupcake_BlacklightMap.webp" id="2_60akh"]
+[ext_resource type="Texture2D" uid="uid://cbjwpacdlwade" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cupcake_Main.webp" id="3_j8pus"]
+[ext_resource type="Texture2D" uid="uid://d3fohor1in1as" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cupcake_MaskMap.webp" id="4_rh7jn"]
+[ext_resource type="Texture2D" uid="uid://b0ra388jf7liv" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cupcake_NormalMap.webp" id="5_ls7ms"]
+[ext_resource type="Texture2D" uid="uid://c27cexdpe6akv" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cupcake_PaintMap.webp" id="6_0ewx8"]
 
 [resource]
 render_priority = 0

@@ -1,8 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://lfyef8ammm8u"]
 
-[ext_resource type="Texture2D" uid="uid://b7upgd7x3q10y" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Burga Chair_Diffuse.png" id="1_th1en"]
-[ext_resource type="Texture2D" uid="uid://cffis7qtuo0c7" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Burga Chair_Mask.png" id="2_oo6b2"]
-[ext_resource type="Texture2D" uid="uid://c1dfcyc3sgo4w" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Burga Chair_Normal.png" id="3_asjsv"]
+[ext_resource type="Texture2D" uid="uid://b7upgd7x3q10y" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Burga Chair_Diffuse.webp" id="1_th1en"]
+[ext_resource type="Texture2D" uid="uid://cffis7qtuo0c7" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Burga Chair_Mask.webp" id="2_oo6b2"]
+[ext_resource type="Texture2D" uid="uid://c1dfcyc3sgo4w" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Burga Chair_Normal.webp" id="3_asjsv"]
 
 [resource]
 albedo_texture = ExtResource("1_th1en")
