@@ -47,12 +47,12 @@ target_position = Vector3(0, 0, -5)
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="Night Light" type="OmniLight3D" parent="CharacterBody3D/Camera3D" unique_id=1852714775]
+[node name="Night Light" type="OmniLight3D" parent="CharacterBody3D/Camera3D" unique_id=1852714775 groups=["NightLight"]]
 transform = Transform3D(1, -1.4843238e-10, 0, -3.2002845e-11, 1, 0, 0, 0, 1, 0.00047233654, -0.49488258, -0.38758487)
 light_energy = 0.2
-light_size = 1.0
+light_size = 0.204
 light_specular = 0.0
-omni_range = 30.0
+omni_range = 15.0
 script = ExtResource("5_fkybt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1342189859]

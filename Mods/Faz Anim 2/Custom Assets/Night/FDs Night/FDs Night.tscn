@@ -1,18 +1,29 @@
 [gd_scene format=3 uid="uid://cib53a5oq3jtv"]
 
 [ext_resource type="PackedScene" uid="uid://c5dh0vxqdur1v" path="res://Scenes/player.tscn" id="1_em2f2"]
-[ext_resource type="Script" uid="uid://ct5cftkh6yj2v" path="res://New New/Scripts/GL_NightMode.gd" id="1_t72bn"]
+[ext_resource type="Script" uid="uid://ct5cftkh6yj2v" path="res://Mods/Faz Anim 2/Custom Assets/Scripts/Night_Master.gd" id="1_t72bn"]
+[ext_resource type="Texture2D" uid="uid://bsghw3q1squ6b" path="res://Mods/Faz Anim 2/Custom Assets/Textures/kloppenheim_07_puresky_2k.hdr" id="3_4it3c"]
 [ext_resource type="PackedScene" uid="uid://53p73rn2nase" path="res://Mods/Faz Anim 2/Custom Assets/Night/Map.tscn" id="3_begtv"]
 [ext_resource type="LightmapGIData" uid="uid://2p7utu7af8oe" path="res://Mods/Faz Anim 2/Custom Assets/Night/FDs Night/FDs.lmbake" id="3_gifk4"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dpa8fy0dsc7vi" path="res://Mods/Faz Anim 2/Custom Assets/Night/FDs Night/FDs.occ" id="3_m4cyl"]
-[ext_resource type="Script" uid="uid://ogfk024h6qmr" path="res://New New/Scripts/GL_3DButton.gd" id="28_v23dj"]
+[ext_resource type="PackedScene" uid="uid://de7xn7up267hb" path="res://Mods/Faz Anim 2/Custom Assets/Models/Animatronics/CCa/CCA Night.glb" id="7_uctub"]
+[ext_resource type="Script" uid="uid://d2oc8gpodw0eh" path="res://Mods/Faz Anim 2/Custom Assets/Scripts/Night_CCA.gd" id="9_tc6ck"]
+[ext_resource type="Script" uid="uid://ogfk024h6qmr" path="res://Mods/Faz Anim 2/Custom Assets/Scripts/Night_StartButton.gd" id="28_v23dj"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tc6ck"]
+panorama = ExtResource("3_4it3c")
+
+[sub_resource type="Sky" id="Sky_lqjpi"]
+sky_material = SubResource("PanoramaSkyMaterial_tc6ck")
+radiance_size = 4
 
 [sub_resource type="Environment" id="Environment_pmvaq"]
-background_mode = 1
-background_energy_multiplier = 1.5
+background_mode = 2
+background_energy_multiplier = 0.03
+sky = SubResource("Sky_lqjpi")
 sky_rotation = Vector3(0, -1.07338, 0)
-ambient_light_source = 1
-reflected_light_source = 1
+ambient_light_source = 3
+reflected_light_source = 2
 tonemap_mode = 4
 ssr_enabled = true
 ssil_enabled = true
@@ -2120,13 +2131,6 @@ size = Vector3(12.4383, 8.5274, 14.7652)
 box_projection = true
 enable_shadows = true
 
-[node name="Map Lights" type="Node3D" parent="Map" unique_id=2059291326]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map/Map Lights" unique_id=287649736]
-transform = Transform3D(0.56650466, -0.08630771, -0.8195264, 0.7811415, 0.37299994, 0.5006886, 0.26247, -0.92380846, 0.27872476, -23.596455, 23.325, 0)
-light_color = Color(0.2, 0.15686275, 0.34117648, 1)
-shadow_enabled = true
-
 [node name="Map" parent="Map" unique_id=325213975 instance=ExtResource("3_begtv")]
 
 [node name="Interactables" type="Node" parent="Map" unique_id=2105204478]
@@ -2137,3 +2141,22 @@ script = ExtResource("28_v23dj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Interactables/Area3D" unique_id=1845113169]
 shape = SubResource("BoxShape3D_0ms5e")
+
+[node name="Characters" type="Node" parent="Map" unique_id=438414984]
+
+[node name="CCA Night" parent="Map/Characters" unique_id=1776303626 instance=ExtResource("7_uctub")]
+transform = Transform3D(0.026047226, 0, -0.14772113, 0, 0.14999995, 0, 0.14772113, 0, 0.026047226, -13.930094, -1.1920929e-06, -24.21699)
+script = ExtResource("9_tc6ck")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map" unique_id=1960076591]
+transform = Transform3D(0.039183717, 0.67597616, -0.735881, 0.055635743, 0.73382825, 0.677053, 0.99768186, -0.06747077, -0.008854318, -48.404068, 20.167963, 0)
+light_color = Color(0.18247178, 0.20552349, 0.25386143, 1)
+light_energy = 2.086
+light_angular_distance = 6.12
+light_specular = 0.111
+light_bake_mode = 1
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Map" unique_id=2095974999]
+transform = Transform3D(1, 0, 0, 0, 0.80385685, 0.5948228, 0, -0.5948228, 0.80385685, 0, 0, 0)
+visible = false

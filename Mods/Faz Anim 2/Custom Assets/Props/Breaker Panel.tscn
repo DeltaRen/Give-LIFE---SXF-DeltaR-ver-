@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://5krm78ic745i"]
+
+[ext_resource type="PackedScene" uid="uid://ce3jrcw6m55h4" path="res://Mods/Faz Anim 2/Custom Assets/Models/Props/Breaker Panel.glb" id="1_0cout"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lw830"]
+size = Vector3(1.9537735, 3.0210843, 0.16270638)
+
+[node name="Breaker Panel" type="Node3D" unique_id=1776841204]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1333178638]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1430388740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0003092084, 0.0064596673, -0.16264631)
+shape = SubResource("BoxShape3D_lw830")
+
+[node name="Breaker Panel" parent="." unique_id=1956976919 instance=ExtResource("1_0cout")]
+transform = Transform3D(0.61, 0, 0, 0, 0.61, 0, 0, 0, 0.61, 0, 0, 0)

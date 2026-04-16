@@ -1,0 +1,75 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://de7xn7up267hb"
+path="res://.godot/imported/CCA Night.glb-a5af5b4fdf7fa0647805b52007726de9.scn"
+
+[deps]
+
+source_file="res://Mods/Faz Anim 2/Custom Assets/Models/Animatronics/CCa/CCA Night.glb"
+dest_files=["res://.godot/imported/CCA Night.glb-a5af5b4fdf7fa0647805b52007726de9.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Alt Cylinders": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Alt Cylinders.tres",
+"use_external/path": "uid://birk5r0s5o8d0"
+},
+"Chica Main": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/CCa Main.tres",
+"use_external/path": "uid://b51m30fupimsx"
+},
+"Cylinders": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Cylinders.tres",
+"use_external/path": "uid://k7jss4yy3n64"
+},
+"Eyebrow Hair": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/CCa Hair B.tres",
+"use_external/path": "uid://5ptphm2yn2t8"
+},
+"The Head": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/CCa Mech Head.tres",
+"use_external/path": "uid://omgcl80v3kxt"
+},
+"Yellow Hair": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/CCa Hair A.tres",
+"use_external/path": "uid://bimexjbcml72"
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=0

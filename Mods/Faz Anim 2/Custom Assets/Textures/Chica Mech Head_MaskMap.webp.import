@@ -3,11 +3,17 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cry08e78wqa51"
-valid=false
+path.s3tc="res://.godot/imported/Chica Mech Head_MaskMap.webp-251859dc530cf790edbe4ba1dd7f0a72.s3tc.ctex"
+path.etc2="res://.godot/imported/Chica Mech Head_MaskMap.webp-251859dc530cf790edbe4ba1dd7f0a72.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Mods/Faz Anim 2/Custom Assets/Textures/Chica Mech Head_MaskMap.webp"
+dest_files=["res://.godot/imported/Chica Mech Head_MaskMap.webp-251859dc530cf790edbe4ba1dd7f0a72.s3tc.ctex", "res://.godot/imported/Chica Mech Head_MaskMap.webp-251859dc530cf790edbe4ba1dd7f0a72.etc2.ctex"]
 
 [params]
 

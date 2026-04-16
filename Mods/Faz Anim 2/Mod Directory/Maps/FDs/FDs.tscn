@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://53p73rn2nase" path="res://Mods/Faz Anim 2/Custom Assets/Night/Map.tscn" id="11_ytmy7"]
 [ext_resource type="Script" uid="uid://cyoki6p7gu41e" path="res://Scripts/Animatables/GL_Light_Projector.gd" id="20_0fewr"]
 [ext_resource type="PackedScene" uid="uid://dcvouknjqqb8l" path="res://Mods/Faz Anim 2/Mod Directory/Animatables/FD.tscn" id="26_sceim"]
-[ext_resource type="Script" uid="uid://ogfk024h6qmr" path="res://New New/Scripts/GL_3DButton.gd" id="29_adudo"]
+[ext_resource type="Script" uid="uid://ogfk024h6qmr" path="res://Mods/Faz Anim 2/Custom Assets/Scripts/Night_StartButton.gd" id="29_adudo"]
 [ext_resource type="Script" uid="uid://cwud2mi33aa5t" path="res://Scripts/Animatables/GL_ChaseLight.gd" id="31_vjihw"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_u04dm"]
