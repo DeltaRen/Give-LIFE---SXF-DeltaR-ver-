@@ -15,6 +15,10 @@ const SWITCH_ALT_ANGLES := [-50.0, 0.0]
 const ALT_SWITCHES: Array = [1, 4, 5, 7, 10, 11]
 const SWITCH_COUNT := 12
 const PAIRED_SWITCHES := {2:3, 4:5, 8:9, 10:11}
+const SOUND_PATH := "res://Mods/Faz Anim 2/Custom Assets/Sounds/"
+const DOOR_OPEN_SOUNDS := 10
+const DOOR_CLOSE_SOUNDS := 11
+const SWITCH_SOUNDS := 15
 
 var door_bone_idx: int
 var switch_bone_indices: Array = []
@@ -26,8 +30,12 @@ var panel_ready_to_close := false
 var is_manipulated := false
 var night_master = null
 var player: Player
+var speaker: AudioStreamPlayer3D
+
 
 func _ready() -> void:
+	speaker = AudioStreamPlayer3D.new()
+	add_child(speaker)
 	door_bone_idx = skeleton.find_bone("Door")
 	for i in SWITCH_COUNT:
 		switch_bone_indices.append(skeleton.find_bone("Switch %d" % i))
@@ -38,6 +46,11 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and not is_animating and is_open:
 		_handle_space_press()
+
+func _play_sound(prefix: String, count: int) -> void:
+	var path = SOUND_PATH + prefix + str(randi() % count) + ".mp3"
+	speaker.stream = load(path)
+	speaker.play()
 
 func interact() -> void:
 	if is_manipulated or is_animating:
@@ -50,7 +63,7 @@ func interact() -> void:
 		animate_door(false)
 
 func _handle_space_press() -> void:
-	if is_switch_animating:
+	if is_switch_animating or is_manipulated:
 		return
 	if panel_ready_to_close or _all_switches_closed():
 		animate_door(false)
@@ -81,8 +94,10 @@ func manipulate_end() -> void:
 
 func animate_door(opening: bool) -> void:
 	is_animating = true
-	if opening and not is_manipulated:
-		player.freeze_player()
+	if opening:
+		_play_sound("BreakerOpen", DOOR_OPEN_SOUNDS)
+		if not is_manipulated:
+			player.freeze_player()
 	var tween = create_tween()
 	tween.tween_method(_set_door_rotation, 1.0 - float(opening), float(opening),
 		OPEN_ANIM_TIME if opening else CLOSE_ANIM_TIME)
@@ -90,6 +105,7 @@ func animate_door(opening: bool) -> void:
 		is_open = opening
 		is_animating = false
 		if not is_open:
+			_play_sound("BreakerClose", DOOR_CLOSE_SOUNDS)
 			panel_ready_to_close = false
 			if not is_manipulated:
 				player.unfreeze_player()
@@ -105,6 +121,7 @@ func _animation_done():
 
 func animate_switch(idx: int) -> void:
 	is_switch_animating = true
+	_play_sound("Breaker", SWITCH_SOUNDS)
 	var tween = create_tween()
 	tween.tween_method(func(t): _set_switch_rotation(idx, t), 1.0, 0.0, SWITCH_CLOSE_TIME)
 	tween.tween_callback(func():

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://da2ho1uh7ak6y"
+path="res://.godot/imported/BreakerClose7.mp3-b5d231d8b751e6f2571ad6c4fe50a340.mp3str"
+
+[deps]
+
+source_file="res://Mods/Faz Anim 2/Custom Assets/Sounds/BreakerClose7.mp3"
+dest_files=["res://.godot/imported/BreakerClose7.mp3-b5d231d8b751e6f2571ad6c4fe50a340.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

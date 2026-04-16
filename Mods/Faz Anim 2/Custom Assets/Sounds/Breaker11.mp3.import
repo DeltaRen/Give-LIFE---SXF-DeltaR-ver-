@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://de80myfe7nfoc"
+path="res://.godot/imported/Breaker11.mp3-4cf9e47a3cf25cc17b9b46de6786ff29.mp3str"
+
+[deps]
+
+source_file="res://Mods/Faz Anim 2/Custom Assets/Sounds/Breaker11.mp3"
+dest_files=["res://.godot/imported/Breaker11.mp3-4cf9e47a3cf25cc17b9b46de6786ff29.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

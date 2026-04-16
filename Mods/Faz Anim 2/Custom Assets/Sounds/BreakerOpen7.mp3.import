@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dpgxon0eumdg7"
+path="res://.godot/imported/BreakerOpen7.mp3-8de0462b59ebe939ce287ff812a40530.mp3str"
+
+[deps]
+
+source_file="res://Mods/Faz Anim 2/Custom Assets/Sounds/BreakerOpen7.mp3"
+dest_files=["res://.godot/imported/BreakerOpen7.mp3-8de0462b59ebe939ce287ff812a40530.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

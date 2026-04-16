@@ -83,14 +83,14 @@ var positions = {
 	},
 }
 
-var currentLocation = "Pick Up"
+var currentLocation = "Pinball Room"
 var timer = 20
 
 @onready var anim_player = $AnimationPlayer
 const poses = 6
 
 func _ready() -> void:
-	pass 
+	move()
 
 
 func _process(delta: float) -> void:
@@ -103,7 +103,7 @@ func move() -> void:
 	causeFlicker()
 	
 	if currentLocation.contains("Breaker"):
-		endBreaker()
+		endBreaker() 
 	
 	var moves = positions[currentLocation]["Move"]
 	currentLocation = moves[randi() % moves.size()]

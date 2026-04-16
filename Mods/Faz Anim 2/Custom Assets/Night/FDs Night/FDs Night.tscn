@@ -2148,6 +2148,14 @@ shape = SubResource("BoxShape3D_0ms5e")
 transform = Transform3D(0.026047226, 0, -0.14772113, 0, 0.14999995, 0, 0.14772113, 0, 0.026047226, -13.930094, -1.1920929e-06, -24.21699)
 script = ExtResource("9_tc6ck")
 
+[node name="CCA Night2" parent="Map/Characters" unique_id=1571727885 instance=ExtResource("7_uctub")]
+transform = Transform3D(0.026047226, 0, -0.14772113, 0, 0.14999995, 0, 0.14772113, 0, 0.026047226, -13.930094, -1.1920929e-06, -24.21699)
+script = ExtResource("9_tc6ck")
+
+[node name="CCA Night3" parent="Map/Characters" unique_id=351384888 instance=ExtResource("7_uctub")]
+transform = Transform3D(0.026047226, 0, -0.14772113, 0, 0.14999995, 0, 0.14772113, 0, 0.026047226, -13.930094, -1.1920929e-06, -24.21699)
+script = ExtResource("9_tc6ck")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map" unique_id=1960076591]
 transform = Transform3D(0.039183717, 0.67597616, -0.735881, 0.055635743, 0.73382825, 0.677053, 0.99768186, -0.06747077, -0.008854318, -48.404068, 20.167963, 0)
 light_color = Color(0.18247178, 0.20552349, 0.25386143, 1)
