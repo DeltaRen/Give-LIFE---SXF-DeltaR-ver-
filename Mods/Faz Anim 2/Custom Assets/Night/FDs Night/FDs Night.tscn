@@ -43,7 +43,7 @@ adjustment_saturation = 1.3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ms5e"]
 
-[node name="Night Mode" type="Node3D" unique_id=2114037581]
+[node name="Night Mode" type="Node3D" unique_id=2114037581 groups=["NightMaster"]]
 script = ExtResource("1_t72bn")
 
 [node name="Player" parent="." unique_id=881293549 instance=ExtResource("1_em2f2")]

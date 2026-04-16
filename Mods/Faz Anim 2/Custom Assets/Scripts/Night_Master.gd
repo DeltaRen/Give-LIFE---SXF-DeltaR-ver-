@@ -1,4 +1,5 @@
 extends Node
+class_name NightMaster
 
 @onready var player : Player = $Player/CharacterBody3D
 

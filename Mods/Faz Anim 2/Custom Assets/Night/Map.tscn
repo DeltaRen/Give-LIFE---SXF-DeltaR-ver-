@@ -276,14 +276,14 @@ transform = Transform3D(0.9906052, 0, 0.13675301, 0, 1, 0, -0.13675301, 0, 0.990
 [node name="Cigarette Single Half Smoked2" parent="." unique_id=1863240229 instance=ExtResource("17_sfydg")]
 transform = Transform3D(0.7838886, 0, -0.6209015, 0, 1, 0, 0.6209015, 0, 0.7838886, -19.152857, 1.5680708, 4.8896766)
 
-[node name="Breaker Panel" parent="." unique_id=1853938161 instance=ExtResource("18_rim2d")]
+[node name="Breaker Panel" parent="." unique_id=1853938161 groups=["Breaker Office"] instance=ExtResource("18_rim2d")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -23.536503, 3.0561802, -14.999271)
 
-[node name="Breaker Panel2" parent="." unique_id=1209368029 instance=ExtResource("18_rim2d")]
+[node name="Breaker Panel2" parent="." unique_id=1209368029 groups=["Breaker Gallery"] instance=ExtResource("18_rim2d")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -20.288313, 3.0561802, -27.430923)
 
-[node name="Breaker Panel4" parent="." unique_id=1648727918 instance=ExtResource("18_rim2d")]
+[node name="Breaker Panel4" parent="." unique_id=1648727918 groups=["Breaker Outside"] instance=ExtResource("18_rim2d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.213982, 3.0561802, 3.1863186)
 
-[node name="Breaker Panel3" parent="." unique_id=1088241576 instance=ExtResource("18_rim2d")]
+[node name="Breaker Panel3" parent="." unique_id=1088241576 groups=["Breaker Magic Room"] instance=ExtResource("18_rim2d")]
 transform = Transform3D(-0.4035453, 0, -0.9149596, 0, 1, 0, 0.9149596, 0, -0.4035453, -6.54412, 3.0561798, -9.57739)

@@ -25,17 +25,10 @@ const MIN_ACCEL_LERP = 0.01
 const MAX_ACCEL_LERP = 2.5
 const ACCEL_LERP_STEP = 0.05
 
-# Maximum speed added per second when perfectly hugging the red line
 const AIR_STRAFE_BOOST: float = 5
-# Air strafe tuning
-# How fast the tracked movement angle chases the camera yaw (degrees per second)
 const AIR_ANGLE_TRACK_SPEED: float = 120.0
-# If the tracked angle is more than this many degrees away from camera yaw, bleed speed
 const AIR_ANGLE_TOLERANCE: float = 55.0
-# How fast speed bleeds when outside the tolerance window (fraction of speed per second)
 const AIR_DRAG_OUT_OF_WINDOW: float = 4
-# When a key is held, how strongly it biases the track target toward that key's world direction
-# (blends between camera yaw and key direction as the lerp target)
 const AIR_KEY_BIAS: float = 1
 
 const STAND_HEIGHT: float = 3.0
@@ -72,6 +65,7 @@ var is_adjusting_move: bool = false
 
 var settings_autorun: bool = false
 @export var night_mode: bool = false
+@export var frozen_mode: bool = false
 @export var debug_mode: bool = false
 @onready var interact_ray: RayCast3D = $Camera3D/RayCast3D
 
@@ -105,6 +99,12 @@ func _input(event):
 				var collider = interact_ray.get_collider()
 				if collider.has_method("interact"):
 					collider.interact()
+
+func freeze_player()-> void:
+	frozen_mode = true
+	
+func unfreeze_player()-> void:
+	frozen_mode = false
 
 func _process(delta: float) -> void:
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
@@ -222,13 +222,13 @@ func _physics_process(delta: float) -> void:
 
 	var input_dir = Vector2.ZERO
 	var currentSpeed = SPEED
-	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED and not frozen_mode:
 		input_dir = Vector2(
 			Input.get_action_strength("Move Right") - Input.get_action_strength("Move Left"),
 			Input.get_action_strength("Move Forward") - Input.get_action_strength("Move Backward")
 		).normalized()
-
-	if Input.is_action_just_pressed("Jump") and is_on_floor() and not fly_mode:
+	
+	if Input.is_action_just_pressed("Jump") and is_on_floor() and not fly_mode and not frozen_mode:
 		velocity.y = JUMP_VELOCITY
 		var horiz = Vector3(velocity.x, 0.0, velocity.z)
 		air_horiz_speed = horiz.length()

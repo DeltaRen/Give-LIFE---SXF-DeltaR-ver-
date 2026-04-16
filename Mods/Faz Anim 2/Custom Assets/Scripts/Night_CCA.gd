@@ -74,9 +74,9 @@ var positions = {
 	"Games Gallery In": {
 		"Pos": Vector3(-23.068, 0, -23.891),
 		"Rot": 115.8,
-		"Move": ["Gallery Breaker"]
+		"Move": ["Breaker Gallery"]
 	},
-	"Gallery Breaker": {
+	"Breaker Gallery": {
 		"Pos": Vector3(-21.106, 0, -27.367),
 		"Rot": -27.367,
 		"Move": ["Games Gallery Out"]
@@ -102,6 +102,9 @@ func move() -> void:
 	timer = randf_range(10, 20)
 	causeFlicker()
 	
+	if currentLocation.contains("Breaker"):
+		endBreaker()
+	
 	var moves = positions[currentLocation]["Move"]
 	currentLocation = moves[randi() % moves.size()]
 	global_position = positions[currentLocation]["Pos"]
@@ -112,6 +115,9 @@ func move() -> void:
 	anim_player.play(random_pose)
 	causeFlicker()
 	
+	if currentLocation.contains("Breaker"):
+		startBreaker()
+	
 	print("C. Ca Moved to " + currentLocation)
 	
 func causeFlicker() -> void:
@@ -119,3 +125,11 @@ func causeFlicker() -> void:
 		var dist = global_position.distance_to(light.global_position)
 		if dist <= light.omni_range:
 			light.flicker()
+			
+func startBreaker() -> void:
+	var breaker : Night_Breaker = get_tree().get_first_node_in_group(currentLocation).get_node("Area3D") as Night_Breaker
+	breaker.manipulate_start()
+	
+func endBreaker() -> void:
+	var breaker : Night_Breaker = get_tree().get_first_node_in_group(currentLocation).get_node("Area3D") as Night_Breaker
+	breaker.manipulate_end()

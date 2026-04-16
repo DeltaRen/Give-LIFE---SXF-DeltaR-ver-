@@ -1,9 +1,25 @@
 [gd_scene format=3 uid="uid://5krm78ic745i"]
 
 [ext_resource type="PackedScene" uid="uid://ce3jrcw6m55h4" path="res://Mods/Faz Anim 2/Custom Assets/Models/Props/Breaker Panel.glb" id="1_0cout"]
+[ext_resource type="Script" uid="uid://cs3phwvoxvjgm" path="res://Mods/Faz Anim 2/Custom Assets/Scripts/Night_Breaker.gd" id="2_kqs4t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lw830"]
 size = Vector3(1.9537735, 3.0210843, 0.16270638)
+
+[sub_resource type="Curve" id="Curve_kqs4t"]
+_data = [Vector2(0, 0), 0.0, 0.16153899, 0, 0, Vector2(0.73602486, 1), 4.634781, -2.2533348, 0, 0, Vector2(0.80124223, 0.9919255), 0.0, 0.0, 0, 0, Vector2(0.8757764, 1), 0.0, 0.0, 0, 0, Vector2(0.9285714, 0.9838509), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="Curve" id="Curve_rpge5"]
+_data = [Vector2(0, 0), 0.0, 3.0750012, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5qwjd"]
+_data = [Vector2(0, 0), 0.0, -0.026086712, 0, 0, Vector2(1, 1), 2.5999994, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0cout"]
+size = Vector3(0.7722168, 1.2009277, 0.078125)
 
 [node name="Breaker Panel" type="Node3D" unique_id=1776841204]
 
@@ -16,3 +32,13 @@ shape = SubResource("BoxShape3D_lw830")
 
 [node name="Breaker Panel" parent="." unique_id=1956976919 instance=ExtResource("1_0cout")]
 transform = Transform3D(0.61, 0, 0, 0, 0.61, 0, 0, 0, 0.61, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1189963717]
+script = ExtResource("2_kqs4t")
+door_open_curve = SubResource("Curve_kqs4t")
+door_close_curve = SubResource("Curve_rpge5")
+switch_close_curve = SubResource("Curve_5qwjd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=820792211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0030517578, 0.0025634766, -0.005859375)
+shape = SubResource("BoxShape3D_0cout")
