@@ -34,6 +34,8 @@
 [ext_resource type="StyleBox" uid="uid://8vn4doi14jgv" path="res://UI/Themes/Button.tres" id="16_xrto2"]
 [ext_resource type="FontFile" uid="uid://5wbjikluy4eo" path="res://UI/Fonts/3270-Regular.otf" id="17_l5do0"]
 [ext_resource type="StyleBox" uid="uid://dc8kkag77ptu2" path="res://UI/Themes/Sub.tres" id="28_lijsr"]
+[ext_resource type="Script" uid="uid://t56kwrd7w4b7" path="res://New New/Scripts/GL_Wiki.gd" id="32_8dgrc"]
+[ext_resource type="FontFile" uid="uid://k0v7y7qxnu2g" path="res://UI/Fonts/Amarna-Medium.ttf" id="33_lrdyb"]
 
 [sub_resource type="Theme" id="Theme_6gw5s"]
 default_font = ExtResource("17_l5do0")
@@ -123,8 +125,21 @@ custom_minimum_size = Vector2(300, 38.025)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-toggle_mode = true
 text = "Load Map"
+script = ExtResource("5_8r7np")
+hover_sound = ExtResource("6_571ku")
+hover_pitch_randomize_enabled = false
+press_sound = ExtResource("7_mu3iq")
+press_pitch_randomize_enabled = false
+press_pitch_multiplier_off = 0.5
+audio_player_path = NodePath("../../../../AudioStreamPlayer2D")
+
+[node name="Wiki" type="Button" parent="MarginContainer/PanelContainer/Title Screen" unique_id=1847943778]
+custom_minimum_size = Vector2(300, 38.025)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Wiki (Help!)"
 script = ExtResource("5_8r7np")
 hover_sound = ExtResource("6_571ku")
 hover_pitch_randomize_enabled = false
@@ -138,7 +153,6 @@ custom_minimum_size = Vector2(300, 38.025)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-toggle_mode = true
 text = "Mods"
 script = ExtResource("5_8r7np")
 hover_sound = ExtResource("6_571ku")
@@ -153,7 +167,6 @@ custom_minimum_size = Vector2(300, 38.025)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-toggle_mode = true
 text = "Settings"
 script = ExtResource("5_8r7np")
 hover_sound = ExtResource("6_571ku")
@@ -168,7 +181,6 @@ custom_minimum_size = Vector2(300, 38.025)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-toggle_mode = true
 text = "Exit"
 script = ExtResource("5_8r7np")
 hover_sound = ExtResource("6_571ku")
@@ -529,66 +541,6 @@ press_min_pitch = 0.9
 press_max_pitch = 1.1
 audio_player_path = NodePath("../../../../../../../../../AudioStreamPlayer2D")
 
-[node name="Control" type="ScrollContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer" unique_id=1367870832]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Control" unique_id=644402549]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Control/VBoxContainer" unique_id=1364570390]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "ESC - Pause
-Tab - Toggle Editor
-WASD: Move
-Space: Jump
-Q: Slow Speed
-Shift: Sprint Speed
-E: Toggle Flashlight
-        Hold + Scroll: Change Flashlight Size
-Hold Ctrl + Scroll: Change Camera Zoom
-Hold Alt + Scroll: Change Camera Tilt
-R: Smooth Out Movement Toggle
-        Hold + Scroll: Change Smooth Amount
-F: Smooth Out Camera Toggle
-        Hold + Scroll: Change Smooth Amount
-V: Fly
-	Q: Descend
-	Space: Ascend
-(Temporary) H: Toggle Cosmetics"
-
-[node name="Credits" type="ScrollContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer" unique_id=1132207488]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 4
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Credits" unique_id=613071665]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Credits/VBoxContainer" unique_id=1921006653]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Made by The 64th Gamer
-Credit to Palazzol for showtape format documentation.
-
-Iterated from the DEAD Engine
-and RR Engine
-
-Open-Source Code:
-github.com/The64thGamer/Give-LIFE
-
-GNU General Public License v3.0"
-
 [node name="Control2" type="Control" parent="MarginContainer/PanelContainer/Settings/Settings" unique_id=902699344]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
@@ -788,6 +740,96 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../../AudioStreamPlayer2D")
 
+[node name="Wiki" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=1718737463]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+script = ExtResource("32_8dgrc")
+
+[node name="Mods" type="VBoxContainer" parent="MarginContainer/PanelContainer/Wiki" unique_id=1676091801]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Wiki/Mods" unique_id=710939581]
+layout_mode = 2
+text = "Wiki"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/Wiki/Mods" unique_id=969982687]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/Wiki/Mods" unique_id=1785194403]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/Wiki/Mods/PanelContainer" unique_id=733692203]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Wiki/Mods/PanelContainer/HBoxContainer" unique_id=1941918143]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/Wiki/Mods/PanelContainer/HBoxContainer/VBoxContainer" unique_id=1793565365]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Page Holder" type="VBoxContainer" parent="MarginContainer/PanelContainer/Wiki/Mods/PanelContainer/HBoxContainer/VBoxContainer/ScrollContainer" unique_id=1037499496]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/Wiki/Mods/PanelContainer/HBoxContainer" unique_id=213513915]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Mod Desc" type="PanelContainer" parent="MarginContainer/PanelContainer/Wiki/Mods/PanelContainer/HBoxContainer/MarginContainer" unique_id=205671579]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("28_lijsr")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/Wiki/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc" unique_id=1901515522]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/Wiki/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer" unique_id=2142177356]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("33_lrdyb")
+context_menu_enabled = true
+
+[node name="Control2" type="Control" parent="MarginContainer/PanelContainer/Wiki/Mods" unique_id=138456497]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="Back Button" type="Button" parent="MarginContainer/PanelContainer/Wiki/Mods" unique_id=1892398325]
+custom_minimum_size = Vector2(300, 38.025)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+text = "Back"
+script = ExtResource("5_8r7np")
+hover_sound = ExtResource("6_571ku")
+hover_pitch_randomize_enabled = false
+press_sound = ExtResource("7_mu3iq")
+press_pitch_randomize_enabled = false
+press_pitch_multiplier_off = 0.5
+audio_player_path = NodePath("../../../../../AudioStreamPlayer2D")
+
 [node name="Map Menu" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=168487221]
 visible = false
 layout_mode = 2
@@ -869,6 +911,7 @@ filters = PackedStringArray("*.pck")
 volume_db = 4.0
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Start Button" to="." method="_on_simulator_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Wiki" to="." method="switchMenu" binds= ["wiki"]]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Mods" to="." method="switchMenu" binds= ["mods"]]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Settings" to="." method="switchMenu" binds= ["settings"]]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Exit" to="." method="_on_quit_button_pressed"]
@@ -886,6 +929,7 @@ volume_db = 4.0
 [connection signal="pressed" from="MarginContainer/PanelContainer/Settings/Settings/Back Button" to="." method="switchMenu" binds= ["title"]]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/Import Mod" to="." method="import_mod"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Mod Menu/Mods/Back Button" to="." method="switchMenu" binds= ["title"]]
+[connection signal="pressed" from="MarginContainer/PanelContainer/Wiki/Mods/Back Button" to="." method="switchMenu" binds= ["title"]]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Map Menu/Mods/Back Button" to="." method="switchMenu" binds= ["title"]]
 [connection signal="file_selected" from="ExportDialog" to="." method="_on_export_mod_selected"]
 [connection signal="file_selected" from="ImportDialog" to="." method="_on_import_mod_selected"]

@@ -53,7 +53,7 @@ size = Vector3(1.0615234, 2.9796143, 2.4025269)
 [node name="Freddy\'s" type="Node3D" unique_id=2086066372]
 
 [node name="Player" parent="." unique_id=912065313 instance=ExtResource("1_8mu32")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.954762, -9.536743e-07, -52.43222)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.954762, 0.44877005, -52.43222)
 
 [node name="Map" type="Node" parent="." unique_id=150341188]
 

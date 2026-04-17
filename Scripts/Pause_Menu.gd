@@ -1,40 +1,44 @@
 extends Node
 
-var versionNumber: Label
+@onready var versionNumber: Label = get_node("MarginContainer/PanelContainer/Version Number")
 
-var usernameLineEdit: LineEdit
-var showPressedKeysButton: CheckButton
-var bootOnStartOptions: OptionButton
-var windowModeOptions: OptionButton
-var msaaOptions: OptionButton
-var volumeSlider: Slider
-var physicsbonesButton: CheckButton
-var autorunButton: CheckButton
-var scaleMode: OptionButton
-var renderscale: Slider
-var renderScaleText: Label
+@onready var usernameLineEdit: LineEdit = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Username/LineEdit")
+@onready var showPressedKeysButton: CheckButton = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Show Pressed Keys/CheckButton")
+@onready var bootOnStartOptions: OptionButton = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Boot on Start/OptionButton")
+@onready var windowModeOptions: OptionButton = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Window Mode/OptionButton")
+@onready var msaaOptions: OptionButton = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Anti-Aliasing/OptionButton")
+@onready var volumeSlider: Slider = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/Audio/VBoxContainer/Master Volume/HSlider")
+@onready var physicsbonesButton: CheckButton = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Physics Bones/CheckButton")
+@onready var autorunButton: CheckButton = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Autorun/CheckButton")
+@onready var scaleMode: OptionButton = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Render Scale Mode/OptionButton")
+@onready var renderscale: Slider = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Render Scale/HSlider")
+@onready var renderScaleText: Label = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Render Scale/Label")
 @export var fpsButton: CheckButton
 
-var simulatorButton: Button
+@onready var simulatorButton: Button = get_node("MarginContainer/PanelContainer/Title Screen/Start Button")
 
-var titleScreenMenu: VBoxContainer
-var settingsMenu: MarginContainer
-var modMenu: MarginContainer
-var mapMenu: MarginContainer
+@onready var titleScreenMenu: VBoxContainer = get_node("MarginContainer/PanelContainer/Title Screen")
+@onready var settingsMenu: MarginContainer = get_node("MarginContainer/PanelContainer/Settings")
+@onready var modMenu: MarginContainer = get_node("MarginContainer/PanelContainer/Mod Menu")
+@onready var mapMenu: MarginContainer = get_node("MarginContainer/PanelContainer/Map Menu")
+@onready var wikiMenu: MarginContainer = get_node("MarginContainer/PanelContainer/Wiki")
 
-var sideTitle       : Label
-var sideAuthor      : Label
-var sideDescription : Label
-var sideThumbnail   : TextureRect
-var sideExportBtn   : Button
-var sideDeleteBtn   : Button
-var sideBackBtn     : Button
+@onready var sideTitle: Label = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/Mod Title")
+@onready var sideAuthor: Label = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/Mod Author")
+@onready var sideDescription: Label = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/ScrollContainer/Mod Author2")
+@onready var sideThumbnail: TextureRect = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/TextureRect")
+@onready var sideExportBtn: Button = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/HBoxContainer/Export")
+@onready var sideDeleteBtn: Button = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/HBoxContainer/Delete")
+@onready var sideBackBtn: Button = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/Back Button")
 
-var mapListContainer: VBoxContainer
+@onready var mapListContainer: VBoxContainer = get_node("MarginContainer/PanelContainer/Map Menu/Mods/PanelContainer/VBoxContainer/ScrollContainer/Map Holder")
+@onready var modListContainer: VBoxContainer = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/VBoxContainer/ScrollContainer/Mod Holder")
+@onready var importModDialog: FileDialog = get_node("ImportDialog")
+@onready var exportModDialog: FileDialog = get_node("ExportDialog")
+
 var mapEntryScene: PackedScene
-var availableMaps := {}  # mapName -> scene path
+var availableMaps := {}
 var currentMapInstance: Node = null
-
 
 var currentSettings := {
 	"window_mode": 0,
@@ -51,13 +55,10 @@ var currentSettings := {
 	"show_fps": false,
 }
 
-var modListContainer: VBoxContainer
 var modEntryScene: PackedScene
-var importModDialog: FileDialog
-var exportModDialog: FileDialog
 var modData := {}
-var exportFile:String
-var mod_sources = {}  # mod_name -> "" (built-in) or "path/to/pck"
+var exportFile: String
+var mod_sources = {}
 
 const settingsPath := "user://Settings/"
 const settingsFilePath := settingsPath + "user_settings.cfg"
@@ -68,27 +69,15 @@ var nodeMapScene: PackedScene
 var keypresssScene: PackedScene
 
 func _ready():
-	
-	# Setup mod‐menu
-	modListContainer = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/VBoxContainer/ScrollContainer/Mod Holder")
-	modEntryScene    = load("res://Scenes/UI/Mod Box.tscn")
-	importModDialog  = get_node("ImportDialog")
-	exportModDialog  = get_node("ExportDialog")
-
-	# Ensure user mods folder exists
-	DirAccess.make_dir_recursive_absolute("user://mods")
-
-	# 1) Load any .pck in user://mods into res://Mods
-	_load_user_pcks()
-	# 2) Scan all Mods/… and populate menu
-	_load_mods()
-	_populate_mod_list()
-
-	nodeMapScene = load("res://New New/GL_Editor.tscn")
+	modEntryScene = load("res://Scenes/UI/Mod Box.tscn")
+	mapEntryScene = load("res://Scenes/UI/Map Box.tscn")
+	nodeMapScene  = load("res://New New/GL_Editor.tscn")
 	keypresssScene = load("res://Scenes/UI/Key Presses.tscn")
 
-	mapListContainer = get_node("MarginContainer/PanelContainer/Map Menu/Mods/PanelContainer/VBoxContainer/ScrollContainer/Map Holder") 
-	mapEntryScene = load("res://Scenes/UI/Map Box.tscn")
+	DirAccess.make_dir_recursive_absolute("user://mods")
+	_load_user_pcks()
+	_load_mods()
+	_populate_mod_list()
 	load_maps()
 
 	editorInstance = nodeMapScene.instantiate()
@@ -98,40 +87,15 @@ func _ready():
 	get_tree().root.add_child.call_deferred(keypressInstance)
 	await editorInstance.ready
 	await keypressInstance.ready
-	versionNumber = get_node("MarginContainer/PanelContainer/Version Number")
-	titleScreenMenu = get_node("MarginContainer/PanelContainer/Title Screen")
-	settingsMenu = get_node("MarginContainer/PanelContainer/Settings")
-	modMenu = get_node("MarginContainer/PanelContainer/Mod Menu")
-	mapMenu = get_node("MarginContainer/PanelContainer/Map Menu")
-	usernameLineEdit = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Username/LineEdit")
-	showPressedKeysButton = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Show Pressed Keys/CheckButton")
-	bootOnStartOptions = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Boot on Start/OptionButton")
-	windowModeOptions = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Window Mode/OptionButton")
-	msaaOptions = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Anti-Aliasing/OptionButton")
-	volumeSlider = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/Audio/VBoxContainer/Master Volume/HSlider")
-	simulatorButton = get_node("MarginContainer/PanelContainer/Title Screen/Start Button")
-	renderscale = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Render Scale/HSlider")
-	scaleMode = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Render Scale Mode/OptionButton")
-	renderScaleText = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Render Scale/Label")
-	physicsbonesButton = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Physics Bones/CheckButton")
-	autorunButton = get_node("MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Autorun/CheckButton")
+
 	versionNumber.text = "v" + ProjectSettings.get_setting("application/config/version")
-	sideTitle       = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/Mod Title")
-	sideAuthor      = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/Mod Author")
-	sideDescription = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/ScrollContainer/Mod Author2")
-	sideThumbnail   = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/TextureRect")
-	sideExportBtn   = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/HBoxContainer/Export")
-	sideDeleteBtn   = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/HBoxContainer/Delete")
-	sideBackBtn     = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/Back Button")
 	hide_sidebar()
-	
 	load_settings()
-	
+
 	if currentSettings["master_volume"] > 1.0:
 		currentSettings["master_volume"] = 1.0
 	apply_settings()
 
-	# Apply boot on start options
 	match currentSettings["boot_on_start"]:
 		1:
 			var map_name = currentSettings.get("recent_map", "")
@@ -141,9 +105,8 @@ func _ready():
 				print("No recent map to load or map not found.")
 		2:
 			self.visible = false
-			
 			setEditorVisibility(true)
-
+			
 func toggleEditorVisibility():
 	if editorInstance == null:
 		editorInstance = get_tree().root.get_node("GlEditor")
@@ -174,6 +137,7 @@ func switchMenu(menu:String):
 	settingsMenu.visible = false
 	mapMenu.visible = false
 	modMenu.visible = false
+	wikiMenu.visible = false
 	hide_sidebar()
 
 	match(menu):
@@ -181,6 +145,8 @@ func switchMenu(menu:String):
 			titleScreenMenu.visible =  true
 		"settings":
 			settingsMenu.visible =  true
+		"wiki":
+			wikiMenu.visible =  true
 		"mods":
 			modMenu.visible =  true
 		"maps":

@@ -1,0 +1,347 @@
+{
+	"Creating A Mod": "[font_size=26]How Mods Work[/font_size]
+In Godot, you can turn any open project into a .PCK file which contains all your assets, which then can be loaded into any other project as a mod. Mod assets also override in-game assets, so if there's a logo asset in res://UI/Logo.png, and you put the same file in your project, it'll override. The process is simple and easy, but Give-LIFE also adds a few additional requirements for the program to recognize your mod.
+
+[font_size=26]Mod Requirements[/font_size]
+First is that its expected that you're not trying to modify existing assets, and that you're creating mainly Animatables (Animatronics or other receivers of animation signals) or Maps. You'll need to format your mod as follows (and for reference, this is at the root res:// folder):
+[code]
+Faz Anim 2
+	Custom Assets
+	Mod Directory
+		Anim Parameters
+		Animatables
+		Bit Charts
+		Maps
+		Node Settings
+		Physics Bones
+		Save Templates
+		Mod Icon.png
+		Mod Info.cfg
+		Mod Thumbnail.png
+[/code]
+[font_size=22]Starting Folder[/font_size]
+[code]/Mods/(your mod name here)/[/code] is your base mod folder. Inside it you need to have:
+
+[code]Mod Icon.png[/code] - Square aspect ratio icon file which shows in the mod list.
+
+[code]Mod Thumbnail.png[/code] - 1600x900 header image for when clicking your mod in the mod list.
+
+[code]Mod Info.cfg[/code] - config file with additional required info (details below).
+
+[code]/Custom Assets/[/code] - It is recommended you store all models, scenes, code, etc in this sub folder so any of its files don't conflict with folders Give-LIFE is trying to actually read for data.
+
+[code]/Mod Directory/[/code] - This is where specific assets will go as directed by the rest of this documentation.
+
+[font_size=22]/Mod Directory/[/font_size]
+This can contain a few different folders depending on what you want added to your mod:
+
+[code]/Animatables/[/code] - This is where any .tscn that contains an object that can remotely receive signals (like animatronics, spotlight props, TVs, speakers, etc.) should go if you intend on them being accessible and spawn-able by the player (this implementation hasn't happened yet but will)
+
+[code]/Maps/[/code] - This folder will contain your loadable maps with additional data required (details below).
+
+[code]/Node Settings/[/code] - This folder will contain links between your Animatables and any node in the game or in a mod. These let you hook up say the 'Advanced Spotlight' node to have 'My Spotlight' as a selectable option, or similar with animatronics and their movements. (details below).
+
+[font_size=26]Mod Info.cfg[/font_size]
+This contains info that will be displayed in the mod list. You can just open this in a text editor and write your variation of the following example/
+
+[code][mods]
+modtitle=\"Faz Anim 2\"
+modauthor=\"The 64th Gamer\"
+moddescription=\"The game, Faz Anim 2!
+[/code]
+
+[font_size=26]/Mod Directory/Maps/[/font_size]
+This folder, for each map you have, should have its own sub folder. So for Faz-Anim 2's mod directory it has the /FDs/ folder in Maps. Inside this folder you can have any of the general map data like .lmbake, .exr, etc. Only one .tscn file should be in this folder as the first one that is found will be the one chosen. Additionally, you need:
+
+[code]Map Icon.png[/code] - Square aspect ratio icon file for the Map List.
+
+[code]Map Info.cfg[/code] - Just needs the following text pasted in with whatever you want your map name to show up as:
+	
+[code][map]
+maptitle=\"F.D's Burgers - Bots - Barcade\"
+[/code]
+
+[font_size=26]/Mod Directory/Bit Charts/(whatever name).json[/font_size]
+The [code]Bit Charts[/code] folder will house optional .json files that contain dictionaries for RR-Engine bits and their equivalent channel names needed for the Give-LIFE engine. Keep in mind that Give-LIFE channel names consist of the Group, a pipe '|', and then the signal name. If you're converting spot lights, it'll likely just use LIGHT|intensity. Additionally, a Save Template of the same filename will need to be created in the mod to be paired properly.
+
+Example:
+[code]{
+	\"1\": \"FA_FREDDY|Jaw\",
+	\"2\": \"FA_FREDDY|Head Up\",
+	\"3\": \"FA_FREDDY|Eyes Right\",
+	}
+[/code]
+
+[font_size=26]/Mod Directory/Save Templates/(whatever name).json[/font_size]
+Save Templates start you off with a pre-formatted arrangement of channels with their settings, types, colors, and metadata ordered. To create one you can use the data from any save file and modify it to what you'll need. Inside each channel ensure the 'data' value is \"\" to prevent issues. Try and remove any title, author, creation, or other save data that will be generated regardless. If you create a Bit Chart you'll need to have a Save Template with the same name for it to be paired correctly.
+
+[font_size=26]Creating Your Mod[/font_size]
+It is recommended to download the Give-LIFE project source code and build directly off of the in-project /Mods/ folder (there are two built-in mods in there already for reference), which will automatically load into the game. This lets you test immediately against actual code to ensure your mod will function.
+
+[font_size=26]Exporting a PCK[/font_size]
+Once you are ready to test, go to [code]Project>Export[/code] and add either a Linux or Windows preset (it doesn't matter which). In the export settings on the side panel, find the [code]Resources[/code] tab. In the [code]Export Mode[/code] set it to [code]Export selected resources (and dependencies[/code]. Here make sure only the [code]/Mods/[/code] folder is only checked, with also the [code]Faz Anim 2[/code] and [code]Standard Nodes[/code] sub-folders unchecked (or any mod folders that are not your mod, we don't want to duplicate data). Below in the [code]Filters to export non-resource files/folders[/code], add [code][i].cfg,[/i].json[/code] to the list.
+
+First hit [code]Export PCK/ZIP[/code] and save it as specifically a ZIP, then open the ZIP and confirm just your files are present. Take note of any files that change name, as if you're using any scripts that call FileAcess, you should instead call Resource.Load to prevent the name change from messing anything up.
+
+Now hit [code]Export PCK/ZIP[/code] and save it as a PCK file. This file will be what you import when loading it into the in-game mod list. If the mod doesn't show when importing, it may have been auto-deleted due to issues. Open a fresh project of the game without your internal mod and try loading it there to see what the console output says.",
+
+	"Making an Animatronic": "[font_size=26]Posing / Animations[/font_size]
+When getting your animatable model ready, ensure that its default/rest pose is of the intended natural pose of the character, instead of it being in a T-Pose or A-Pose. Each animation that can be used needs to start at that resting pose as well (just keyframe which bones will be animated in that particular animation), and then whichever is the last keyframe in that sequence will be considered the 'end' of that animation. It is recommended to have each animation end on the same keyframe for ease of testing.
+
+Due to how Godot blends animations together, be aware some combinations of parent and child bones moving on multiple animations can cause a sort of desync that has the combined movement not directly align to where both poses would realistically meet. Generally this only happens in cases where you're animating the fur/skin separately from the inner mech.
+
+[font_size=26]Importing to Godot[/font_size]
+Its reccomended you export the model as a .glb for the best compatibility. Double click the .glb in Godot to adjust import settings, which will mainly deal with the Material tab where you can set the materials to ones in Godot.
+
+To skip all the setup of creating your own mod, copy an already created character from [code]/Mods/Faz Anim 1/Mod Directory/Animatables/[/code] and keep it in the Animatables directory for it to work.
+
+Inside the copied Animatable, you'll see the model, 'Color Check' which is for characters with paintable materials (likely not yours, you can delete), and collision in a StaticBody3D. Delete the current model and place in your .glb.
+
+Next click on the root node, on the right side of the screen look at the top tab for [code]Groups[/code]. Here you're gonna create a new Scene Group with the name of your character, its reccomended you format this like GROUP_CHARACTER without any crazy unicode. Ensure this group is checked and no others are checked. If you're keeping Color Check, set it to your new group too.
+
+You're halfway there! You can drop this .tscn in a map for it to almost work.
+
+[font_size=26]Setting Up the Character[/font_size]
+Next in the same mod go to [code]/Mods/(the mod)/Mod Directory/Anim Parameters[/code] and duplicate one of the .json files. Name it exactly the same as your .tscn so it can be linked in the engine. Back in the .tscn's root node, click on it and in the Inspector you'll see the top value read 'Anim Parameters File'. Change that to the name of the file (without the extension.) Inside the .json you'll see:
+[code]
+{
+  \"AA_CCA|Shoulder R\": {
+	\"animation\": \"CCa|Shoulder R\",
+	\"in_speed\": 2.5,
+	\"out_speed\": 1.5,
+	\"type\": \"standard\"
+  },
+  \"AA_CCA|Underlid L\": {
+	\"animation\": \"CCa|Underlid L\",
+	\"in_speed\": 5.0,
+	\"out_speed\": 10.0,
+	\"type\": \"move_to\",
+	\"value\": 5.70421e-21
+  },
+}
+[/code]
+Here you'll list the set of animations the character has and their speeds/types. The first bit will be the GROUP_CHARACTER 'Group' name you made, a pipe '|', and then your fancy name for the movement that users will see.
+
+'animation' will be the exact name of the animation, which you can check by double clicking the .glb and in the Scene going down to the AnimationPlayer animations. Generally if these were exported from Blender they'll have the armature name put inside the title, so if you re-export the model with a changed armature name it'll break all this.
+
+'in_speed' and 'out_speed' refer to the speeds at which the animation moves when extending or retracting. Refer to other Animatables for a reference on timing.
+
+'type' will be 'standard' for most movements, but if you need this to be a value you can animate to any position between the start and end of the animation, set to 'move_to'. You can use 'value' to set a default position on startup, which also works for 'standard' but thats outside any real usefulness.
+
+And that's it! You literally just drop in the character, set the group of the root note, set the anim parameter filename in the root node inspector, and set the animations in the .json.
+
+[font_size=26]Physics Bones[/font_size]
+If you want physics bones on your character you'll want to drag the 'Physics_Bones.gd' script found in /Scripts/ into the 'Script' dropdown of your model inside the .tscn. Again this is of the model and not the root node. A new value in the inspector will appear called 'Bone Config File Name', where you'll set it to the filename of your upcoming Physics Bone file (extension not included).
+
+Physics Bones live in /Mods/(your mod)/Mod Directory/Physics Bones/ as a .json. Go ahead and copy one of the pre-existing files. In it you'll see its just a list of bone names with a corresponding number attatched, these are what each number corresponds to:
+[code]
+	0 = HAIR_NO_GRAVITY
+	1 = HAIR
+	2 = SLOW_HAIR_NO_GRAVITY
+	3 = SLOW_HAIR,
+	4 = ANIMATRONIC_MOVEMENT_LIGHT
+	5 = ANIMATRONIC_MOVEMENT_MEDIUM
+	6 = ANIMATRONIC_MOVEMENT_HEAVY
+[/code]
+Just add in the exact bone names of whatever you want physics with and apply one of these values. You'll have to mess around to find something desirable.",
+
+	"Pico 2W Support": "IGNORE THIS PAGE ITS MOSTLY NOT UPDATED TO THE CURRENT BUILD AND IS MISSING STUFF
+	
+This section goes over using Give-Life Engine to control real servos over Wi-Fi using the Pico2W, a servo board, a power supply, and some servos.
+
+[font_size=26]What you need[/font_size]
+[list=1]
+[*]($16) Raspberry Pi Pico 2W: Yes, the 2W, for Wi-Fi, not just the 2. I wanted to make this dumb easy so I recommend getting one with pre-soldered headers. If you don't know what that is, look for the one with metal pins sticking out around its edges instead of just holes.
+[/list]<img width=\"1204\" height=\"592\" alt=\"image\" src=\"https://github.com/user-attachments/assets/14b89d7c-2851-42e1-81a3-5bb73f66236a\" />
+[list=1]
+[*]($16) Waveshare Pico-Servo-Driver: This is a board the Pico drops into that gives you outputs for your servos. <img width=\"1221\" height=\"565\" alt=\"image\" src=\"https://github.com/user-attachments/assets/1d1cead4-80c4-49be-98f7-6a0e971d5f3c\" />
+[*]($3-5 each) MG90S Micro Servo Motor (any amount up to 16 total)
+[/list]<img width=\"1210\" height=\"479\" alt=\"image\" src=\"https://github.com/user-attachments/assets/dcd6f23a-bf91-4f72-b038-4337ec0fbb06\" />
+
+[list=1]
+[*]($10-20) 5V, 5A power supply with good regulators and filters on it for handling servos. This I haven't actually bought and tested yet so tread lightly. You'll need whatever to get this plugged into the board and wall-socket as well which I haven't gotten to yet either. Do your own research for now. :)
+[/list]<img width=\"1222\" height=\"624\" alt=\"image\" src=\"https://github.com/user-attachments/assets/7bbbe20f-4b92-4d16-a1fe-73dd19058d8a\" />
+[list=1]
+[*]($1-10,000,000,000) A functioning PC that can run Give-Life
+[/list]
+[font_size=26]Using your boards[/font_size]
+[list=1]
+[*]Connect the Pico to the Waveshare Servo-Driver. I assume you got the pre-soldered headers, if not, solder them on now and then connect. :) The board has an indicator for which orientation is needed to plug it in.
+[*]If you need the board to just be tested off the power of the USB plug (which only supports a single servo and may still freeze up with intense use), move the yellow jumper pin next to the On->Off switch from 'VIN' to 'CFG'. Or vice versa if for some reason your board is already set in USB power mode.
+[*]If you're using full power, connect your power supply and Servo Board VIN terminals together for power.
+[/list]
+[font_size=26]Setting up your Pico[/font_size]
+[list=1]
+[*]Install Thonny
+[*]Plug in Pico 2W
+[*]In bottom right corner of Thonny, click the menu and select [code]MicroPython (Raspberry Pi Pico)[/code]
+[*]At the top of Thonny, select [code]View[/code] > [code]Files[/code]
+[*]Create a new file in the [code]Raspberry Pi Pico[/code] section called [code]main.py[/code] (this auto-runs the script on normal boot)
+[*]Paste the following into main.py:
+[/list][code]# main_static_ip.py
+import network
+import socket
+import json
+import time
+from machine import Pin, PWM
+
+=== User Configuration ===
+
+#Network configuration
+SSID = \"YourWifiNetworkName\"
+PASSWORD = \"YourWifiPassword\"
+NETWORK_PREFIX = \"192.168.12\"
+
+# For each servo index 0-15, define (min_angle, max_angle)
+# Angle in degrees. Example: servo0 moves from 10° to 170°
+NUM_SERVOS = 16
+servo_ranges = [
+    (0, 180),  # servo0
+    (0, 180),  # servo1
+    (0, 180),  # servo2
+    (0, 180),  # servo3
+    (0, 180),  # servo4
+    (0, 180),  # servo5
+    (0, 180),  # servo6
+    (0, 180),  # servo7
+    (0, 180),  # servo8
+    (0, 180),  # servo9
+    (0, 180),  # servo10
+    (0, 180),  # servo11
+    (0, 180),  # servo12
+    (0, 180),  # servo13
+    (0, 180),  # servo14
+    (0, 180),  # servo15
+]
+
+MIN_PULSE_MS = 0.5
+MAX_PULSE_MS = 2.5
+PERIOD_MS = 20.0
+
+Static IP settings
+HOST_ID        = 158
+DNS_SERVER     = \"8.8.8.8\"
+LISTEN_PORT    = 8080
+
+LISTEN_PORT = 8080
+
+=== Setup WiFi with static IP ===
+STATIC_IP   = f\"{NETWORK_PREFIX}.{HOST_ID}\"
+SUBNET_MASK = \"255.255.255.0\"
+GATEWAY     = f\"{NETWORK_PREFIX}.1\"
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+wlan.ifconfig((STATIC_IP, SUBNET_MASK, GATEWAY, DNS_SERVER))
+print(\"Connecting to WiFi…\")
+wlan.connect(SSID, PASSWORD)
+while not wlan.isconnected():
+    time.sleep(0.5)
+print(\"Connected! IP:\", wlan.ifconfig())
+
+=== Setup servos ===
+servos = []
+for i in range(NUM_SERVOS):
+    pwm = PWM(Pin(i))
+    pwm.freq(50)
+    servos.append(pwm)
+print(\"Initialized {} servos\".format(NUM_SERVOS))
+
+def angle_to_duty_u16(angle):
+    pulse_ms = MIN_PULSE_MS + (MAX_PULSE_MS - MIN_PULSE_MS) [i] (angle / 180.0)
+    duty = int((pulse_ms / PERIOD_MS) [/i] 65535)
+    return duty
+
+def set_servo_value(servo_index, value_norm):
+    print(f\"set_servo_value: index={servo_index}, value_norm={value_norm}\")
+    if servo_index < 0 or servo_index >= NUM_SERVOS:
+        print(\"  >> Servo index out of range:\", servo_index)
+        return
+    min_ang, max_ang = servo_ranges[servo_index]
+    value_norm = max(0.0, min(1.0, value_norm))
+    target_angle = min_ang + (max_ang - min_ang) [i] value_norm
+    duty = angle_to_duty_u16(target_angle)
+    print(f\"  >> Servo{servo_index} → angle={target_angle:.1f}°, duty={duty}\")
+    servos[servo_index].duty_u16(duty)
+
+def handle_post(body_str):
+    print(\"handle_post received body:\", body_str)
+    try:
+        obj = json.loads(body_str)
+    except Exception as e:
+        print(\"  >> JSON parse error:\", e)
+        return \"ERR_JSON\"
+    for idx in range(NUM_SERVOS):
+        key = f\"servo{idx}\"
+        if key in obj:
+            try:
+                val = float(obj[key])
+                set_servo_value(idx, val)
+            except Exception as e:
+                print(f\"  >> Value error at {key}: {e}\")
+    return \"OK\"
+
+=== HTTP server ===
+addr = socket.getaddrinfo(\"0.0.0.0\", LISTEN_PORT)[0][-1]
+s = socket.socket()
+s.bind(addr)
+s.listen(1)
+print(\"Listening on\", addr)
+
+while True:
+    cl, addr = s.accept()
+    print(\"Client connected from\", addr)
+    try:
+        cl_file = cl.makefile('rwb', 0)
+
+        # --- Read request line ---
+        request_line = cl_file.readline()
+        print(\"  >> request_line:\", request_line)
+
+        # --- Read headers and determine Content-Length ---
+        content_length = 0
+        while True:
+            line = cl_file.readline()
+            if not line or line == b'\r\n':
+                break
+            if line.lower().startswith(b'content-length:'):
+                content_length = int(line.split(b':')[1].strip())
+
+        # --- Read body exactly ---
+        body = cl_file.read(content_length) if content_length > 0 else b''
+        print(\"  >> body bytes:\", body)
+
+        # --- Handle POST ---
+        if request_line and b\"POST\" in request_line:
+            result = handle_post(body.decode())
+            response_body = result + \"\r\n\"
+        else:
+            response_body = \"Use POST JSON\r\n\"
+
+        # --- Send complete HTTP response with headers ---
+        response = (
+            \"HTTP/1.1 200 OK\r\n\"
+            \"Content-Type: text/plain\r\n\"
+            \"Content-Length: {}\r\n\"
+            \"Connection: close\r\n\"
+            \"\r\n\".format(len(response_body))
+        )
+        cl.send(response.encode() + response_body.encode())
+
+    except Exception as e:
+        print(\"Server error:\", e)
+    finally:
+        cl.close()
+        print(\"Client connection closed\")
+[/code]
+[list=1]
+[*]Modify the script for your needs. All of the relevant variables are at the top. I'll explain them past what the comments say for clarity:
+[/list][/i] [code]SSID = \"YourWifiNetworkName\"[/code] <- Yes your wifi name
+[i] [code]PASSWORD = \"YourWifiPassword\"[/code] <- Yes your wifi password
+[/i] [code]NETWORK_PREFIX = \"192.168.12\"[/code] <- This should stay like this. If nothing is working, check your Godot logs for \"found this list of local addresses\", and if it selected to use anything else but 192.168.12, you'll need to set this to it.
+[list]
+[*][code]servo_ranges = (0, 180),  # servo0 etc etc[/code] This is the angle range your servo will convert the 0.0-1.0 output to. It is recommended you make these smaller (like 30-45)
+[/list]8. Now run Give-Life, add the [code]GL Board[/code] node, and move its values around. You can now run the main.py script in Thonny to ensure both the logs look correct and if the servo works.
+ 
+[font_size=26]Results[/font_size]
+If all works out, you can now just plug the card directly into power and it'll auto-connect to your Wi-Fi and begin looking for any incoming requests to change servo positions. Be aware there may be delays with your Wi-Fi, so adding delays to audio output or anything needed directly on the PC may be required to be tuned. Rapidly turning the device/script on and off may also cause it to hang, thinking there's already a device listening on port :8080, so just give it a second if it doesn't do anything. It also can take a few seconds to connect to the network when plugging in."
+}

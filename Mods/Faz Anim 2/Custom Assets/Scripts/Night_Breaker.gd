@@ -15,7 +15,7 @@ const SWITCH_ALT_ANGLES := [-50.0, 0.0]
 const ALT_SWITCHES: Array = [1, 4, 5, 7, 10, 11]
 const SWITCH_COUNT := 12
 const PAIRED_SWITCHES := {2:3, 4:5, 8:9, 10:11}
-const SOUND_PATH := "res://Mods/Faz Anim 2/Custom Assets/Sounds/"
+const SOUND_PATH := "res://Faz Anim 2/Custom Assets/Sounds/"
 const DOOR_OPEN_SOUNDS := 10
 const DOOR_CLOSE_SOUNDS := 11
 const SWITCH_SOUNDS := 15
@@ -28,6 +28,7 @@ var is_animating := false
 var is_switch_animating := false
 var panel_ready_to_close := false
 var is_manipulated := false
+var we_froze_player := false
 var night_master = null
 var player: Player
 var speaker: AudioStreamPlayer3D
@@ -42,6 +43,8 @@ func _ready() -> void:
 	var nm_group = get_tree().get_nodes_in_group("NightMaster")
 	night_master = nm_group[0] if nm_group.size() > 0 else null
 	switch_states.assign(range(SWITCH_COUNT).map(func(_i): return false))
+	for i in SWITCH_COUNT:
+		_set_switch_rotation(i, 0.0)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and not is_animating and is_open:
@@ -57,14 +60,15 @@ func interact() -> void:
 		return
 	if not is_open:
 		animate_door(true)
-		panel_ready_to_close = night_master == null or _all_switches_closed()
-	elif panel_ready_to_close or _all_switches_closed():
+		panel_ready_to_close = night_master == null
+	elif _all_switches_closed() and not is_manipulated:
+		# Only allow closing if switches are genuinely all done, never if manipulate is pending
 		animate_door(false)
 
 func _handle_space_press() -> void:
 	if is_switch_animating or is_manipulated:
 		return
-	if panel_ready_to_close or _all_switches_closed():
+	if _all_switches_closed():
 		animate_door(false)
 		return
 	for i in SWITCH_COUNT:
@@ -77,32 +81,41 @@ func _handle_space_press() -> void:
 func manipulate_start() -> void:
 	is_manipulated = true
 	check_player()
+	# Reset ready-to-close so interact() can't immediately close the panel
+	panel_ready_to_close = false
 	for i in SWITCH_COUNT:
 		switch_states[i] = true
 		_set_switch_rotation(i, 1.0)
-	var was_frozen = player != null and player.frozen_mode
 	if not is_open:
+		we_froze_player = true
+		player.freeze_player()
 		animate_door(true)
 		await animation_done
-	if was_frozen:
-		player.unfreeze_player()
+	# Do NOT unfreeze here — player stays frozen until manipulate_end
 
 func check_player():
 	if player == null:
 		player = get_tree().get_first_node_in_group("Player")
 
 func manipulate_end() -> void:
+	check_player()
+	var should_unfreeze := we_froze_player
+	we_froze_player = false
 	animate_door(false)
 	await animation_done
 	is_manipulated = false
+	if should_unfreeze:
+		player.unfreeze_player()
 
 func animate_door(opening: bool) -> void:
 	is_animating = true
 	check_player()
-	if opening:
+	if opening and not is_manipulated:
+		we_froze_player = true
+		player.freeze_player()
 		_play_sound("BreakerOpen", DOOR_OPEN_SOUNDS)
-		if not is_manipulated:
-			player.freeze_player()
+	elif opening:
+		_play_sound("BreakerOpen", DOOR_OPEN_SOUNDS)
 	var tween = create_tween()
 	tween.tween_method(_set_door_rotation, 1.0 - float(opening), float(opening),
 		OPEN_ANIM_TIME if opening else CLOSE_ANIM_TIME)
@@ -112,17 +125,13 @@ func animate_door(opening: bool) -> void:
 		if not is_open:
 			_play_sound("BreakerClose", DOOR_CLOSE_SOUNDS)
 			panel_ready_to_close = false
-			if not is_manipulated:
+			if not is_manipulated and we_froze_player:
 				player.unfreeze_player()
+				we_froze_player = false
 		animation_done.emit()
 	)
 
 signal animation_done
-
-func _animation_done():
-	if not is_animating:
-		return
-	await animation_done
 
 func animate_switch(idx: int) -> void:
 	is_switch_animating = true
@@ -132,8 +141,6 @@ func animate_switch(idx: int) -> void:
 	tween.tween_callback(func():
 		switch_states[idx] = false
 		is_switch_animating = false
-		if _all_switches_closed():
-			animate_door(false)
 	)
 
 func _all_switches_closed() -> bool:

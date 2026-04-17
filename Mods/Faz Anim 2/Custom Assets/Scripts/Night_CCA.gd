@@ -99,7 +99,7 @@ func _process(delta: float) -> void:
 		move()
 		
 func move() -> void:
-	timer = randf_range(10, 20)
+	timer = randf_range(1, 2)
 	causeFlicker()
 	
 	if currentLocation.contains("Breaker"):
