@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c5wmca3oukbxt"]
+
+[ext_resource type="Texture2D" uid="uid://3uaxaqk056aw" path="res://UI/Icons/plus-solid-full.svg" id="1_g4yt0"]
+
+[sub_resource type="Gradient" id="Gradient_g4yt0"]
+colors = PackedColorArray(1, 0.97183335, 0.87, 1, 1, 0.81366664, 0.13999999, 0)
+
+[node name="CPUParticles2D" type="CPUParticles2D" unique_id=731573785]
+amount = 30
+texture = ExtResource("1_g4yt0")
+lifetime = 0.5
+lifetime_randomness = 0.56
+emission_shape = 3
+emission_rect_extents = Vector2(1, 50)
+direction = Vector2(77, 0)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 100.0
+angular_velocity_min = 300.0
+angular_velocity_max = 1000.0
+scale_amount_min = 0.01
+scale_amount_max = 0.04
+color_ramp = SubResource("Gradient_g4yt0")

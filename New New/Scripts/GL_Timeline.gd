@@ -212,6 +212,14 @@ func _get_channel_slots() -> Array:
 			slots.append(child)
 	return slots
 
+# Show createChannel only when scrolled to the end with a free slot visible
+func _update_create_channel_visibility() -> void:
+	if master.currentlyLoadedPath == "":
+		createChannel.visible = false
+		return
+	var total = master.currentlyLoadedFile["channels"].size()
+	createChannel.visible = total < MAX_VISIBLE_CHANNELS or scrolledIndex + MAX_VISIBLE_CHANNELS >= total
+
 func _reassign_channel_slots() -> void:
 	if master.currentlyLoadedPath == "":
 		return
@@ -243,6 +251,8 @@ func _reassign_channel_slots() -> void:
 		else:
 			slot.visible = false
 
+	_update_create_channel_visibility()
+
 func repaintTimeline() -> void:
 	for child in timelineBox.get_children():
 		if child.name != "CreateChannel" and child.visible:
@@ -272,17 +282,13 @@ func create_channel(type: int) -> void:
 		print("Creating Channel Failed")
 
 func reload_timeline() -> void:
-	if master.currentlyLoadedPath == "":
-		createChannel.visible = false
-	else:
-		createChannel.visible = true
-
 	# Free all existing channel slots
 	for child in timelineBox.get_children():
 		if child.name != "CreateChannel":
 			child.queue_free()
 
 	if master.currentlyLoadedPath == "":
+		createChannel.visible = false
 		return
 
 	var total = master.currentlyLoadedFile["channels"].size()
@@ -297,4 +303,5 @@ func reload_timeline() -> void:
 	
 	timelineBox.move_child(timelineBox.get_node("CreateChannel"), timelineBox.get_child_count() - 1)
 
+	_update_create_channel_visibility()
 	call_deferred("_reassign_channel_slots")

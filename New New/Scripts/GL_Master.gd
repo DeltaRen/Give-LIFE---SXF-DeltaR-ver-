@@ -7,9 +7,9 @@ class_name GL_Master
 @onready var mediaLoader : GL_Media = $"../Full Editor/Editor/Modifiers/Media/VBoxContainer/MediaContainer"
 @onready var fileLoader : Control = $"../File Loader"
 @onready var timeline : GL_Timeline = $"../Full Editor/Data Timeline"
-@onready var titleVar : LineEdit = $"../Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Title/LineEdit"
-@onready var authorVar : LineEdit = $"../Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Author/LineEdit"
-@onready var createdVar : Label = $"../Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Created/Label2"
+@onready var titleVar : LineEdit = $"../Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer/VBoxContainer2/LineEdit"
+@onready var authorVar : LineEdit =$"../Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer/VBoxContainer2/LineEdit2"
+@onready var createdVar : Label = $"../Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer/VBoxContainer2/Label2"
 
 var currentlyLoadedPath : String = ""
 var currentlyLoadedFile : Dictionary = {}

@@ -16,6 +16,12 @@ var _bit_panels: Array = []
 
 const timeUnits = 1.0 / 120.0
 
+# ── Preview particle state ───────────────────────────────────────────────────
+var preview_particles_template: PackedScene = preload("res://New New/Prefabs/cpu_particles_2d.tscn")
+var _preview_particles: CPUParticles2D = null
+enum PreviewEdge { NONE, LEFT, RIGHT }
+var _last_preview_edge: PreviewEdge = PreviewEdge.NONE
+
 func start() -> void:
 	title.text = id
 	var style = StyleBoxFlat.new()
@@ -33,14 +39,16 @@ func _process(delta: float) -> void:
 	var mouse_pos = channelTimeline.get_local_mouse_position()
 	var mouse_is_inside = timeline_rect.has_point(mouse_pos)
 
-
 	if mouse_is_inside and !timeline.playing:
 			timeline.setTimeFromTimeline(
 				mouse_pos.x,
 				channelTimeline.position.x,
 				channelTimeline.size.x
 			)
-			
+	
+	# Update preview particles each frame while an edit is active
+	_update_preview_particles()
+
 func _input(event: InputEvent) -> void:
 	if changingBind:
 		if event is InputEventKey and event.pressed:
@@ -143,8 +151,14 @@ func renderBits() -> void:
 		preview_panel.position = Vector2(((cs - t_start) / t_range) * width, 0)
 		preview_panel.size = Vector2(max(((ce - cs) / t_range) * width, 1.0), bitHolder.size.y)
 		preview_panel.visible = true
+		
+		# Ensure particles node exists as child of the preview panel
+		_ensure_preview_particles(preview_panel)
 	else:
 		preview_panel.visible = false
+		# Hide particles when no active edit
+		if _preview_particles != null and is_instance_valid(_preview_particles):
+			_preview_particles.emitting = false
 
 func updateBindLabel() -> void:
 	var bind = timeline.channelBinds.get(id, null)
@@ -178,3 +192,59 @@ func binder_entered() -> void:
 
 func binder_exited() -> void:
 	changingBind = false
+
+# ── Particle helpers ─────────────────────────────────────────────────────────
+
+func _ensure_preview_particles(preview_panel: Panel) -> void:
+	if _preview_particles != null and is_instance_valid(_preview_particles):
+		return
+	if preview_particles_template == null:
+		return
+	_preview_particles = preview_particles_template.instantiate()
+	_preview_particles.emitting = false
+	_preview_particles.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
+	_preview_particles.local_coords = true
+	preview_panel.add_child(_preview_particles)
+
+func _update_preview_particles() -> void:
+	if _preview_particles == null or not is_instance_valid(_preview_particles):
+		return
+	if not timeline.activeEdit.has(id):
+		_preview_particles.emitting = false
+		_last_preview_edge = PreviewEdge.NONE
+		return
+
+	var preview_panel = bitHolder.get_node_or_null("PreviewPanel")
+	if preview_panel == null or not preview_panel.visible:
+		_preview_particles.emitting = false
+		return
+
+	var pw = preview_panel.size.x
+	var ph = preview_panel.size.y
+
+	# The live edge is whichever side timeCurrent is on relative to the edit start
+	var edit_start = timeline.activeEdit[id]["start"]
+	var edge: PreviewEdge = PreviewEdge.RIGHT if timeline.timeCurrent >= edit_start else PreviewEdge.LEFT
+
+	# Reconfigure direction/extents only when edge changes
+	if edge != _last_preview_edge:
+		_last_preview_edge = edge
+		_configure_particles_for_edge(edge, ph)
+
+	# Always update position every frame so right edge tracks the growing rect
+	match edge:
+		PreviewEdge.LEFT:
+			_preview_particles.position = Vector2(0, ph * 0.5)
+		PreviewEdge.RIGHT:
+			_preview_particles.position = Vector2(pw, ph * 0.5)
+
+	_preview_particles.emitting = true
+
+func _configure_particles_for_edge(edge: PreviewEdge, ph: float) -> void:
+	match edge:
+		PreviewEdge.LEFT:
+			_preview_particles.emission_rect_extents = Vector2(1.0, ph * 0.5)
+			_preview_particles.direction = Vector2(1, 0)
+		PreviewEdge.RIGHT:
+			_preview_particles.emission_rect_extents = Vector2(1.0, ph * 0.5)
+			_preview_particles.direction = Vector2(-1, 0)

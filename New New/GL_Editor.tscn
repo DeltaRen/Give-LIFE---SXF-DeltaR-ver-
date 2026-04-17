@@ -115,45 +115,54 @@ metadata/_tab_index = 0
 [node name="MarginContainer" type="Control" parent="Full Editor/Editor/Modifiers/Settings" unique_id=244532628]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer" unique_id=220569561]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 918.0
-offset_bottom = 444.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer" unique_id=1591094916]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Title" type="HBoxContainer" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer" unique_id=1702252599]
+[node name="VBoxContainer" type="VBoxContainer" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer" unique_id=220569561]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
 
-[node name="Label" type="Label" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Title" unique_id=1220462098]
+[node name="Label" type="Label" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1220462098]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 text = "Title:      "
+vertical_alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Title" unique_id=1788731704]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Author" type="HBoxContainer" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer" unique_id=437137876]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Author" unique_id=1092015495]
+[node name="Label2" type="Label" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1092015495]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 text = "Author: "
+vertical_alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Author" unique_id=495236870]
+[node name="Label3" type="Label" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1517247924]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Created: "
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer" unique_id=1169699623]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Created" type="HBoxContainer" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer" unique_id=657312415]
+[node name="LineEdit" type="LineEdit" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=324076004]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Created" unique_id=1517247924]
+[node name="LineEdit2" type="LineEdit" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=570988486]
 layout_mode = 2
-text = "Created: "
+size_flags_horizontal = 3
 
-[node name="Label2" type="Label" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Created" unique_id=1957219627]
+[node name="Label2" type="Label" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1403401638]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 text = "???"
+vertical_alignment = 1
 
 [node name="Save & Quit" type="MarginContainer" parent="Full Editor/Editor/Modifiers" unique_id=525679963]
 visible = false
@@ -248,6 +257,7 @@ alignment = 1
 
 [node name="Play Button" type="Button" parent="Full Editor/TimeManager/HBoxContainer" unique_id=1808816479]
 layout_mode = 2
+tooltip_text = "Play / Pause Button"
 text = " ▶ "
 
 [node name="Data Timeline" type="PanelContainer" parent="Full Editor" unique_id=149432049]
@@ -322,8 +332,8 @@ script = ExtResource("5_4tobp")
 volume_db = 10.0
 
 [connection signal="pressed" from="File Loader/MarginContainer/VBoxContainer/HBoxContainer/Button" to="Master" method="_import_show"]
-[connection signal="text_changed" from="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Title/LineEdit" to="Master" method="setTitle"]
-[connection signal="text_changed" from="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Author/LineEdit" to="File Loader/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MenuButton2" method="setAuthor"]
+[connection signal="text_changed" from="Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer/VBoxContainer2/LineEdit" to="Master" method="setTitle"]
+[connection signal="text_changed" from="Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer/VBoxContainer2/LineEdit2" to="File Loader/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MenuButton2" method="setAuthor"]
 [connection signal="pressed" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button" to="Master" method="save"]
 [connection signal="pressed" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button2" to="Master" method="save_and_quit"]
 [connection signal="pressed" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button3" to="Master" method="_export_show"]
