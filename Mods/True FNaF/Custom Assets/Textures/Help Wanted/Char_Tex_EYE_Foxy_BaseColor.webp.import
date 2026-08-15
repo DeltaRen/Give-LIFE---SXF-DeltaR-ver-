@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://r7sbqxxg8d28"
-path="res://.godot/imported/Char_Tex_EYE_Foxy_BaseColor.webp-1fa5051cd3d5e2b3107b02a37f7bcaff.ctex"
+uid="uid://cwp34beqa8buh"
+path="res://.godot/imported/char_tex_eye_foxy_basecolor.webp-a7b773dfa294e40fd4274ed1116a9c9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mods/True FNaF/Custom Assets/Textures/Help Wanted/Char_Tex_EYE_Foxy_BaseColor.webp"
-dest_files=["res://.godot/imported/Char_Tex_EYE_Foxy_BaseColor.webp-1fa5051cd3d5e2b3107b02a37f7bcaff.ctex"]
+source_file="res://Mods/True FNaF/Custom Assets/Textures/Help Wanted/char_tex_eye_foxy_basecolor.webp"
+dest_files=["res://.godot/imported/char_tex_eye_foxy_basecolor.webp-a7b773dfa294e40fd4274ed1116a9c9c.ctex"]
 
 [params]
 

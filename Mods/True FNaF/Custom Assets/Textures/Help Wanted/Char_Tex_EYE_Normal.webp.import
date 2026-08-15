@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xha1l1pfo633"
-path="res://.godot/imported/Char_Tex_EYE_Normal.webp-deb19ab0df2b31778ccb03fdd01db208.ctex"
+uid="uid://bb3ygnmpfpjv0"
+path="res://.godot/imported/char_tex_eye_normal.webp-d6327b551ca16239e8d566aa45f91423.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mods/True FNaF/Custom Assets/Textures/Help Wanted/Char_Tex_EYE_Normal.webp"
-dest_files=["res://.godot/imported/Char_Tex_EYE_Normal.webp-deb19ab0df2b31778ccb03fdd01db208.ctex"]
+source_file="res://Mods/True FNaF/Custom Assets/Textures/Help Wanted/char_tex_eye_normal.webp"
+dest_files=["res://.godot/imported/char_tex_eye_normal.webp-d6327b551ca16239e8d566aa45f91423.ctex"]
 
 [params]
 

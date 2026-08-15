@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://danj5lqqsodn3"
-path="res://.godot/imported/Char_Tex_Endoskeleton_Normal.webp-8133702cbaaee2f804a48f773536d49a.ctex"
+uid="uid://clevad6ke4so"
+path="res://.godot/imported/char_tex_endoskeleton_normal.webp-d48d868477db7b2af5538dadbdfd4778.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mods/True FNaF/Custom Assets/Textures/Help Wanted/Char_Tex_Endoskeleton_Normal.webp"
-dest_files=["res://.godot/imported/Char_Tex_Endoskeleton_Normal.webp-8133702cbaaee2f804a48f773536d49a.ctex"]
+source_file="res://Mods/True FNaF/Custom Assets/Textures/Help Wanted/char_tex_endoskeleton_normal.webp"
+dest_files=["res://.godot/imported/char_tex_endoskeleton_normal.webp-d48d868477db7b2af5538dadbdfd4778.ctex"]
 
 [params]
 

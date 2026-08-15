@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwdr3h2wpddu"
-path="res://.godot/imported/Char_Tex_Foxy_Occlusion.webp-327802a7448bb7da609f0958719c7e0f.ctex"
+uid="uid://b4j6bedvbj7pd"
+path="res://.godot/imported/char_tex_foxy_Occlusion.webp-7fd2438874e147a9287f07d64e37101a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mods/True FNaF/Custom Assets/Textures/Help Wanted/Char_Tex_Foxy_Occlusion.webp"
-dest_files=["res://.godot/imported/Char_Tex_Foxy_Occlusion.webp-327802a7448bb7da609f0958719c7e0f.ctex"]
+source_file="res://Mods/True FNaF/Custom Assets/Textures/Help Wanted/char_tex_foxy_Occlusion.webp"
+dest_files=["res://.godot/imported/char_tex_foxy_Occlusion.webp-7fd2438874e147a9287f07d64e37101a.ctex"]
 
 [params]
 
